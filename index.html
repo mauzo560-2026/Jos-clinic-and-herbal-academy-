@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOS NATURAL HERBS — Dr. Revo | Clinic & Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --e1:#011c10;--e2:#064e3b;--e3:#065f46;--e4:#047857;--e5:#10b981;--e6:#d1fae5;
+  --g1:#78350f;--g2:#b45309;--g3:#d4af37;--g4:#f5cc50;--g5:#fef9c3;
+  --red:#dc2626;--bg:#f0fdf6;--w:#fff;--tx:#0f1f14;--mu:#4b7a5e;
+  --rad:12px;--sh:0 4px 20px rgba(6,78,59,0.12);--font:'Nunito',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hidden;font-size:15px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes popIn{from{opacity:0;transform:scale(0.88);}to{opacity:1;transform:scale(1);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.55);}50%{box-shadow:0 0 0 14px rgba(16,185,129,0);}}
+@keyframes glow{0%,100%{box-shadow:0 0 14px rgba(212,175,55,0.3);}50%{box-shadow:0 0 32px rgba(212,175,55,0.65);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes countdown-pulse{0%,100%{opacity:1;}50%{opacity:0.6;}}
+
+/* ── PAGE SYSTEM ── */
+.pg{display:none!important;}.pg.on{display:block!important;}
+.pgf{display:none!important;}.pgf.on{display:flex!important;}
+
+/* ══ GATE ══ */
+#pg-gate{min-height:100vh;background:linear-gradient(150deg,#010e08,#064e3b,#010e08);
+  align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden;}
+#pg-gate::before{content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/svg%3E");}
+.gcard{background:#fff;border-radius:20px;max-width:440px;width:100%;overflow:hidden;
+  border:2px solid var(--g3);box-shadow:0 28px 70px rgba(0,0,0,0.45);
+  animation:popIn .55s cubic-bezier(.34,1.56,.64,1);position:relative;z-index:1;}
+.gtop{background:linear-gradient(135deg,#010e08,#064e3b);padding:28px 22px 22px;text-align:center;position:relative;}
+/* LOGO area in gate */
+.g-logo-wrap{width:88px;height:88px;border-radius:50%;overflow:hidden;margin:0 auto 13px;
+  border:3px solid var(--g3);box-shadow:0 0 24px rgba(212,175,55,.25);background:linear-gradient(135deg,var(--e3),var(--e4));}
+.g-logo-wrap img{width:100%;height:100%;object-fit:cover;}
+.g-logo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;animation:float 3s ease-in-out infinite;}
+.gbrand{color:var(--g4);font-size:1.15rem;font-weight:900;letter-spacing:.04em;margin-bottom:2px;}
+.gsub{color:rgba(255,255,255,.58);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;}
+.gdr{color:rgba(212,175,55,.72);font-size:.67rem;margin-top:4px;font-weight:700;}
+.gbody{padding:22px;}
+.fg{margin-bottom:12px;}
+.fg label{display:block;font-weight:800;font-size:.77rem;color:#374151;margin-bottom:4px;}
+.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid #d1fae5;border-radius:9px;
+  padding:10px 12px;font-family:var(--font);font-size:.9rem;
+  outline:none;transition:border-color .2s;background:#f9fffe;color:var(--tx);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--e4);}
+.gbtn{width:100%;background:linear-gradient(135deg,var(--g2),var(--g3));color:#fff;border:none;
+  font-family:var(--font);font-weight:900;font-size:.97rem;padding:13px;border-radius:50px;cursor:pointer;
+  box-shadow:0 5px 20px rgba(180,83,9,.38);animation:glow 3s ease-in-out infinite;
+  display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s;margin-bottom:9px;}
+.gbtn:hover{transform:translateY(-2px);}
+/* Share to unlock section on gate */
+.share-unlock{background:linear-gradient(135deg,var(--e6),var(--g5));border-radius:10px;
+  padding:12px 14px;margin-top:11px;border:1px solid rgba(16,185,129,.28);}
+.share-unlock p{font-size:.76rem;font-weight:800;color:var(--e2);margin-bottom:8px;text-align:center;}
+.share-unlock .share-btn{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;
+  border:none;font-family:var(--font);font-weight:900;font-size:.82rem;padding:10px;
+  border-radius:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
+.share-count-note{font-size:.69rem;color:var(--mu);text-align:center;margin-top:6px;}
+
+/* ══ CHOICE ══ */
+#pg-choice{min-height:100vh;background:linear-gradient(150deg,#010e08,#064e3b,#010e08);
+  align-items:center;justify-content:center;padding:20px;}
+.chcard{background:#fff;border-radius:20px;max-width:480px;width:100%;padding:30px 22px;
+  border:2px solid var(--g3);box-shadow:0 28px 70px rgba(0,0,0,.45);animation:popIn .5s ease;text-align:center;}
+.chcard .ch-logo{width:70px;height:70px;border-radius:50%;overflow:hidden;margin:0 auto 13px;
+  border:2px solid var(--g3);background:linear-gradient(135deg,var(--e3),var(--e4));}
+.chcard .ch-logo img{width:100%;height:100%;object-fit:cover;}
+.chcard .ch-logo-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.9rem;}
+.chcard h2{font-size:1.2rem;font-weight:900;color:var(--e2);margin-bottom:5px;}
+.chcard p{font-size:.82rem;color:var(--mu);margin-bottom:22px;line-height:1.6;}
+.ch-grid{display:grid;gap:11px;}
+.ch-opt{padding:17px 15px;border-radius:var(--rad);border:2px solid #d1fae5;
+  background:var(--bg);cursor:pointer;transition:all .22s;
+  display:flex;align-items:center;gap:13px;text-align:left;}
+.ch-opt:hover{border-color:var(--e4);background:var(--e6);transform:translateX(4px);}
+.ch-ic{font-size:1.9rem;flex-shrink:0;}
+.ch-t{font-weight:900;font-size:.9rem;color:var(--e2);margin-bottom:2px;}
+.ch-s{font-size:.72rem;color:var(--mu);}
+
+/* ══ HEADER ══ */
+.app-hdr{background:linear-gradient(135deg,#010e08,#064e3b);padding:0 13px;height:54px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:2px solid var(--g3);position:sticky;top:0;z-index:200;
+  box-shadow:0 3px 16px rgba(0,0,0,.4);}
+.hbrand{display:flex;align-items:center;gap:9px;}
+/* Logo in header */
+.hdr-logo{width:36px;height:36px;border-radius:50%;overflow:hidden;border:2px solid var(--g3);
+  background:linear-gradient(135deg,var(--e3),var(--e4));flex-shrink:0;}
+.hdr-logo img{width:100%;height:100%;object-fit:cover;}
+.hdr-logo-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.hname{color:var(--g4);font-size:.8rem;font-weight:900;}
+.hsub{color:rgba(255,255,255,.42);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;}
+.hright{display:flex;align-items:center;gap:6px;}
+.hbtn{font-family:var(--font);font-weight:800;font-size:.67rem;padding:6px 10px;
+  border-radius:18px;cursor:pointer;border:none;white-space:nowrap;transition:all .18s;}
+.hbtn.wa{background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;
+  animation:pulse 2.5s infinite;text-decoration:none;display:flex;align-items:center;gap:5px;}
+/* Hidden admin trigger - tiny dot bottom-right of header */
+.hdr-adm-dot{width:8px;height:8px;border-radius:50%;background:transparent;cursor:pointer;border:none;padding:0;
+  position:relative;opacity:0;} /* invisible — only Dr. Revo knows */
+
+/* ══ MAIN ══ */
+.main{max-width:1000px;margin:0 auto;padding:17px 13px 80px;}
+
+/* Welcome bar */
+.wbar{background:linear-gradient(135deg,#010e08,var(--e2));border-radius:13px;
+  padding:15px 18px;margin-bottom:17px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid rgba(212,175,55,.2);}
+.wt{color:var(--g4);font-size:.93rem;font-weight:900;margin-bottom:2px;}
+.ws{color:rgba(255,255,255,.7);font-size:.77rem;}
+.wbadges{display:flex;gap:6px;flex-wrap:wrap;}
+.wbadge{background:rgba(16,185,129,.18);border:1px solid rgba(16,185,129,.3);
+  border-radius:18px;padding:3px 10px;color:var(--e5);font-size:.66rem;font-weight:800;}
+
+/* ── BROADCAST BANNER (shown to users) ── */
+.broadcast-banner{background:linear-gradient(135deg,var(--e1),var(--e2));border-radius:12px;
+  padding:14px 18px;margin-bottom:16px;border:1px solid rgba(212,175,55,.22);display:none;}
+.broadcast-banner.on{display:block;animation:fadeUp .3s ease;}
+.bb-hdr{display:flex;align-items:center;gap:9px;margin-bottom:6px;}
+.bb-icon{font-size:1.3rem;}
+.bb-title{color:var(--g4);font-size:.85rem;font-weight:900;}
+.bb-msg{color:rgba(255,255,255,.85);font-size:.82rem;line-height:1.6;}
+.bb-close{float:right;background:rgba(255,255,255,.1);border:none;color:#fff;
+  border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:.78rem;
+  display:flex;align-items:center;justify-content:center;margin-left:8px;}
+
+/* ── MEDIA GALLERY ── */
+.media-section{background:#fff;border-radius:var(--rad);padding:16px;margin-bottom:16px;
+  box-shadow:var(--sh);border:1px solid var(--e6);}
+.ms-hdr{font-weight:900;font-size:.88rem;color:var(--e2);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;}
+.ms-hdr::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--g3),transparent);}
+.media-tabs{display:flex;gap:0;margin-bottom:12px;border-radius:8px;overflow:hidden;border:1.5px solid #d1fae5;}
+.mtab{flex:1;padding:8px;border:none;background:#fff;font-family:var(--font);
+  font-weight:800;font-size:.75rem;cursor:pointer;color:var(--mu);transition:all .17s;}
+.mtab.on{background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px;}
+.media-item{border-radius:9px;overflow:hidden;border:1.5px solid #d1fae5;
+  background:var(--bg);aspect-ratio:16/10;position:relative;cursor:pointer;}
+.media-item img,.media-item video{width:100%;height:100%;object-fit:cover;}
+.media-empty{grid-column:1/-1;text-align:center;padding:28px;color:var(--mu);font-size:.8rem;}
+.media-play-overlay{position:absolute;inset:0;background:rgba(0,0,0,.28);
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .18s;}
+.media-item:hover .media-play-overlay{opacity:1;}
+.play-ic{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+
+/* ── PRODUCTS ── */
+.products-section{background:#fff;border-radius:var(--rad);padding:16px;margin-bottom:16px;
+  box-shadow:var(--sh);border:1px solid var(--e6);}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:13px;}
+.prod-card{border-radius:var(--rad);border:1.5px solid #d1fae5;overflow:hidden;
+  background:#fff;transition:all .22s;cursor:pointer;}
+.prod-card:hover{transform:translateY(-3px);box-shadow:0 6px 22px rgba(6,78,59,.14);border-color:var(--e4);}
+.prod-img-wrap{height:155px;background:linear-gradient(135deg,var(--e6),var(--g5));
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.prod-img-ph{font-size:3.5rem;}
+.prod-badge-wrap{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;gap:3px;}
+.prod-badge{background:var(--red);color:#fff;font-size:.58rem;font-weight:900;padding:2px 8px;border-radius:18px;display:inline-block;}
+.prod-badge.grn{background:var(--e4);}
+.prod-badge.gold{background:var(--g2);}
+.prod-body{padding:11px;}
+.prod-name{font-weight:900;font-size:.86rem;color:var(--e2);margin-bottom:3px;}
+.prod-desc{font-size:.72rem;color:var(--mu);line-height:1.5;margin-bottom:8px;}
+.prod-price-wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:8px;}
+.prod-price-old{text-decoration:line-through;color:#9ca3af;font-size:.74rem;}
+.prod-price{font-weight:900;font-size:1.05rem;color:var(--e3);}
+.prod-disc{background:var(--red);color:#fff;font-size:.58rem;font-weight:900;padding:2px 6px;border-radius:8px;}
+.prod-btn{width:100%;background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;
+  border:none;font-family:var(--font);font-weight:900;font-size:.78rem;
+  padding:9px;border-radius:8px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:5px;transition:all .18s;}
+.prod-btn:hover{transform:translateY(-1px);}
+
+/* ── CONDITIONS ── */
+.sec-hdr{font-weight:900;font-size:.95rem;color:var(--e2);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;}
+.sec-hdr::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--g3),transparent);}
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;margin-bottom:18px;}
+.ccard{background:#fff;border-radius:var(--rad);border:2px solid #e5ede9;
+  padding:14px 11px;cursor:pointer;transition:all .22s;position:relative;overflow:hidden;text-align:center;}
+.ccard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--e2),var(--e3));opacity:0;transition:opacity .22s;}
+.ccard:hover{border-color:var(--e4);transform:translateY(-3px);box-shadow:0 5px 18px rgba(6,78,59,.14);}
+.ccard:hover::before,.ccard.sel::before{opacity:1;}
+.ccard:hover .ccn,.ccard.sel .ccn,.ccard:hover .ccd,.ccard.sel .ccd,.ccard:hover .cciph,.ccard.sel .cciph{color:#fff;position:relative;z-index:1;}
+.ccard-img{width:58px;height:58px;border-radius:8px;object-fit:cover;margin:0 auto 7px;
+  display:block;border:2px solid var(--g3);position:relative;z-index:1;}
+.cciph{font-size:1.8rem;display:block;margin-bottom:7px;position:relative;z-index:1;}
+.ccn{font-weight:900;font-size:.77rem;color:var(--e2);margin-bottom:2px;position:relative;z-index:1;}
+.ccd{font-size:.64rem;color:var(--mu);line-height:1.4;position:relative;z-index:1;}
+
+/* ── QUIZ ── */
+.qbox{background:#fff;border-radius:13px;border:2px solid var(--e4);
+  padding:19px;margin-bottom:16px;display:none;box-shadow:var(--sh);}
+.qbox.on{display:block;animation:fadeUp .32s ease;}
+.qhdr{display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  padding-bottom:13px;border-bottom:1px solid var(--e6);}
+.qav{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--e2),var(--e4));
+  border:2px solid var(--g3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.qtitle{font-weight:900;font-size:.91rem;color:var(--e2);}
+.qsub{font-size:.71rem;color:var(--mu);margin-top:2px;}
+.prog-wrap{margin-bottom:15px;}
+.prog-top{display:flex;justify-content:space-between;margin-bottom:5px;}
+.prog-lbl{font-size:.71rem;font-weight:800;color:var(--e2);}
+.prog-pct{font-size:.71rem;font-weight:900;color:var(--g2);}
+.prog-track{height:8px;background:var(--e6);border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--e4),var(--g3));border-radius:4px;transition:width .4s cubic-bezier(.4,0,.2,1);}
+.qcard{background:linear-gradient(135deg,#f0fdf6,#fefce8);border-radius:10px;
+  padding:17px;margin-bottom:11px;border-left:4px solid var(--e4);}
+.qnum{font-size:.65rem;font-weight:900;color:var(--e4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.qtxt{font-weight:800;font-size:.93rem;color:var(--e1);line-height:1.55;margin-bottom:4px;}
+.qhint{font-size:.7rem;color:var(--mu);font-style:italic;}
+.qbtns{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.qbtn{padding:11px;border-radius:9px;border:2px solid #d1d5db;background:#fff;
+  font-family:var(--font);font-weight:800;font-size:.87rem;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;justify-content:center;gap:6px;}
+.qbtn.yes:hover,.qbtn.yes.picked{border-color:var(--e4);background:var(--e6);color:var(--e2);}
+.qbtn.no:hover,.qbtn.no.picked{border-color:#fca5a5;background:#fef2f2;color:var(--red);}
+.qbtn:disabled{opacity:.48;cursor:not-allowed;}
+
+/* ── RESULT ── */
+.rbox{display:none;}.rbox.on{display:block;animation:fadeUp .42s ease;}
+.rcrd{background:linear-gradient(150deg,var(--e1),var(--e2));border-radius:13px;
+  padding:20px;margin-bottom:16px;color:#fff;border:2px solid rgba(212,175,55,.26);}
+.rchdr{display:flex;align-items:center;gap:11px;margin-bottom:13px;}
+.rcbadge{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);
+  border:2px solid var(--g3);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.rct{font-weight:900;color:var(--g4);font-size:.98rem;margin-bottom:3px;}
+.rcs{font-size:.81rem;opacity:.88;line-height:1.55;}
+.sevwrap{background:rgba(255,255,255,.1);border-radius:9px;padding:11px;margin:12px 0;}
+.sevlbl{font-size:.67rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:5px;}
+.sevtrack{height:9px;background:rgba(255,255,255,.14);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+.sevfill{height:100%;border-radius:4px;transition:width 1.1s cubic-bezier(.4,0,.2,1);}
+.sevtxt{font-size:.75rem;opacity:.8;}
+.speed-p{background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.32);
+  border-radius:8px;padding:9px 13px;margin-top:11px;font-size:.78rem;color:var(--g4);font-weight:700;text-align:center;}
+
+/* ── TESTIMONIALS ── */
+.tsec{background:#fff;border-radius:13px;padding:18px;margin-bottom:16px;
+  border:1px solid var(--e6);box-shadow:var(--sh);}
+.tbanner{background:linear-gradient(135deg,var(--e6),var(--g5));border-radius:9px;
+  padding:11px;text-align:center;margin-bottom:13px;border:1px solid rgba(16,185,129,.26);}
+.tbanner h3{font-weight:900;color:var(--e2);font-size:.85rem;margin-bottom:2px;}
+.tcount{font-size:1.8rem;font-weight:900;color:var(--e4);}
+.tgrid{display:grid;gap:9px;}
+@media(min-width:500px){.tgrid{grid-template-columns:1fr 1fr;}}
+.tcard{background:var(--bg);border-radius:9px;padding:12px;border-left:3px solid var(--e4);}
+.tcard-img{width:100%;max-height:140px;object-fit:cover;border-radius:6px;
+  margin-bottom:8px;border:1px solid #a7f3d0;}
+.twa{background:#e7fce8;border-radius:7px;padding:8px;margin-bottom:7px;
+  font-size:.78rem;color:#064e3b;line-height:1.6;font-style:italic;border:1px solid #a7f3d0;}
+.twa::before{content:'"';font-size:1.6rem;color:var(--e4);line-height:.5;display:block;margin-bottom:4px;}
+.tmeta{display:flex;align-items:center;gap:7px;}
+.tav2{width:27px;height:27px;border-radius:50%;background:linear-gradient(135deg,var(--e4),var(--g3));
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+.tname{font-weight:900;font-size:.76rem;color:var(--e2);}
+.tloc{font-size:.64rem;color:var(--mu);}
+.tstars{color:var(--g3);font-size:.77rem;}
+.tpill{display:inline-block;background:var(--e5);color:#fff;font-size:.58rem;
+  font-weight:900;padding:2px 7px;border-radius:18px;margin-top:4px;}
+
+/* ── PRICING ── */
+.psec{background:linear-gradient(150deg,var(--e1),var(--e2));border-radius:13px;
+  padding:19px;margin-bottom:16px;border:2px solid rgba(212,175,55,.25);}
+.psec h3{color:var(--g4);font-size:.98rem;font-weight:900;margin-bottom:4px;text-align:center;}
+.psub{color:rgba(255,255,255,.7);font-size:.78rem;text-align:center;margin-bottom:16px;}
+.med-img-wrap{text-align:center;margin-bottom:13px;}
+.med-img{max-width:125px;border-radius:9px;border:2px solid var(--g3);}
+.med-ph{width:88px;height:88px;border-radius:9px;background:rgba(255,255,255,.1);
+  border:2px solid var(--g3);display:inline-flex;align-items:center;justify-content:center;font-size:2.7rem;}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;}
+.dgrid.single{grid-template-columns:1fr;max-width:310px;margin:0 auto 15px;}
+.dcard{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.13);
+  border-radius:11px;padding:15px;cursor:pointer;transition:all .2s;position:relative;}
+.dcard:hover,.dcard.sel{border-color:var(--g3);background:rgba(212,175,55,.1);}
+.rec-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  background:var(--e5);color:#fff;font-size:.57rem;font-weight:900;
+  padding:2px 10px;border-radius:18px;white-space:nowrap;}
+.dname{color:#fff;font-size:.82rem;font-weight:900;margin-bottom:3px;}
+.dsev{font-size:.65rem;color:rgba(255,255,255,.55);margin-bottom:9px;}
+.dold{text-decoration:line-through;color:rgba(255,255,255,.32);font-size:.72rem;}
+.dnew{font-size:1.7rem;font-weight:900;color:var(--g4);line-height:1;}
+.ddisc{background:var(--red);color:#fff;font-size:.56rem;font-weight:900;
+  padding:2px 6px;border-radius:8px;display:inline-block;margin-top:2px;}
+.dfeats{list-style:none;margin-top:9px;display:grid;gap:3px;}
+.dfeats li{font-size:.71rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:4px;}
+.dfeats li::before{content:'✓';color:var(--e5);font-weight:900;flex-shrink:0;}
+.lipa{background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.24);
+  border-radius:9px;padding:11px;margin-bottom:15px;}
+.lipa h4{color:var(--g4);font-weight:900;font-size:.77rem;margin-bottom:6px;}
+.lrow{display:flex;justify-content:space-between;font-size:.76rem;
+  padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.lrow:last-child{border-bottom:none;}
+.lrow span:first-child{color:rgba(255,255,255,.57);}
+.lrow span:last-child{color:#fff;font-weight:800;}
+.fbox{background:#fff;border-radius:13px;padding:19px;margin-bottom:16px;
+  box-shadow:var(--sh);display:none;}
+.fbox.on{display:block;animation:fadeUp .32s ease;}
+
+/* ── BUTTONS ── */
+.btn{width:100%;border:none;font-family:var(--font);font-weight:900;font-size:.92rem;
+  padding:13px;border-radius:50px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;margin-bottom:8px;}
+.btn:hover{transform:translateY(-2px);}
+.btn.green{background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;box-shadow:0 4px 18px rgba(6,78,59,.28);}
+.btn.gold{background:linear-gradient(135deg,var(--g2),var(--g3));color:#fff;box-shadow:0 4px 18px rgba(180,83,9,.28);}
+.btn.wa{background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;}
+.btn.outline{background:transparent;border:2px dashed var(--e4);color:var(--e2);}
+.call-link{display:flex;align-items:center;justify-content:center;gap:6px;
+  color:var(--e3);font-weight:800;font-size:.81rem;text-decoration:none;margin-top:6px;}
+
+/* ══ ACADEMY PAGE ══ */
+.acad-main{max-width:1000px;margin:0 auto;padding:17px 13px 80px;}
+/* Timer bar */
+.timer-bar{background:linear-gradient(135deg,#1a0000,#3b0000);border-radius:11px;
+  padding:13px 17px;margin-bottom:16px;display:none;
+  align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  border:1px solid rgba(220,38,38,.3);}
+.timer-bar.on{display:flex;}
+.tb-l h4{color:#fca5a5;font-size:.85rem;font-weight:900;margin-bottom:2px;}
+.tb-l p{color:rgba(255,255,255,.58);font-size:.71rem;}
+.tb-timer{font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:.03em;animation:countdown-pulse 1s infinite;}
+.tb-timer span{color:#fca5a5;}
+.tb-upgrade{background:var(--red);color:#fff;border:none;font-family:var(--font);
+  font-weight:900;font-size:.75rem;padding:8px 14px;border-radius:26px;cursor:pointer;}
+/* Poster scroll above mimea */
+.acad-media{background:#fff;border-radius:var(--rad);padding:14px;margin-bottom:14px;
+  box-shadow:var(--sh);border:1px solid var(--e6);}
+.acad-media-hdr{font-weight:900;font-size:.85rem;color:var(--e2);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;}
+.acad-media-hdr::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--g3),transparent);}
+.poster-scroll{display:flex;gap:9px;overflow-x:auto;padding-bottom:5px;}
+.poster-scroll::-webkit-scrollbar{height:3px;}
+.poster-scroll::-webkit-scrollbar-thumb{background:var(--g3);border-radius:2px;}
+.poster-item{flex-shrink:0;width:135px;height:95px;border-radius:8px;
+  overflow:hidden;border:1.5px solid var(--g3);cursor:pointer;position:relative;}
+.poster-item img,.poster-item video{width:100%;height:100%;object-fit:cover;}
+.poster-overlay{position:absolute;inset:0;background:rgba(0,0,0,.28);
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .17s;}
+.poster-item:hover .poster-overlay{opacity:1;}
+.poster-empty{width:100%;text-align:center;padding:18px;color:var(--mu);font-size:.78rem;}
+/* Academy hero */
+.acadhero{background:linear-gradient(150deg,var(--e1),var(--e2));border-radius:13px;
+  padding:20px 17px;margin-bottom:14px;border:1px solid rgba(212,175,55,.2);position:relative;overflow:hidden;}
+.acadhero::before{content:'📚';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:7rem;opacity:.06;}
+.acadhero h2{color:var(--g4);font-size:clamp(1rem,3.5vw,1.6rem);font-weight:900;margin-bottom:6px;}
+.acadhero p{color:rgba(255,255,255,.74);font-size:.83rem;line-height:1.65;max-width:500px;}
+.astats{display:flex;gap:15px;margin-top:12px;flex-wrap:wrap;}
+.astat .val{font-size:1.35rem;font-weight:900;color:var(--g4);line-height:1;}
+.astat .lbl{font-size:.59rem;color:rgba(255,255,255,.49);text-transform:uppercase;letter-spacing:.07em;}
+/* Search */
+.srch-wrap{margin-bottom:12px;position:relative;}
+.srch-inp{width:100%;border:2px solid var(--e4);border-radius:50px;
+  padding:11px 46px 11px 17px;font-family:var(--font);font-size:.9rem;
+  outline:none;background:#fff;transition:all .22s;box-shadow:0 3px 12px rgba(6,78,59,.08);}
+.srch-inp:focus{border-color:var(--g3);}
+.srch-ico{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:1.15rem;pointer-events:none;}
+.vis-prev{background:#fff;border-radius:11px;border:2px solid var(--e4);
+  padding:14px;margin-bottom:11px;display:none;box-shadow:var(--sh);}
+.vis-prev.on{display:flex;gap:13px;flex-wrap:wrap;align-items:flex-start;animation:fadeUp .26s ease;}
+.vpimg{width:90px;height:90px;border-radius:8px;background:linear-gradient(135deg,var(--e6),var(--g5));
+  border:2px solid var(--g3);display:flex;align-items:center;justify-content:center;font-size:2.7rem;flex-shrink:0;}
+.vpinfo h3{font-weight:900;color:var(--e2);font-size:.91rem;margin-bottom:2px;}
+.vpinfo p{font-size:.68rem;color:var(--mu);font-style:italic;margin-bottom:6px;}
+.vptags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px;}
+.vptag{background:var(--e6);color:var(--e2);font-size:.59rem;font-weight:800;padding:2px 6px;border-radius:6px;}
+.vpbtn{background:var(--e4);color:#fff;border:none;font-family:var(--font);font-weight:800;font-size:.73rem;padding:6px 12px;border-radius:24px;cursor:pointer;}
+.chips-wrap{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
+.chip{padding:5px 11px;border-radius:16px;border:1.5px solid #c6e9d8;background:#fff;
+  font-family:var(--font);font-size:.69rem;font-weight:800;cursor:pointer;transition:all .17s;white-space:nowrap;}
+.chip:hover,.chip.on{background:var(--e3);color:#fff;border-color:var(--e3);}
+.res-cnt{font-size:.73rem;color:var(--mu);font-weight:700;margin-bottom:10px;}
+.plant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:11px;}
+.pcard{background:#fff;border-radius:var(--rad);border:2px solid var(--g3);cursor:pointer;transition:all .24s;overflow:hidden;}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 8px 26px rgba(212,175,55,.2);border-color:var(--e4);}
+.pcimg{height:105px;background:linear-gradient(135deg,var(--e6),var(--g5));display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.pcbody{padding:10px;}
+.pcnum{float:right;background:var(--g3);color:var(--e1);font-size:.56rem;font-weight:900;padding:2px 5px;border-radius:8px;}
+.pcname{font-weight:900;font-size:.78rem;color:var(--e2);margin-bottom:2px;}
+.pclatin{font-size:.6rem;color:var(--mu);font-style:italic;margin-bottom:6px;}
+.pctags{display:flex;flex-wrap:wrap;gap:3px;}
+.pctag{background:var(--e6);color:var(--e3);font-size:.56rem;font-weight:800;padding:2px 5px;border-radius:6px;}
+
+/* ── LOCK ── */
+.lock-screen{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:18px;}
+.lock-card{background:#fff;border-radius:17px;max-width:430px;width:100%;padding:30px 22px;
+  border:2px solid var(--red);text-align:center;animation:popIn .44s ease;}
+.lock-ic{font-size:3rem;display:block;margin-bottom:11px;}
+.lock-t{font-size:1.25rem;font-weight:900;color:var(--red);margin-bottom:7px;}
+.lock-s{color:var(--mu);font-size:.81rem;line-height:1.7;margin-bottom:20px;}
+.price-tiers{display:grid;gap:8px;margin-bottom:14px;text-align:left;}
+.pt{background:var(--bg);border-radius:var(--rad);border:2px solid #d1fae5;
+  padding:12px 14px;display:flex;align-items:center;justify-content:space-between;
+  gap:10px;cursor:pointer;transition:all .17s;}
+.pt:hover,.pt.sel{border-color:var(--g3);box-shadow:0 3px 12px rgba(212,175,55,.16);}
+.ptl h4{font-weight:900;font-size:.86rem;color:var(--e2);margin-bottom:2px;}
+.ptl p{font-size:.69rem;color:var(--mu);}
+.ptprice{font-size:1rem;font-weight:900;color:var(--e3);text-align:right;}
+.ptbadge{font-size:.58rem;font-weight:900;background:var(--g5);color:var(--g2);
+  padding:2px 6px;border-radius:8px;display:block;margin-top:1px;}
+.paybox{background:var(--e6);border-radius:9px;padding:11px 13px;margin-bottom:13px;text-align:left;}
+.paybox h4{color:var(--e2);font-weight:900;font-size:.77rem;margin-bottom:7px;}
+.pir{display:flex;justify-content:space-between;font-size:.76rem;padding:3px 0;border-bottom:1px solid #a7f3d0;}
+.pir:last-child{border-bottom:none;font-weight:900;color:var(--e2);}
+/* Code on lock */
+.code-act-wrap{background:var(--bg);border-radius:9px;border:1px solid #d1fae5;padding:13px;margin-top:11px;}
+.code-act-wrap h5{font-weight:900;font-size:.8rem;color:var(--e2);margin-bottom:7px;}
+/* OTP countdown */
+.otp-timer{font-size:.75rem;color:var(--red);font-weight:800;text-align:center;margin-top:5px;display:none;}
+.otp-timer.on{display:block;}
+.code-row{display:flex;gap:7px;}
+.code-field{flex:1;border:1.5px solid var(--g3);border-radius:8px;padding:9px 11px;
+  font-family:var(--font);font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;
+  outline:none;background:var(--g5);color:var(--e1);text-align:center;}
+.code-submit{background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;border:none;
+  font-family:var(--font);font-weight:900;font-size:.78rem;padding:9px 13px;border-radius:8px;cursor:pointer;white-space:nowrap;}
+
+/* ══ MODALS ══ */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.74);z-index:400;
+  align-items:center;justify-content:center;padding:12px;}
+.modal-bg.on{display:flex;animation:fadeUp .17s ease;}
+.modal{background:#fff;border-radius:17px;width:100%;max-width:620px;
+  max-height:91vh;overflow-y:auto;border:2px solid var(--g3);animation:popIn .3s ease;}
+.mhdr{background:linear-gradient(135deg,var(--e2),var(--e1));padding:19px;
+  border-radius:15px 15px 0 0;position:sticky;top:0;z-index:1;}
+.mx{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.12);border:none;
+  color:#fff;width:27px;height:27px;border-radius:50%;cursor:pointer;font-size:.87rem;
+  display:flex;align-items:center;justify-content:center;}
+.memoji{font-size:2.2rem;display:block;margin-bottom:7px;}
+.mtitle{color:var(--g4);font-size:1.1rem;font-weight:900;}
+.mlatin{color:rgba(255,255,255,.45);font-size:.7rem;font-style:italic;margin-top:2px;}
+.mbody{padding:18px;}
+.msec h4{font-weight:900;font-size:.84rem;color:var(--e2);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.disgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px;}
+@media(max-width:360px){.disgrid{grid-template-columns:1fr;}}
+.di{background:var(--e6);border-radius:7px;padding:7px 10px;font-size:.76rem;
+  font-weight:700;color:var(--e2);display:flex;align-items:center;gap:5px;}
+.di::before{content:'✓';color:var(--e4);font-weight:900;flex-shrink:0;}
+.preplist{display:grid;gap:7px;margin-bottom:14px;}
+.ps{display:flex;gap:8px;align-items:flex-start;}
+.psn{width:22px;height:22px;border-radius:50%;background:var(--g3);color:var(--e1);
+  font-size:.67rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.pst{font-size:.79rem;color:#374151;line-height:1.58;}
+.speedbox{background:linear-gradient(135deg,var(--e6),var(--g5));border-radius:8px;
+  padding:10px 13px;margin-bottom:13px;border:1px solid rgba(16,185,129,.24);text-align:center;}
+.speedbox p{font-size:.77rem;font-weight:800;color:var(--e2);}
+.mwa{width:100%;background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;border:none;
+  font-family:var(--font);font-weight:900;font-size:.88rem;padding:12px;border-radius:46px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:7px;}
+/* Product detail modal */
+.prod-modal-img{width:100%;max-height:210px;object-fit:cover;border-radius:8px;margin-bottom:13px;}
+.prod-modal-ph{width:100%;height:150px;background:linear-gradient(135deg,var(--e6),var(--g5));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;margin-bottom:13px;}
+
+/* ── THANK YOU ── */
+.ty-ovl{display:none;position:fixed;inset:0;background:rgba(1,28,16,.93);z-index:500;
+  align-items:center;justify-content:center;padding:15px;}
+.ty-ovl.on{display:flex;}
+.tycard{background:#fff;border-radius:17px;padding:28px 20px;max-width:350px;width:100%;
+  text-align:center;border:2px solid var(--g3);animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.tyemoji{font-size:3rem;display:block;margin-bottom:10px;animation:float 2s ease-in-out infinite;}
+.tytitle{font-size:1.2rem;font-weight:900;color:var(--e2);margin-bottom:6px;}
+.tymsg{color:var(--mu);font-size:.81rem;line-height:1.65;margin-bottom:14px;}
+.tydr{background:var(--e6);border-radius:8px;padding:11px;margin-bottom:13px;
+  display:flex;align-items:center;gap:8px;text-align:left;}
+.tydr-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--e3),var(--e4));
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.tydr h4{font-weight:900;color:var(--e2);font-size:.81rem;}
+.tydr p{font-size:.69rem;color:var(--mu);}
+.tyx{background:var(--e2);color:#fff;border:none;font-family:var(--font);
+  font-weight:800;padding:9px 22px;border-radius:24px;cursor:pointer;font-size:.84rem;}
+
+/* ── UPGRADE MODAL ── */
+.upgbox{background:#fff;border-radius:17px;max-width:410px;width:100%;
+  overflow:hidden;border:2px solid var(--g3);animation:popIn .4s ease;}
+.upghdr{background:linear-gradient(135deg,var(--e1),var(--e2));padding:19px;text-align:center;position:relative;}
+.upghdr h3{color:var(--g4);font-size:.98rem;font-weight:900;margin-bottom:4px;}
+.upghdr p{color:rgba(255,255,255,.64);font-size:.76rem;}
+.upgx{position:absolute;top:9px;right:9px;background:rgba(255,255,255,.1);border:none;
+  color:#fff;width:25px;height:25px;border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
+.upgbody{padding:17px;}
+
+/* ══ ADMIN OVERLAYS ══ */
+.adm-ovl{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:600;
+  align-items:center;justify-content:center;padding:12px;}
+.adm-ovl.on{display:flex;}
+.adm-box{background:#fff;border-radius:15px;width:100%;max-width:920px;max-height:93vh;overflow-y:auto;}
+.adm-hdr{background:linear-gradient(135deg,#1a0000,#3b0000);padding:14px 17px;
+  border-radius:13px 13px 0 0;display:flex;align-items:center;justify-content:space-between;}
+.adm-hdr h2{color:var(--g4);font-size:.91rem;font-weight:900;}
+.admx{background:rgba(255,255,255,.1);border:none;color:#fff;width:26px;height:26px;
+  border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
+.adm-body{padding:15px 17px;}
+.adm-tabs{display:flex;border-bottom:2px solid #e5e7eb;margin-bottom:15px;overflow-x:auto;}
+.adm-tab{padding:8px 13px;border:none;background:transparent;font-family:var(--font);
+  font-weight:800;font-size:.75rem;cursor:pointer;color:var(--mu);
+  border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s;white-space:nowrap;}
+.adm-tab.on{color:var(--e2);border-bottom-color:var(--e4);}
+.adm-sec{display:none;}.adm-sec.on{display:block;}
+/* Stats */
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:13px;}
+@media(max-width:480px){.astats{grid-template-columns:1fr;}}
+.ast{background:var(--bg);border-radius:8px;padding:11px;text-align:center;border:1px solid var(--e6);}
+.astv{font-size:1.75rem;font-weight:900;color:var(--e3);}
+.astl{font-size:.61rem;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;}
+/* Action buttons */
+.aacts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.ab{padding:7px 13px;border-radius:24px;border:none;font-family:var(--font);
+  font-weight:800;font-size:.74rem;cursor:pointer;display:flex;align-items:center;gap:4px;transition:transform .14s;}
+.ab:hover{transform:translateY(-1px);}
+.ab.g{background:var(--e3);color:#fff;}
+.ab.gld{background:var(--g3);color:#111;}
+.ab.r{background:var(--red);color:#fff;}
+.ab.blue{background:#3b82f6;color:#fff;}
+/* Users table */
+.utbl{border-radius:8px;overflow:hidden;border:1px solid var(--e6);}
+.uhdr{background:linear-gradient(135deg,var(--e2),var(--e3));display:grid;
+  grid-template-columns:2fr 1.5fr 1fr 1fr;gap:6px;
+  padding:8px 11px;font-size:.62rem;font-weight:900;color:var(--g4);letter-spacing:.07em;text-transform:uppercase;}
+.urow{display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr;gap:6px;
+  padding:8px 11px;border-bottom:1px solid var(--e6);font-size:.76rem;align-items:center;transition:background .12s;}
+.urow:hover{background:var(--bg);}
+.urow:last-child{border-bottom:none;}
+.un{font-weight:900;color:var(--e2);}
+.uph{color:var(--mu);font-size:.69rem;}
+.udawa{font-size:.64rem;background:var(--e6);color:var(--e2);padding:2px 6px;border-radius:8px;font-weight:700;}
+.utm{font-size:.67rem;color:var(--mu);}
+.empty-tbl{text-align:center;padding:26px;color:var(--mu);font-size:.79rem;}
+@media(max-width:550px){.uhdr,.urow{grid-template-columns:1fr 1fr!important;}}
+
+/* Broadcast composer */
+.broadcast-compose{background:var(--bg);border-radius:11px;padding:15px;margin-bottom:14px;border:1px solid var(--e6);}
+.broadcast-compose h4{font-weight:900;font-size:.84rem;color:var(--e2);margin-bottom:10px;}
+.bc-preview{background:linear-gradient(135deg,var(--e1),var(--e2));border-radius:9px;padding:12px 14px;margin-bottom:10px;color:#fff;font-size:.8rem;line-height:1.6;display:none;}
+.bc-preview.on{display:block;}
+.bc-count{font-size:.72rem;color:var(--mu);margin-bottom:8px;}
+
+/* Media upload */
+.media-upload-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:9px;margin-bottom:11px;}
+.mu-item{border-radius:8px;overflow:hidden;border:1.5px solid #d1fae5;
+  background:var(--bg);aspect-ratio:16/10;position:relative;}
+.mu-item img,.mu-item video{width:100%;height:100%;object-fit:cover;}
+.mu-del{position:absolute;top:4px;right:4px;background:var(--red);color:#fff;
+  border:none;border-radius:50%;width:20px;height:20px;font-size:.7rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;}
+.mu-add{border-radius:8px;border:2px dashed #c6e9d8;background:var(--bg);
+  aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .17s;color:var(--mu);font-size:.77rem;font-weight:700;gap:4px;}
+.mu-add:hover{border-color:var(--e4);background:var(--e6);}
+
+/* Products admin */
+.prod-adm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;}
+.pad{background:var(--bg);border-radius:8px;border:1px solid var(--e6);overflow:hidden;}
+.pad-img{height:115px;background:linear-gradient(135deg,var(--e6),var(--g5));display:flex;align-items:center;justify-content:center;position:relative;}
+.pad-img img{width:100%;height:100%;object-fit:cover;}
+.pad-img .ph{font-size:2.7rem;}
+.pad-body{padding:9px;}
+.pad-name{font-weight:900;font-size:.78rem;color:var(--e2);margin-bottom:5px;}
+.pad-input{width:100%;border:1px solid #d1fae5;border-radius:5px;padding:5px 7px;
+  font-family:var(--font);font-size:.74rem;outline:none;margin-bottom:4px;background:#fff;}
+
+/* Shuhuda admin */
+.sh-list{display:grid;gap:8px;margin-bottom:10px;}
+.sh-item{background:#fff;border-radius:7px;border:1px solid var(--e6);padding:9px;}
+.sh-name{font-weight:900;font-size:.77rem;color:var(--e2);margin-bottom:3px;}
+.sh-img{width:100%;max-height:100px;object-fit:cover;border-radius:5px;margin-bottom:4px;border:1px solid #c6e9d8;}
+.sh-txt{font-size:.73rem;color:var(--mu);font-style:italic;margin-bottom:5px;}
+.sh-acts{display:flex;gap:4px;}
+.sh-act{flex:1;background:var(--e6);border:1px solid var(--e4);border-radius:5px;
+  font-family:var(--font);font-size:.67rem;font-weight:800;color:var(--e2);padding:4px;cursor:pointer;}
+.sh-act.del{background:#fee2e2;border-color:#fca5a5;color:var(--red);}
+.add-sh-btn{width:100%;background:var(--e6);border:1.5px dashed var(--e4);
+  border-radius:7px;padding:9px;font-family:var(--font);font-weight:800;font-size:.76rem;color:var(--e2);cursor:pointer;}
+
+/* Code panel */
+.codegen{background:var(--bg);border-radius:9px;padding:13px;margin-bottom:13px;border:1px solid var(--e6);}
+.codegen h4{font-weight:900;font-size:.82rem;color:var(--e2);margin-bottom:9px;}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:9px;}
+.pkg-opt{padding:9px 7px;border-radius:8px;border:1.5px solid #d1fae5;background:#fff;
+  text-align:center;cursor:pointer;transition:all .15s;}
+.pkg-opt:hover,.pkg-opt.sel{border-color:var(--g3);background:var(--g5);}
+.pkg-name{font-weight:900;font-size:.76rem;color:var(--e2);}
+.pkg-days{font-size:.66rem;color:var(--mu);}
+.pkg-price{font-weight:900;font-size:.84rem;color:var(--e3);margin-top:2px;}
+.code-disp{font-size:1.5rem;font-weight:900;color:var(--e1);background:#fff;
+  border:2px solid var(--g3);border-radius:8px;padding:11px;text-align:center;
+  letter-spacing:.22em;margin-bottom:8px;}
+/* OTP countdown in admin */
+.otp-countdown{font-size:.75rem;color:var(--red);font-weight:800;text-align:center;margin-bottom:6px;display:none;}
+.otp-countdown.on{display:block;animation:countdown-pulse 1s infinite;}
+.codegen-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px;}
+.chint{font-size:.69rem;color:var(--mu);line-height:1.6;}
+.codes-list{max-height:190px;overflow-y:auto;display:grid;gap:5px;}
+.citem{background:#fff;border-radius:6px;border:1px solid var(--e6);padding:7px 10px;
+  display:flex;align-items:center;justify-content:space-between;font-size:.75rem;}
+.cval{font-weight:900;color:var(--e1);letter-spacing:.1em;}
+.cdays{font-size:.67rem;color:var(--mu);}
+.cstatus{font-size:.62rem;font-weight:900;padding:2px 6px;border-radius:7px;}
+.cstatus.avail{background:var(--e6);color:var(--e2);}
+.cstatus.used{background:#fee2e2;color:var(--red);}
+.cstatus.expired{background:#fef9c3;color:#78350f;}
+/* Login form */
+.lgf{padding:20px 17px;}
+.lgf h3{font-weight:900;color:var(--red);font-size:.97rem;margin-bottom:4px;text-align:center;}
+.lgf p{color:var(--mu);font-size:.77rem;text-align:center;margin-bottom:14px;}
+
+/* Logo upload in admin */
+.logo-upload-wrap{background:var(--bg);border-radius:9px;padding:13px;border:1px solid var(--e6);margin-bottom:13px;}
+.logo-preview{width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto 9px;
+  border:2px solid var(--g3);background:linear-gradient(135deg,var(--e3),var(--e4));
+  display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.logo-preview img{width:100%;height:100%;object-fit:cover;}
+
+/* ── SIZE GUIDE ── */
+.size-guide{background:linear-gradient(135deg,var(--g5),var(--e6));border-radius:9px;
+  padding:12px 14px;margin-bottom:12px;border:1px solid rgba(212,175,55,.3);}
+.size-guide h5{font-weight:900;font-size:.8rem;color:var(--e2);margin-bottom:7px;}
+.sg-row{display:flex;justify-content:space-between;font-size:.74rem;padding:3px 0;border-bottom:1px solid rgba(6,78,59,.1);}
+.sg-row:last-child{border-bottom:none;}
+.sg-row span:first-child{color:var(--mu);}
+.sg-row span:last-child{font-weight:800;color:var(--e2);}
+
+/* ── REFERRAL SHARE ── */
+.referral-track{background:var(--bg);border-radius:9px;padding:12px 14px;border:1px solid var(--e6);margin-bottom:12px;}
+.referral-track h5{font-weight:900;font-size:.8rem;color:var(--e2);margin-bottom:8px;}
+.ref-progress{height:10px;background:#c6f6d5;border-radius:5px;overflow:hidden;margin-bottom:5px;}
+.ref-fill{height:100%;background:linear-gradient(90deg,var(--e4),var(--g3));border-radius:5px;transition:width .5s ease;}
+.ref-count{font-size:.73rem;color:var(--mu);font-weight:700;}
+
+/* FOOTER */
+footer{background:var(--e1);padding:14px;text-align:center;}
+.fbrnd{color:var(--g3);font-size:.76rem;font-weight:900;margin-bottom:3px;}
+.fadm{background:none;border:none;color:rgba(255,255,255,.01);font-size:.01rem;
+  cursor:pointer;font-family:inherit;width:20px;height:20px;display:inline-block;}
+/* Floating WA */
+.fwa{position:fixed;bottom:15px;right:12px;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.fwatip{background:var(--e1);color:#fff;font-size:.64rem;font-weight:700;padding:3px 8px;border-radius:15px;white-space:nowrap;}
+.fwabtn{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:46px;padding:10px 13px;font-family:var(--font);font-weight:900;font-size:.74rem;cursor:pointer;display:flex;align-items:center;gap:5px;box-shadow:0 4px 16px rgba(37,211,102,.36);animation:pulse 2.5s infinite;text-decoration:none;}
+@media(max-width:400px){.qbtns,.dgrid{grid-template-columns:1fr!important;}}
+</style>
+</head>
+<body>
+<!-- ══ GATE ══ -->
+<div id="pg-gate" class="pgf on">
+  <div class="gcard">
+    <div class="gtop">
+      <div class="g-logo-wrap" id="gate-logo-wrap">
+        <div class="g-logo-placeholder">🌿</div>
+      </div>
+      <div class="gbrand" id="gate-brand-name">JOS NATURAL HERBS</div>
+      <div class="gsub">Clinic & Royal Herbal Academy</div>
+      <div class="gdr">👨‍⚕️ DR. REVO — Mwanzilishi wa JOS Natural Herbs</div>
+    </div>
+    <div class="gbody">
+      <div class="fg"><label>👤 Jina Lako Kamili *</label>
+        <input type="text" id="g-name" placeholder="Mfano: Hassan Mohamed"></div>
+      <div class="fg"><label>📱 Namba Yako ya WhatsApp *</label>
+        <input type="tel" id="g-phone" placeholder="+255 7XX XXX XXX"></div>
+      <button class="gbtn" onclick="registerUser()">🌿 INGIA — JOS NATURAL HERBS</button>
+      <!-- Referral code field -->
+      <div class="fg" style="margin-top:8px;margin-bottom:0;">
+        <label style="font-size:.69rem;">🎁 Una Referral Code? (Hiari)</label>
+        <input type="text" id="g-ref" placeholder="mfano: REF-XXXXXX" style="font-size:.83rem;text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
+      </div>
+      <!-- Share section -->
+      <div class="share-unlock">
+        <p>🎁 Shiriki app hii kupata Mwezi 1 BURE wa Academy!</p>
+        <button class="share-btn" onclick="shareApp()">📲 Shiriki Sasa — Pata Mwezi Bure</button>
+        <div class="share-count-note">Shiriki kwa watu 50 → Mwezi 1 wa Academy bila malipo</div>
+      </div>
+      <p style="font-size:.67rem;color:var(--mu);text-align:center;margin-top:8px;line-height:1.55;">
+        🔒 Taarifa zako zinabaki siri kabisa.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHOICE ══ -->
+<div id="pg-choice" class="pgf">
+  <div class="chcard">
+    <div class="ch-logo" id="choice-logo">
+      <div class="ch-logo-ph">🌿</div>
+    </div>
+    <h2>Karibu, <span id="ch-name">Rafiki</span>!</h2>
+    <p>Unataka nini leo? Chagua moja:</p>
+    <!-- Referral progress -->
+    <div class="referral-track" id="ref-track-choice" style="display:none;">
+      <h5>📲 Maendeleo ya Kushiriki Kwako</h5>
+      <div class="ref-progress"><div class="ref-fill" id="ref-fill-choice" style="width:0%"></div></div>
+      <div class="ref-count" id="ref-count-choice">0 / 50 watu wamefuata link yako</div>
+    </div>
+    <div class="ch-grid">
+      <div class="ch-opt" onclick="goClinic()">
+        <div class="ch-ic">🏥</div>
+        <div>
+          <div class="ch-t">INGIA CLINIC</div>
+          <div class="ch-s">Upimaji wa AI wa matatizo ya kiafya — bila kikomo</div>
+        </div>
+      </div>
+      <div class="ch-opt" onclick="goAcademy()">
+        <div class="ch-ic">📚</div>
+        <div>
+          <div class="ch-t">INGIA ACADEMY</div>
+          <div class="ch-s">Maktaba ya Mimea 100 — Siku 7 bure, kisha lipa</div>
+        </div>
+      </div>
+    </div>
+    <button onclick="shareApp()" style="width:100%;margin-top:13px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;font-family:var(--font);font-weight:900;font-size:.82rem;padding:11px;border-radius:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;">
+      📲 Shiriki App Hii — Pata Mwezi Bure
+    </button>
+  </div>
+</div>
+
+<!-- ══ CLINIC ══ -->
+<div id="pg-clinic" class="pg">
+  <header class="app-hdr">
+    <div class="hbrand">
+      <div class="hdr-logo" id="clinic-hdr-logo"><div class="hdr-logo-ph">🏥</div></div>
+      <div><div class="hname" id="clinic-hdr-name">JOS DIGITAL CLINIC</div><div class="hsub">DR. REVO — Dawa za Asili</div></div>
+    </div>
+    <div class="hright">
+      <a class="hbtn wa" href="https://wa.me/255652421286?text=Habari%20Dr.%20Revo." target="_blank">
+        <span style="width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block;"></span>🟢 DR. REVO
+      </a>
+      <!-- Hidden admin trigger -->
+      
+      
+    </div>
+  </header>
+  <div class="main">
+    <!-- Broadcast banner -->
+    <div class="broadcast-banner" id="bc-banner-clinic">
+      <span class="bb-close" onclick="closeBroadcast()">✕</span>
+      <div class="bb-hdr"><span class="bb-icon">📢</span><span class="bb-title">Taarifa kutoka Dr. Revo</span></div>
+      <div class="bb-msg" id="bc-msg-clinic"></div>
+    </div>
+    <div class="wbar">
+      <div>
+        <div class="wt">Karibu, <span id="clinic-name">Rafiki</span>! 👋</div>
+        <div class="ws">Upimaji wa AI — bila kikomo. Angalia pia bidhaa zetu.</div>
+      </div>
+      <div class="wbadges">
+        <div class="wbadge">🌿 Asili 100%</div>
+        <div class="wbadge">⚡ Siku 3–7</div>
+        <div class="wbadge">✅ 500+</div>
+        <button onclick="goAcademy()" style="background:rgba(212,175,55,.18);border:1px solid rgba(212,175,55,.4);color:var(--g4);border-radius:15px;padding:3px 9px;font-size:.65rem;font-weight:800;cursor:pointer;border-style:solid;">📚 Academy</button>
+      </div>
+    </div>
+    <!-- Media Gallery -->
+    <div class="media-section" id="clinic-media-sec">
+      <div class="ms-hdr">📺 Videos na Matangazo ya JOS</div>
+      <div class="media-tabs">
+        <button class="mtab on" onclick="showMediaTab('videos')">🎬 Videos</button>
+        <button class="mtab" onclick="showMediaTab('posters')">🖼️ Matangazo</button>
+      </div>
+      <div id="media-videos" class="media-grid"></div>
+      <div id="media-posters" class="media-grid" style="display:none;"></div>
+    </div>
+    <!-- Products -->
+    <div class="products-section">
+      <div class="sec-hdr">💊 Bidhaa Zetu — Dawa za Dr. Revo</div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+    <!-- Conditions -->
+    <div class="sec-hdr" style="margin-top:20px;">🩺 Upimaji wa AI — Chagua Tatizo Lako</div>
+    <div class="cond-grid" id="cond-grid"></div>
+    <!-- Quiz -->
+    <div class="qbox" id="qbox">
+      <div class="qhdr">
+        <div class="qav">🤖</div>
+        <div><div class="qtitle" id="qtitle">Upimaji wa Kitaalamu</div>
+          <div class="qsub">Jibu kwa uaminifu — Dr. Revo ataona matokeo yako</div></div>
+      </div>
+      <div class="prog-wrap">
+        <div class="prog-top"><span class="prog-lbl" id="prog-lbl">Swali 1 ya 10</span><span class="prog-pct" id="prog-pct">10%</span></div>
+        <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:10%"></div></div>
+      </div>
+      <div class="qcard">
+        <div class="qnum" id="qnum">SWALI 1</div>
+        <div class="qtxt" id="qtxt">...</div>
+        <div class="qhint" id="qhint"></div>
+      </div>
+      <div class="qbtns">
+        <button class="qbtn yes" id="btn-y" onclick="answerQ(true)">✅ Ndiyo</button>
+        <button class="qbtn no" id="btn-n" onclick="answerQ(false)">❌ Hapana</button>
+      </div>
+    </div>
+    <!-- Result -->
+    <div class="rbox" id="rbox">
+      <div class="rcrd">
+        <div class="rchdr">
+          <div class="rcbadge">🩺</div>
+          <div><div class="rct">Matokeo ya Dr. Revo</div><div class="rcs" id="rc-s">...</div></div>
+        </div>
+        <div class="sevwrap">
+          <div class="sevlbl">Kiwango cha Hali Yako</div>
+          <div class="sevtrack"><div class="sevfill" id="sevfill" style="width:0%"></div></div>
+          <div class="sevtxt" id="sevtxt">...</div>
+        </div>
+        <div class="speed-p">⚡ Matokeo ya uhakika yanaanza kuonekana ndani ya <strong>SIKU 3 HADI 7 PEKEE</strong> kwa sababu dawa zetu ni kali na za asili kabisa.</div>
+      </div>
+      <div class="tsec">
+        <div class="tbanner">
+          <p>Watu waliokuwa na tatizo kama lako — wamepona!</p>
+          <div class="tcount">500+</div>
+          <p style="font-size:.72rem;color:#4b7a5e;">wamepona ndani ya siku 3 hadi 7 pekee</p>
+        </div>
+        <div class="sec-hdr">WALIOPONA KAMA WEWE</div>
+        <div class="tgrid" id="tgrid"></div>
+      </div>
+      <div class="psec">
+        <h3>💊 Dawa Inayoshauriwa na Bei Yake</h3>
+        <p class="psub" id="price-hl">Kulingana na majibu yako, Dr. Revo anapendekeza:</p>
+        <div class="med-img-wrap" id="med-img-wrap"></div>
+        <div id="dose-wrap"></div>
+        <div class="lipa">
+          <h4>💳 MAELEKEZO YA MALIPO</h4>
+          <div class="lrow"><span>Lipa Namba</span><span>67363327</span></div>
+          <div class="lrow"><span>Jina la Akaunti</span><span>JOS NATURAL HERBS</span></div>
+          <div class="lrow"><span>Inakubali</span><span>Benki zote, M-Pesa, Tigo, Airtel</span></div>
+          <div class="lrow"><span>Delivery</span><span>Lipa Delivery kwanza — Dawa lipa upokeapo</span></div>
+        </div>
+        <button class="btn gold" onclick="showFbox()">✅ NIMEELEWA — NAOMBA DOZI YA SIKU 3–7</button>
+      </div>
+      <div class="fbox" id="fbox">
+        <div class="sec-hdr">Hatua ya Mwisho — Taarifa Zako</div>
+        <div class="fg"><label>👤 Jina Kamili *</label><input type="text" id="o-name" placeholder="Jina lako kamili"></div>
+        <div class="fg"><label>📱 Namba ya WhatsApp *</label><input type="tel" id="o-phone" placeholder="+255 7XX XXX XXX"></div>
+        <div class="fg"><label>🗺️ Mkoa *</label>
+          <select id="o-region">
+            <option value="">-- Chagua Mkoa --</option>
+            <option>Dar es Salaam</option><option>Arusha</option><option>Mwanza</option>
+            <option>Dodoma</option><option>Mbeya</option><option>Tanga</option>
+            <option>Morogoro</option><option>Zanzibar</option><option>Kilimanjaro</option>
+            <option>Geita</option><option>Shinyanga</option><option>Tabora</option>
+            <option>Kigoma</option><option>Mara</option><option>Simiyu</option>
+            <option>Iringa</option><option>Njombe</option><option>Ruvuma</option>
+            <option>Lindi</option><option>Mtwara</option>
+          </select>
+        </div>
+        <button class="btn wa" onclick="submitOrder()">💬 TUMA KWA DR. REVO — WHATSAPP</button>
+        <a class="call-link" href="tel:+255652421286">📞 Au Piga Simu: +255 652 421 286</a>
+      </div>
+      <button class="btn outline" onclick="goAcademy()" style="margin-top:20px;">
+        📚 ANGALIA MAKTABA YA MIMEA 100 — JOS ROYAL ACADEMY
+      </button>
+    </div>
+  </div>
+  <footer><div class="fbrnd" id="clinic-footer-brand">JOS NATURAL HERBS — DR. REVO © 2026</div>
+    <!-- Invisible admin trigger -->
+    
+  </footer>
+</div><!-- /clinic -->
+
+<!-- ══ ACADEMY ══ -->
+<div id="pg-academy" class="pg">
+  <header class="app-hdr">
+    <div class="hbrand">
+      <div class="hdr-logo" id="acad-hdr-logo"><div class="hdr-logo-ph">📚</div></div>
+      <div><div class="hname">JOS ROYAL HERBAL ACADEMY</div><div class="hsub">DR. REVO — Mimea 100</div></div>
+    </div>
+    <div class="hright">
+      <a class="hbtn wa" href="https://wa.me/255652421286?text=Habari%20Dr.%20Revo." target="_blank">
+        <span style="width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block;"></span>🟢 DR. REVO
+      </a>
+      
+      
+    </div>
+  </header>
+  <!-- Lock -->
+  <div id="acad-lock" style="display:none;">
+    <div class="lock-screen">
+      <div class="lock-card">
+        <span class="lock-ic">🔒</span>
+        <div class="lock-t">Ufikiaji Umekwisha</div>
+        <div class="lock-s">Siku 7 za bure zimekwisha. Lipa mara moja kupata ufikiaji wa Maktaba yote ya Mimea 100 ya Dr. Revo bila kikomo.</div>
+        <div class="price-tiers">
+          <div class="pt" onclick="selTier(this,'mwezi',5000,30)">
+            <div class="ptl"><h4>Mwezi 1</h4><p>Siku 30</p></div>
+            <div class="ptprice">Tshs 5,000/=</div>
+          </div>
+          <div class="pt" onclick="selTier(this,'miezi6',25000,180)">
+            <div class="ptl"><h4>Miezi 6</h4><p>Siku 180</p></div>
+            <div><div class="ptprice">Tshs 25,000/=</div><div class="ptbadge">SAVE 72%</div></div>
+          </div>
+          <div class="pt" onclick="selTier(this,'mwaka',50000,365)">
+            <div class="ptl"><h4>Mwaka 1</h4><p>Siku 365</p></div>
+            <div><div class="ptprice">Tshs 50,000/=</div><div class="ptbadge">BORA KABISA</div></div>
+          </div>
+        </div>
+        <div class="paybox">
+          <h4>💳 LIPA NAMBA: 67363327</h4>
+          <div class="pir"><span>Jina la Akaunti</span><span>JOS NATURAL HERBS</span></div>
+          <div class="pir"><span>Inakubali</span><span>Vodacom, Tigo, Airtel, Benki zote</span></div>
+        </div>
+        <div style="display:grid;gap:7px;margin-bottom:11px;">
+          <button class="btn gold" onclick="payNow()" style="margin-bottom:0;">💳 Lipa Sasa</button>
+          <button class="btn wa" onclick="sendProof()" style="margin-bottom:0;">💬 Tuma Ushahidi wa Malipo</button>
+        </div>
+        <div class="code-act-wrap">
+          <h5>🔑 Una Code? Weka Hapa Kupata Ufikiaji Mara Moja</h5>
+          <div class="code-row">
+            <input class="code-field" id="lock-code" type="text" placeholder="JOS-XXXXXX"
+              oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9-]/g,'')">
+            <button class="code-submit" onclick="submitLockCode()">✅ Weka</button>
+          </div>
+          <div class="otp-timer" id="lock-otp-timer">⏱️ Code inaisha kwa sekunde: <span id="lock-otp-secs">90</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Content -->
+  <div id="acad-content" style="display:none;">
+    <div class="acad-main">
+      <!-- Broadcast -->
+      <div class="broadcast-banner" id="bc-banner-acad">
+        <span class="bb-close" onclick="closeBroadcast()">✕</span>
+        <div class="bb-hdr"><span class="bb-icon">📢</span><span class="bb-title">Taarifa kutoka Dr. Revo</span></div>
+        <div class="bb-msg" id="bc-msg-acad"></div>
+      </div>
+      <!-- Timer -->
+      <div class="timer-bar" id="timer-bar">
+        <div class="tb-l">
+          <h4>⏳ Ufikiaji Wako Unaisha</h4>
+          <p>Siku zilizobaki — Lipa kuendelea bila kikomo</p>
+        </div>
+        <div class="tb-timer" id="tb-timer">07:<span>00</span>:00:00</div>
+        <button class="tb-upgrade" onclick="openUpgrade()">🔓 Ongeza Siku</button>
+      </div>
+      <!-- Posters above mimea -->
+      <div class="acad-media">
+        <div class="acad-media-hdr">🖼️ Matangazo ya JOS Natural Herbs</div>
+        <div id="acad-posters-scroll" class="poster-scroll"></div>
+      </div>
+      <!-- Hero -->
+      <div class="acadhero">
+        <h2>📚 Maktaba ya Kifalme — Mimea 100</h2>
+        <p>Gundua nguvu ya mimea ya Afrika ya asili. Magonjwa 10 kwa kila mmea na matokeo ndani ya siku 3–7.</p>
+        <div class="astats">
+          <div class="astat"><div class="val">100</div><div class="lbl">Mimea</div></div>
+          <div class="astat"><div class="val">10</div><div class="lbl">Magonjwa/Mmea</div></div>
+          <div class="astat"><div class="val">3–7</div><div class="lbl">Siku za Matokeo</div></div>
+          <div class="astat"><div class="val" id="acad-days-stat">7</div><div class="lbl">Siku Zilizobaki</div></div>
+        </div>
+      </div>
+      <div class="srch-wrap">
+        <input class="srch-inp" id="srch" type="text"
+          placeholder="🔍 Tafuta mmea (MLONGE, TANGAWIZI) au ugonjwa (SUKARI, BAWASIRI, UTI)..."
+          oninput="searchHerbs(this.value)">
+        <div class="srch-ico">🌿</div>
+      </div>
+      <div class="vis-prev" id="vis-prev"></div>
+      <div class="chips-wrap" id="chips-wrap"></div>
+      <div class="res-cnt" id="res-cnt">Mimea 100 inapatikana</div>
+      <div class="plant-grid" id="plant-grid"></div>
+    </div>
+    <footer><div class="fbrnd" id="acad-footer-brand">JOS NATURAL HERBS — DR. REVO © 2026</div>
+      </footer>
+  </div>
+</div><!-- /academy -->
+
+<!-- PLANT MODAL -->
+<div class="modal-bg" id="modal-plant" onclick="closeMod('modal-plant',event)">
+  <div class="modal">
+    <div class="mhdr">
+      <button class="mx" onclick="closeMod('modal-plant')">✕</button>
+      <span class="memoji" id="m-e"></span>
+      <div class="mtitle" id="m-t"></div>
+      <div class="mlatin" id="m-l"></div>
+    </div>
+    <div class="mbody">
+      <div class="msec" style="margin-bottom:14px;"><h4>🩺 Magonjwa Yanayotibiwa (10)</h4>
+        <div class="disgrid" id="m-dis"></div></div>
+      <div class="msec" style="margin-bottom:14px;"><h4>🧪 Jinsi ya Kuandaa Dawa</h4>
+        <div class="preplist" id="m-prep"></div></div>
+      <div class="speedbox"><p>⚡ Matokeo ya uhakika yanaanza kuonekana ndani ya <strong>SIKU 3 HADI 7 PEKEE</strong> — dawa hii ni kali na ya asili!</p></div>
+      <button class="mwa" onclick="orderFromModal()">💬 Ongea na Dr. Revo — WhatsApp</button>
+    </div>
+  </div>
+</div>
+<!-- PRODUCT MODAL -->
+<div class="modal-bg" id="modal-prod" onclick="closeMod('modal-prod',event)">
+  <div class="modal">
+    <div class="mhdr">
+      <button class="mx" onclick="closeMod('modal-prod')">✕</button>
+      <div class="mtitle" id="pd-name">—</div>
+      <div class="mlatin" id="pd-dawa">—</div>
+    </div>
+    <div class="mbody">
+      <div id="pd-img-wrap"></div>
+      <div id="pd-desc" style="font-size:.82rem;color:var(--mu);line-height:1.65;margin-bottom:12px;"></div>
+      <div class="lipa" style="background:var(--bg);">
+        <h4 style="color:var(--e2);">💰 Bei</h4>
+        <div class="lrow"><span>Nusu Dozi</span><span id="pd-half">—</span></div>
+        <div class="lrow"><span>Dozi Kamili</span><span id="pd-full">—</span></div>
+        <div class="lrow"><span>Lipa Namba</span><span>67363327 (JOS NATURAL HERBS)</span></div>
+        <div class="lrow"><span>Delivery</span><span>Lipa kwanza — Dawa lipa upokeapo</span></div>
+      </div>
+      <div class="speedbox"><p>⚡ Matokeo ya uhakika ndani ya <strong>SIKU 3 HADI 7 PEKEE!</strong></p></div>
+      <button class="mwa" id="pd-order-btn">💬 Agiza Sasa — WhatsApp</button>
+    </div>
+  </div>
+</div>
+<!-- MEDIA FULLSCREEN -->
+<div class="modal-bg" id="modal-media" onclick="closeMod('modal-media',event)">
+  <div style="max-width:800px;width:100%;position:relative;">
+    <button class="mx" style="position:fixed;top:12px;right:12px;background:rgba(0,0,0,.6);z-index:10;" onclick="closeMod('modal-media')">✕</button>
+    <div id="media-fs-content"></div>
+  </div>
+</div>
+<!-- THANK YOU -->
+<div class="ty-ovl" id="ty-ovl">
+  <div class="tycard">
+    <span class="tyemoji">🎉</span>
+    <div class="tytitle">Oda Imepokelewa!</div>
+    <div class="tymsg" id="ty-msg">Asante sana! Oda yako imewasilishwa kwa Dr. Revo.</div>
+    <div class="tydr">
+      <div class="tydr-av">👨‍⚕️</div>
+      <div><h4>Dr. Revo anakusubiri</h4><p>Atawasiliana nawe WhatsApp ndani ya dakika 30.</p></div>
+    </div>
+    <button class="tyx" onclick="closeTY()">✓ Asante!</button>
+  </div>
+</div>
+<!-- UPGRADE -->
+<div class="modal-bg" id="modal-upg" onclick="closeMod('modal-upg',event)">
+  <div class="upgbox">
+    <div class="upghdr" style="position:relative;">
+      <button class="upgx" onclick="closeMod('modal-upg')">✕</button>
+      <h3>💎 Ongeza Siku Zako</h3>
+      <p>Lipa mara moja — siku zinaongezeka papo hapo</p>
+    </div>
+    <div class="upgbody">
+      <div class="price-tiers" id="upg-tiers">
+        <div class="pt" onclick="selTier(this,'mwezi',5000,30)"><div class="ptl"><h4>Mwezi 1</h4><p>Siku 30</p></div><div class="ptprice">Tshs 5,000/=</div></div>
+        <div class="pt" onclick="selTier(this,'miezi6',25000,180)"><div class="ptl"><h4>Miezi 6</h4><p>Siku 180</p></div><div><div class="ptprice">Tshs 25,000/=</div><div class="ptbadge">SAVE 72%</div></div></div>
+        <div class="pt" onclick="selTier(this,'mwaka',50000,365)"><div class="ptl"><h4>Mwaka 1</h4><p>Siku 365</p></div><div><div class="ptprice">Tshs 50,000/=</div><div class="ptbadge">BORA KABISA</div></div></div>
+      </div>
+      <div class="paybox"><h4>💳 LIPA NAMBA: 67363327</h4>
+        <div class="pir"><span>Jina la Akaunti</span><span>JOS NATURAL HERBS</span></div>
+        <div class="pir"><span>Inakubali</span><span>Vodacom, Tigo, Airtel, Benki zote</span></div>
+      </div>
+      <div class="code-act-wrap" style="margin-bottom:11px;">
+        <h5>🔑 Una Code? Weka Hapa</h5>
+        <div class="code-row">
+          <input class="code-field" id="upg-code" type="text" placeholder="JOS-XXXXXX"
+            oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9-]/g,'')">
+          <button class="code-submit" onclick="submitUpgCode()">✅ Weka</button>
+        </div>
+        <div class="otp-timer" id="upg-otp-timer">⏱️ Code inaisha kwa sekunde: <span id="upg-otp-secs">90</span></div>
+      </div>
+      <button class="btn gold" onclick="payNow()" style="margin-bottom:6px;">💳 Lipa Sasa</button>
+      <button class="btn wa" onclick="sendProof()" style="margin-bottom:0;">💬 Tuma Ushahidi wa Malipo</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- FLOATING WA -->
+<div class="fwa">
+  <div class="fwatip">🟢 Dr. Revo yupo Online</div>
+  <a class="fwabtn" href="https://wa.me/255652421286?text=Habari%20Dr.%20Revo%2C%20nataka%20msaada." target="_blank">💬 Ongea Sasa</a>
+</div>
+<script>
+const CONDITIONS=[
+  {id:'nguvu',icon:'💪',name:'NGUVU & NGIRI',dawa:'Kidume Plus',desc:'Nguvu za kiume, stamina, premature ejaculation',
+   questions:[
+    {q:"Je, unahisi kupungua kwa nguvu za kiume — hasa usiku wa manane?",hint:"Jibu kwa uaminifu — hakuna anayejua"},
+    {q:"Je, mwili wako huchoka haraka au unamaliza mapema zaidi ya kawaida?",hint:"Hii inaitwa premature ejaculation au stamina ndogo"},
+    {q:"Je, tatizo hili limekuwepo kwa zaidi ya miezi 3?",hint:"Muda husaidia kupima ukali wa hali yako"},
+    {q:"Je, umewahi jaribu dawa nyingine bila kupata matokeo ya kudumu?",hint:"Historia ya matibabu iliyopita"},
+    {q:"Je, unahisi wasiwasi au aibu kuhusu hali yako?",hint:"Wasiwasi huathiri nguvu za kiume moja kwa moja"},
+    {q:"Je, tatizo hili linaathiri mahusiano yako ya ndoa au mapenzi?",hint:"Athari za kijamii na kihisia ni muhimu"},
+    {q:"Je, unapata tatizo hili mara nyingi — zaidi ya mara 3 kwa wiki?",hint:"Mara kwa mara inaonyesha hali ya kati hadi kali"},
+    {q:"Je, una maumivu au usumbufu katika sehemu za siri?",hint:"Maumivu ni dalili ya ziada muhimu"},
+    {q:"Je, umri wako uko kati ya miaka 25–55?",hint:"Umri husaidia kuamua nguvu ya dawa sahihi"},
+    {q:"Je, uko tayari kutumia dawa kwa uvumilivu wa siku 7–30?",hint:"Uvumilivu ni sehemu muhimu ya matibabu"}
+   ],
+   half:{price:65000},full:{price:130000},
+   testimonials:[
+    {t:"Nilikuwa na tatizo hili kwa miaka miwili. Siku 7 tu za Kidume Plus — mama wa watoto wangu alisema mabadiliko makubwa!",n:"Hassan M.",l:"Dar es Salaam",r:"Amepona — Siku 7",e:"👨"},
+    {t:"Nilijaribu dawa nyingi — zote zilishindwa. Kidume Plus ndiyo iliyonirudishia nguvu zangu.",n:"Ibrahim K.",l:"Arusha",r:"Nguvu Zamerudi",e:"👨"},
+    {t:"Nilikuwa naona aibu hata kuongea na mke wangu. Leo mahusiano yetu ni mazuri. Asante JOS!",n:"Peter N.",l:"Mwanza",r:"Ndoa Imefurahi",e:"👨"},
+    {t:"Dawa ilifikia siku 2 tu. Matokeo ya kwanza yalikuwa ndani ya siku 4. Naomba zaidi!",n:"Salim A.",l:"Tanga",r:"Matokeo ya Haraka",e:"👨"}
+   ]},
+  {id:'maumbile',icon:'⚡',name:'MAUMBILE — Kujitegemea',dawa:'Mjulus Pro',desc:'Ukubwa, nguvu, kujiamini, na ustawi wa kiume',
+   questions:[
+    {q:"Je, una wasiwasi kuhusu maumbile yako ya kiume?",hint:"Hii ni tatizo la kawaida kwa wanaume wengi duniani"},
+    {q:"Je, tatizo hili limeathiri kujiamini kwako mbele ya mwenzako?",hint:"Kujiamini ni muhimu sana kwa uhusiano"},
+    {q:"Je, umejaribu njia nyingine bila mafanikio?",hint:"Historia ya matibabu ya awali"},
+    {q:"Je, una zaidi ya miaka 18 na umeridhia kutumia dawa za asili?",hint:"Dawa inafaa kwa watu wazima tu"},
+    {q:"Je, hali inakusumbua kwa zaidi ya miezi 6?",hint:"Muda mrefu unaonyesha haja ya matibabu kamili"},
+    {q:"Je, mwenzi wako amewahi kukuambia kuhusu tatizo hili?",hint:"Maoni ya mwenzi yanaweza kusaidia kuelewa ukali"},
+    {q:"Je, unahisi mwili wako haukutosha wakati wa tendo la ndoa?",hint:"Hisia za kujitenga ni dalili muhimu"},
+    {q:"Je, unapata msimamo mdogo wa kiungo cha kiume?",hint:"Inaunganika moja kwa moja na maumbile"},
+    {q:"Je, una afya njema kwa ujumla — huna ugonjwa mkubwa?",hint:"Afya ya jumla inahusiana na matokeo ya dawa"},
+    {q:"Je, uko tayari kutumia dawa kwa miezi 2–3 mfululizo?",hint:"Uvumilivu ni ufunguo wa matokeo makubwa"}
+   ],
+   half:{price:60000},full:{price:120000},
+   testimonials:[
+    {t:"Nilikuwa na wasiwasi mkubwa sana. Mjulus Pro ilinibadilisha kabisa ndani ya wiki 3.",n:"James M.",l:"Dodoma",r:"Kujiamini Kunarudi",e:"👨"},
+    {t:"Mke wangu ndiye aliyegundua mabadiliko ya kwanza. Muujiza wa kweli!",n:"Ali K.",l:"Mbeya",r:"Mabadiliko ya Kweli",e:"👨"},
+    {t:"Miaka 3 ya wasiwasi. Wiki 2.5 za Mjulus Pro — maisha yamebadilika kabisa.",n:"David O.",l:"Kilimanjaro",r:"Maisha Yamebadilika",e:"👨"},
+    {t:"Dawa ya kweli ya asili. Matokeo yalionekana haraka kuliko nilivyotegemea.",n:"Moses N.",l:"Iringa",r:"Matokeo ya Haraka",e:"👨"}
+   ]},
+  {id:'tezi',icon:'🔴',name:'TEZIDUME & MKOJO',dawa:'Dume Master',desc:'Prostate, mkojo mzito, kukojoa mara kwa mara usiku',
+   questions:[
+    {q:"Je, unakojoa mara kwa mara — hasa usiku (zaidi ya mara 3)?",hint:"Dalili kuu ya tezi dume iliyovimba"},
+    {q:"Je, mkojo wako haukuja kwa nguvu au unakuja polepole sana?",hint:"Kizuizi cha tezi huathiri mtiririko wa mkojo"},
+    {q:"Je, baada ya kukojoa unahisi mkojo haujatoka wote?",hint:"Hisia ya kukaa mkojo ndani ni dalili muhimu"},
+    {q:"Je, unapata maumivu au kuuma unapokojoa?",hint:"Maumivu yanaweza kuonyesha maambukizi pia"},
+    {q:"Je, una zaidi ya miaka 40?",hint:"Tezi dume huathiri zaidi wanaume wa umri huo"},
+    {q:"Je, daktari ameshakuambia una tatizo la tezi dume?",hint:"Utambuzi wa kitaalamu unasaidia sana"},
+    {q:"Je, unapata maumivu ya kiuno au nyuma ya mgongo chini?",hint:"Maumivu hayo yanaweza kuhusiana na prostate"},
+    {q:"Je, mkojo wako una damu au rangi isiyo ya kawaida?",hint:"Dalili muhimu ya hali kali — tahadhari"},
+    {q:"Je, hali imekuwa ikizidi kuwa mbaya zaidi mwezi baada ya mwezi?",hint:"Mwelekeo wa mbaya ni ishara ya sugu"},
+    {q:"Je, tatizo hili linakuzuia kulala vizuri usiku?",hint:"Usingizi mbaya huathiri afya yote kwa ujumla"}
+   ],
+   half:{price:75000},full:{price:150000},
+   testimonials:[
+    {t:"Nilikuwa nakimbia chooni mara 8 usiku mmoja. Baada ya wiki 2 za Dume Master, ninaamka mara moja tu!",n:"Mzee Juma K.",l:"Dodoma",r:"Usingizi Umerudi",e:"👴"},
+    {t:"Daktari alisema ninahitaji upasuaji. Nilijaribu Dume Master — daktari alisema hali imekuwa nzuri sana!",n:"Ibrahim M.",l:"Arusha",r:"Aliepuka Upasuaji",e:"👨"},
+    {t:"Maumivu ya kukojoa yalikuwa makali sana. Siku 12 — maumivu yameisha kabisa.",n:"Rashid O.",l:"Mbeya",r:"Maumivu Yameisha",e:"👨"},
+    {t:"Niliweza kukojoa vizuri tena baada ya wiki 1.5. Dawa ya kweli hii!",n:"Saidi L.",l:"Morogoro",r:"Mkojo Sawa",e:"👨"}
+   ]},
+  {id:'bawasiri',icon:'🩸',name:'BAWASIRI — Nje & Ndani',dawa:'Hemorrhoid Balm & Blend',desc:'Bawasiri ya nje, ndani, maumivu, kutoka damu',
+   bawasiriOnly:true,
+   questions:[
+    {q:"Je, unahisi maumivu, kuwasha, au kuchomwa katika sehemu ya nyuma?",hint:"Dalili kuu ya bawasiri ya nje"},
+    {q:"Je, unaona damu kwenye kinyesi chako au kwenye karatasi?",hint:"Damu nyekundu ni dalili ya bawasiri"},
+    {q:"Je, unahisi uvimbe au mapunye karibu na sehemu ya nyuma?",hint:"Mapunye yanaweza kuwa bawasiri ya nje"},
+    {q:"Je, kwenda chooni kunakupa maumivu makali?",hint:"Maumivu wakati wa kinyesi ni dalili kuu"},
+    {q:"Je, tatizo hili limekuwepo kwa zaidi ya wiki 2?",hint:"Muda wa hali husaidia kupanga matibabu"},
+    {q:"Je, unapata uchovu au maumivu ya miguu yanayohusiana?",hint:"Dalili za ziada zinaweza kuonyesha hali kali"},
+    {q:"Je, unakaa muda mrefu kila siku kwenye kiti kigumu?",hint:"Kukaa muda mrefu ni sababu kuu ya bawasiri"},
+    {q:"Je, una tatizo la kuhara au kuvimbiwa mara kwa mara?",hint:"Matatizo ya haja ndogo huathiri bawasiri"},
+    {q:"Je, umewahi tibiwa bawasiri kabla lakini ilitokea tena?",hint:"Kurudia mara nyingi inaonyesha haja ya matibabu kamili"},
+    {q:"Je, bawasiri inakuzuia kufanya kazi au maisha yako ya kawaida?",hint:"Athari kwa maisha ya kila siku ni muhimu"}
+   ],
+   full:{price:100000},
+   testimonials:[
+    {t:"Nilikuwa na bawasiri kwa miaka 3. Baada ya wiki 1.5 — maumivu yalipotea kabisa. Nashukuru Dr. Revo!",n:"Amina J.",l:"Dar es Salaam",r:"Amepona — Wiki 1.5",e:"👩"},
+    {t:"Kutoka damu kulikoma ndani ya siku 5 tu. Sijaamini ni haraka namna hii!",n:"Hassan M.",l:"Arusha",r:"Damu Imekoma",e:"👨"},
+    {t:"Balm ilitoa nafuu ya haraka, Blend iliponya kutoka ndani. Asante!",n:"Grace K.",l:"Mwanza",r:"Imepona Kabisa",e:"👩"},
+    {t:"Siku 7 tu — bawasiri imepotea kabisa. Ninaweza kukaa bila maumivu yoyote!",n:"Joseph O.",l:"Mbeya",r:"Siku 7 — Imepona",e:"👨"}
+   ]},
+  {id:'mama',icon:'🌸',name:'UZAZI & MIMBA',dawa:'Mama Fertilizer',desc:'Uzazi wa mama, PID, mimba, hormoni, hedhi',
+   questions:[
+    {q:"Je, umekuwa ukijaribu kupata mimba kwa zaidi ya mwaka 1?",hint:"Muda wa kujaribu ni muhimu kupima hali"},
+    {q:"Je, hedhi yako ina usumbufu au haikuja kwa kawaida kwa miezi 3+?",hint:"Hedhi ya kawaida ni dalili ya afya nzuri"},
+    {q:"Je, una maumivu makali wakati wa hedhi?",hint:"Maumivu makali yanaweza kuwa dalili ya PID"},
+    {q:"Je, daktari amewahi kukuambia kuhusu tatizo la uzazi?",hint:"Utambuzi wa kitaalamu husaidia sana"},
+    {q:"Je, umewahi kupata mimba lakini ikashindwa (miscarriage)?",hint:"Historia ya mimba ni muhimu kuelewa hali"},
+    {q:"Je, una mtiririko mkubwa wa hedhi (zaidi ya kawaida)?",hint:"Mtiririko mkubwa unaweza kuathiri uzazi"},
+    {q:"Je, unapata maumivu ya tumbo la chini nje ya hedhi?",hint:"Maumivu ya PID yanaweza kutokea wakati wowote"},
+    {q:"Je, una historia ya maambukizi ya njia ya uzazi (UTI, PID)?",hint:"Maambukizi yanaweza athiri uzazi kwa muda mrefu"},
+    {q:"Je, umri wako uko kati ya miaka 18–45?",hint:"Umri wa uzazi unasaidia kupanga matibabu sahihi"},
+    {q:"Je, mume/mwenzi wako amefanyiwa ukaguzi wa afya yake?",hint:"Uzazi ni tatizo la wote wawili — lazima achunguzwe pia"}
+   ],
+   half:{price:80000},full:{price:160000},
+   testimonials:[
+    {t:"Miaka 4 ya kutafuta suluhisho. Wiki 3 tu za Mama Fertilizer — nimepata habari njema!",n:"Fatuma S.",l:"Dodoma",r:"Wiki 3 — Habari Njema",e:"👩"},
+    {t:"Hedhi yangu ilikuwa ya kutisha. Mama Fertilizer imenirudishia hedhi ya kawaida.",n:"Rehema A.",l:"Tanga",r:"Hedhi ya Kawaida",e:"👩"},
+    {t:"Maumivu ya PID yalikuwa yakiniathiri kazini. Sasa ninafanya kazi kawaida.",n:"Grace K.",l:"Mwanza",r:"Maumivu Yameisha",e:"👩"},
+    {t:"Nilikuwa nateseka kimya kimya. Mama Fertilizer ilinisaidia ndani ya wiki 2.",n:"Amina J.",l:"Dar es Salaam",r:"Amepona — Wiki 2",e:"👩"}
+   ]},
+  {id:'pid',icon:'🛡️',name:'PID & UTI SUGU',dawa:'Herbal Combo (PID & UTI)',desc:'Maambukizi ya njia ya mkojo na uzazi yanayorudiwa',
+   questions:[
+    {q:"Je, unapata maumivu au kuwasha unapokojoa?",hint:"Dalili kuu ya UTI inayorudiwa"},
+    {q:"Je, mkojo wako una harufu kali isiyo ya kawaida?",hint:"Harufu inaonyesha maambukizi yanayoendelea"},
+    {q:"Je, unapata maumivu ya tumbo la chini (pelvic pain) mara kwa mara?",hint:"Maumivu ya pelvis yanaweza kuwa PID"},
+    {q:"Je, unapata kutokwa (discharge) isiyo ya kawaida — rangi au harufu?",hint:"Kutokwa kwa msamba ni dalili muhimu"},
+    {q:"Je, una homa inayoambatana na maumivu ya mgongo?",hint:"Homa na maumivu pamoja ni ishara ya maambukizi makali"},
+    {q:"Je, UTI au PID imekurudia zaidi ya mara 3 mwaka huu?",hint:"Kurudiwa mara nyingi inahitaji matibabu kamili"},
+    {q:"Je, unapata maumivu wakati wa tendo la ndoa?",hint:"Maumivu wakati wa tendo ni dalili ya PID ya kina"},
+    {q:"Je, mkojo wako una rangi ya giza au umekuwa na damu?",hint:"Damu katika mkojo ni dalili muhimu — tahadhari"},
+    {q:"Je, dawa za hospitali zimekusaidia kwa muda mfupi tu kisha tatizo linarudi?",hint:"Kurudi mara kwa mara inaonyesha tatizo la mizizi"},
+    {q:"Je, hali imekuwepo kwa zaidi ya miezi 3?",hint:"Muda mrefu unaonyesha haja ya matibabu kamili"}
+   ],
+   half:{price:50000},full:{price:100000},
+   testimonials:[
+    {t:"UTI ilikuwa ikinirudia kila mwezi. Herbal Combo iliisha tatizo ndani ya wiki 2!",n:"Fatuma A.",l:"Dar es Salaam",r:"UTI Imeisha Kabisa",e:"👩"},
+    {t:"Maumivu ya PID yalikuwa makali sana. Siku 10 za dawa — maumivu yameisha.",n:"Rose K.",l:"Mwanza",r:"Maumivu Yameisha",e:"👩"},
+    {t:"Hospitali ilinisaidia kwa wiki moja tu. Dawa hii ya asili imeniponya kabisa.",n:"Mary J.",l:"Arusha",r:"Imepona Kabisa",e:"👩"},
+    {t:"Kutokwa isiyo ya kawaida kumeisha kabisa. Ninajisikia safi kwa mara ya kwanza.",n:"Jane L.",l:"Mbeya",r:"Imepona — Wiki 2",e:"👩"}
+   ]},
+  {id:'tumbo',icon:'🌿',name:'VIDONDA VYA TUMBO',dawa:'Tumbo Relief',desc:'Ulcers, asidi, maumivu ya tumbo, GERD, gastritis',
+   questions:[
+    {q:"Je, unahisi maumivu ya kuchoma au kuumwa tumbo mara kwa mara?",hint:"Maumivu ya tumbo yanaweza kuwa vidonda"},
+    {q:"Je, maumivu yanazidi ukiwa na njaa au baada ya kula?",hint:"Wakati wa maumivu husaidia kutambua aina ya ugonjwa"},
+    {q:"Je, unapata kichefuchefu au kutapika mara kwa mara?",hint:"Dalili za mfumo wa chakula"},
+    {q:"Je, una vidonda vya tumbo (peptic ulcer) vilivyothibitishwa na daktari?",hint:"Utambuzi wa kitaalamu unasaidia kupanga matibabu"},
+    {q:"Je, kinyesi chako kina damu au rangi ya giza isiyo ya kawaida?",hint:"Dalili hii inahitaji matibabu ya haraka — muhimu sana"},
+    {q:"Je, unapata asidi au kuchomeka koo (heartburn) mara kwa mara?",hint:"Asidi tindikali ni tatizo la kawaida la tumbo"},
+    {q:"Je, hali imekuwepo kwa zaidi ya miezi 2 bila kupata nafuu?",hint:"Muda mrefu unaonyesha haja ya matibabu ya asili"},
+    {q:"Je, unapata gesi nyingi au kuvimba tumboni?",hint:"Gesi nyingi ni dalili ya mfumo mbaya wa chakula"},
+    {q:"Je, umepoteza uzito bila kukusudia hivi karibuni?",hint:"Kupoteza uzito kunaweza kuwa dalili muhimu"},
+    {q:"Je, unaamshwa na maumivu usiku wa manane?",hint:"Maumivu ya usiku ni ishara ya vidonda vya duodenum"}
+   ],
+   half:{price:45000},full:{price:90000},
+   testimonials:[
+    {t:"Nilikuwa na vidonda vya tumbo kwa miaka 3. Tumbo Relief iliisha maumivu ndani ya siku 10!",n:"John M.",l:"Iringa",r:"Vidonda Vimeisha",e:"👨"},
+    {t:"Asidi ilikuwa inaniua kila usiku. Siku 5 za dawa — usingizi wamerudi.",n:"Mary K.",l:"Kilimanjaro",r:"Asidi Imeisha",e:"👩"},
+    {t:"Nilikuwa naogopa kula. Sasa ninakula kila kitu bila hofu.",n:"Ahmed S.",l:"Dar es Salaam",r:"Anakula Kawaida",e:"👨"},
+    {t:"Tumbo Relief ndiyo iliyoniponya kabisa ndani ya wiki 2.",n:"Rose L.",l:"Mbeya",r:"Amepona — Wiki 2",e:"👩"}
+   ]}
+];
+const PLANTS=[
+  {id:1,e:'🌺',n:'MKOMAMANGA',l:'Punica granatum',nat:'Pomegranate',d:['Kuhara','Minyoo','Vidonda vya Tumbo','Nguvu za Kiume','Bawasiri','Fangasi','Presha ya Damu','Ngozi','Maumivu ya Mwili','Hedhi Yenye Maumivu'],p:['Chukua magome ya mkomamanga (vijiko 2), kausha juani siku 3','Saga kuwa unga wa rangi ya kahawia','Chemsha kikombe 1 cha maji na unga kwa dakika 15','Poza, chuja vizuri, ongeza asali kwa ladha','Kunywa kikombe 1 asubuhi kabla ya kula','Kwa bawasiri: kunywa mara 2 na osha sehemu','Kwa nguvu za kiume: changanya na asali na tangawizi','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:2,e:'🌳',n:'MWAROBAINI',l:'Azadirachta indica',nat:'Neem Tree',d:['Malaria','Ngozi Yenye Matatizo','Fangasi wa Kina','Vidonda vya Tumbo','Presha ya Damu','Kisukari','UTI ya Mara kwa Mara','Minyoo ya Tumbo','Matatizo ya Ini','Kikohozi Sugu'],p:['Chukua majani 20-30 mapya, osha vizuri','Chemsha kwa lita 1 maji kwa dakika 20','Acha ipoe, chuja vizuri','Kunywa kikombe 1 asubuhi na jioni','Kwa malaria: ongeza limao na asali','Kwa ngozi: paka mafuta ya mwarobaini','Kwa fangasi: osha sehemu na maji ya chai','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:3,e:'🌵',n:'MJALUVERA',l:'Aloe vera',nat:'Aloe Vera',d:['Ngozi Kavu','Maumivu ya Mwili','Kinga Dhaifu','Bawasiri','Vidonda vya Tumbo','Fangasi wa Nje','Presha ya Damu','Kisukari','Matatizo ya Ini','UTI'],p:['Kata jani, toloa gel ya uwazi ya ndani','Kwa nje: paka gel moja kwa moja kwenye ngozi','Kwa tumbo: kata gel vipande, changanya na maji na asali','Kunywa kikombe 1 asubuhi kabla ya kula','Kwa bawasiri: baridi gel, paka/osha sehemu usiku','Hifadhi gel jokofu hadi siku 7','Usitumie gel ya rangi ya njano','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:4,e:'🍃',n:'MPERA',l:'Psidium guajava',nat:'Guava Tree',d:['Kuhara ya Kali','Minyoo ya Tumbo','Presha ya Damu','Kisukari','Nguvu za Kiume','Ngozi','Hedhi Yenye Maumivu','Fangasi','UTI','Maumivu ya Mwili'],p:['Chukua majani 10-15 machanga, osha','Chemsha kwa lita 1 maji kwa dakika 15','Poza na chuja vizuri','Kunywa kikombe 1 mara 3 kwa siku','Kwa kuhara: ongeza chumvi kidogo','Kwa hedhi: anza siku 2 kabla ya hedhi','Kwa kisukari: kunywa asubuhi bila sukari','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:5,e:'🌸',n:'TANGAWIZI',l:'Zingiber officinale',nat:'Ginger',d:['Kichefuchefu','Homa ya Kawaida','Maumivu ya Mwili','Mzunguko Mbaya wa Damu','Nguvu za Kiume','Vidonda vya Tumbo','Presha ya Damu','Kikohozi','Hedhi Yenye Maumivu','Fangasi'],p:['Chukua kipande cha tangawizi safi (cm 3-4), osha','Piga kidogo na weka kwenye vikombe 2 maji ya moto','Ongeza asali na limao kwa ladha','Kunywa mara 3 kwa siku','Kwa nguvu za kiume: changanya na mkomamanga na asali','Kwa hedhi yenye maumivu: anza siku 3 kabla','Tangawizi safi ni bora kuliko unga wa dukani','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:6,e:'🍋',n:'LIMAO',l:'Citrus limon',nat:'Lemon',d:['Kinga Dhaifu','Upungufu wa Vitamin C','UTI','Figo Dhaifu','Presha ya Damu','Kisukari','Ngozi','Maumivu ya Mwili','Matatizo ya Ini','Fangasi wa Nje'],p:['Chukua limao 2-3, kamulia juisi yote','Changanya na vikombe 2 maji ya uvuguvugu','Ongeza asali kijiko 1','Kunywa asubuhi wakati tumbo liko tupu','Kwa UTI: kunywa mara 3 kwa siku na maji mengi','Kwa ngozi: paka juisi dakika 15 kisha osha','Usichomeke ngozi na jua baada ya limao','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:7,e:'🌿',n:'MLONGE (MORINGA)',l:'Moringa oleifera',nat:'Moringa',d:['Utapiamlo','Presha ya Damu','Kisukari','Matatizo ya Ini','Nguvu za Kiume','Mama Wajawazito','Kinga Dhaifu','Maziwa ya Mama','Ngozi','Maumivu ya Mwili'],p:['Chukua majani ya mlonge mapya — kikombe kimoja','Osha vizuri na maji safi','Chemsha kwa dakika 5 tu — usipike kupita kiasi','Au tumia unga wa mlonge kijiko 1 kwenye chakula','Kwa nguvu: changanya na asali na maziwa','Kwa mama wajawazito: ongeza kwenye uji wa asubuhi','Kwa maziwa ya mama: kunywa chai mara 3','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:8,e:'🌺',n:'HIBISCUS',l:'Hibiscus sabdariffa',nat:'Roselle',d:['Presha ya Damu Juu','Matatizo ya Moyo','Cholesterol Juu','Matatizo ya Ini','Figo Dhaifu','Ngozi','Homa ya Kawaida','UTI','Kisukari','Kinga Dhaifu'],p:['Chukua maua ya hibiscus kavu (vijiko 2)','Chemsha kwa vikombe 2 maji ya moto kwa dakika 15','Acha iwe mvuke dakika 10 zaidi','Chuja na ongeza asali','Kunywa mara 2 kwa siku — asubuhi na jioni','Kwa presha: kunywa kila siku kwa wiki 4','Unaweza baridi na kunywa kama juisi','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:9,e:'🌱',n:'KITUNGUU SAUMU',l:'Allium sativum',nat:'Garlic',d:['Presha ya Damu Juu','Matatizo ya Moyo','Cholesterol Juu','Maambukizi','Kinga Dhaifu','Fangasi wa Kina','Kisukari','Matatizo ya Ini','Maumivu ya Viungo','Bakteri za Tumbo'],p:['Chukua karafuu 2-4 za kitunguu saumu safi kila siku','Susa au kata na acha dakika 10','Kwa moja kwa moja: kula asubuhi na tumbo tupu','Kwa chai: chemsha karafuu 3 kwa kikombe dakika 10','Ongeza asali na limao kwa ladha','Kwa presha: kula karafuu 2 asubuhi kwa wiki 4','Kwa fangasi wa nje: piga karafuu, paka sehemu','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  {id:10,e:'🍃',n:'MDALASINI',l:'Cinnamomum verum',nat:'True Cinnamon',d:['Kisukari Sugu','Presha ya Damu','Matatizo ya Moyo','Cholesterol Juu','Maumivu ya Viungo','Hedhi Yenye Maumivu','Fangasi','Matatizo ya Ini','Kinga Dhaifu','Uzito Kupita Kiasi'],p:['Chukua kipande cha mdalasini (cm 5) au unga kijiko 1','Chemsha kwa vikombe 2 maji kwa dakika 10','Ongeza asali kidogo','Kunywa asubuhi kabla ya kula','Kwa kisukari: kunywa mara 2 — asubuhi na usiku','Unaweza ongeza kwenye kahawa au chai ya kawaida','Kwa hedhi yenye maumivu: anza siku 3 kabla','Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!']},
+  ...[
+   ['MAFUNGU (TURMERIC)','Curcuma longa','Turmeric',['Maumivu ya Viungo','Arthritis','Matatizo ya Ini','Kinga Dhaifu','Fangasi','Ngozi','Kisukari','Presha','Saratani (Kinga)','Usingizi Mbaya']],
+   ['MNANAA (MINT)','Mentha piperita','Peppermint',['Kichefuchefu','Vidonda vya Tumbo','Gesi Tumboni','Maumivu ya Kichwa','Kikohozi','Pua Iliyozibwa','Usingizi Mbaya','Hedhi','Matatizo ya Ini','UTI']],
+   ['BAOBAB (MBUYU)','Adansonia digitata','Baobab',['Utapiamlo','Kuhara','Malaria','Presha','Kisukari','Matatizo ya Ini','Ngozi','Kinga Dhaifu','Maumivu','Uchovu']],
+   ['MVUJE','Annona senegalensis','Wild Custard Apple',['Malaria','Ngozi','Bakteri','Maumivu','Vidonda','Kikohozi','Minyoo','Presha','Matatizo ya Ini','Fangasi']],
+   ['MCHONGOMA','Nigella sativa','Black Cumin',['Kinga Dhaifu','Kisukari','Presha','Maumivu','Fangasi','Ngozi','Matatizo ya Ini','Figo Dhaifu','Kikohozi Sugu','Arthritis']],
+   ['MKWAJU','Tamarindus indica','Tamarind',['Kuhara Sugu','Matatizo ya Ini','Kisukari','Presha','Vidonda vya Tumbo','Kinga Dhaifu','Figo','Maumivu','Homa','Cholesterol Juu']],
+   ['MDALASINI WA AFRICA','Ocimum gratissimum','African Basil',['Fangasi','UTI','PID','Ngozi','Kikohozi','Matatizo ya Ini','Kinga Dhaifu','Maumivu','Malaria','Homa']],
+   ['MILK THISTLE','Silybum marianum','Milk Thistle',['Matatizo ya Ini','Hepatitis','Cirrhosis','Kisukari','Cholesterol','Presha','Kinga Dhaifu','Figo','Arthritis','Detox']],
+   ['ASHWAGANDHA','Withania somnifera','Indian Ginseng',['Msongo wa Mawazo','Nguvu za Kiume','Usingizi Mbaya','Kinga Dhaifu','Thyroid','Kisukari','Matatizo ya Ini','Moyo','Maumivu','Uzito']],
+   ['SPIRULINA','Arthrospira platensis','Spirulina',['Lishe','Kinga Dhaifu','Kisukari','Presha','Cholesterol','Matatizo ya Ini','Uchovu','Upungufu wa Damu','Uzito','Moyo']],
+   ['ROSEMARY','Rosmarinus officinalis','Rosemary',['Kumbukumbu Dhaifu','Mzunguko wa Damu','Nywele Kuanguka','Matatizo ya Ini','Arthritis','Maumivu','Kinga Dhaifu','Presha','Hedhi','Ngozi']],
+   ['LAVENDER','Lavandula angustifolia','Lavender',['Usingizi Mbaya','Msongo wa Mawazo','Maumivu ya Kichwa','Ngozi','Fangasi','Hedhi','Kinga Dhaifu','Arthritis','UTI','PID']],
+   ['FENUGREEK','Trigonella foenum-graecum','Fenugreek',['Kisukari','Nguvu za Kiume','Maziwa ya Mama','Matatizo ya Ini','Cholesterol','Arthritis','Hedhi','Kinga Dhaifu','Presha','Uzito']],
+   ['DANDELION','Taraxacum officinale','Dandelion',['Matatizo ya Ini','Figo Dhaifu','Kisukari','Presha','Cholesterol','Kinga Dhaifu','Arthritis','UTI','Uzito','Detox']],
+   ['ECHINACEA','Echinacea purpurea','Echinacea',['Kinga Dhaifu','Virusi','Homa','Kikohozi','UTI','Fangasi','Maambukizi','Ngozi','Matatizo ya Ini','Lymph']],
+   ['GINSENG','Panax ginseng','Asian Ginseng',['Nguvu za Kiume','Uchovu Sugu','Akili Dhaifu','Kinga Dhaifu','Kisukari','Presha','Moyo','Matatizo ya Ini','Msongo','Uzito']],
+   ['VALERIAN','Valeriana officinalis','Valerian Root',['Usingizi Mbaya','Msongo wa Mawazo','Wasiwasi','Maumivu','Hedhi','Maumivu ya Kichwa','Moyo','Presha','Ubongo','Arthritis']],
+   ['MACA','Lepidium meyenii','Maca Root',['Nguvu za Kiume','Hedhi','Menopause','Uchovu','Uzazi','Homoni','Kinga Dhaifu','Akili','Msongo','Osteoporosis']],
+   ['TRIBULUS','Tribulus terrestris','Tribulus',['Nguvu za Kiume','Testosterone Chini','Uzazi','Moyo','Presha','Kisukari','Figo Dhaifu','Matatizo ya Ini','Homoni','Arthritis']],
+   ['ELDERBERRY','Sambucus nigra','Elderberry',['Kinga Dhaifu','Homa','Malaria','Kikohozi','Maumivu','Presha','Kisukari','Matatizo ya Ini','Ngozi','UTI']],
+   ['DONG QUAI','Angelica sinensis','Chinese Angelica',['Hedhi Yenye Maumivu','PID','Upungufu wa Damu','Moyo','Presha','Maumivu','Menopause','Matatizo ya Ini','Figo','Uzazi']],
+   ['RED CLOVER','Trifolium pratense','Red Clover',['Menopause','Hedhi','Moyo','Kinga Dhaifu','Presha','Saratani (Kinga)','Osteoporosis','Cholesterol','Matatizo ya Ini','Ngozi']],
+   ['HORSETAIL','Equisetum arvense','Horsetail',['Figo Dhaifu','Mawe ya Figo','UTI','Mifupa Dhaifu','Nywele Kuanguka','Ngozi','Tezi Dume','Presha','Arthritis','Msumari']],
+   ['SCHISANDRA','Schisandra chinensis','Schisandra',['Matatizo ya Ini','Uchovu Sugu','Akili Dhaifu','Kinga Dhaifu','Presha','Nguvu za Kiume','Ngozi','Usingizi','Msongo','Moyo']],
+   ['RHODIOLA','Rhodiola rosea','Rhodiola',['Uchovu Sugu','Msongo wa Mawazo','Akili Dhaifu','Kumbukumbu','Nguvu za Kiume','Moyo','Kisukari','Kinga Dhaifu','Presha','Usingizi']],
+   ['ASTRAGALUS','Astragalus membranaceus','Astragalus',['Kinga Dhaifu','Moyo','Figo Dhaifu','Matatizo ya Ini','Kisukari','Presha','Uchovu','Saratani (Kinga)','Virusi','Mzee wa Mapema']],
+   ['PASSIONFLOWER','Passiflora incarnata','Passionflower',['Usingizi Mbaya','Wasiwasi','Msongo wa Mawazo','Maumivu','Presha','Moyo','Epilepsy','Ubongo','Hedhi','PMS']],
+   ["CAT'S CLAW",'Uncaria tomentosa',"Cat's Claw",['Kinga Dhaifu','Arthritis Sugu','Saratani (Kinga)','Matatizo ya Ini','UTI','Herpes','Presha','Kisukari','Fangasi','Maumivu']],
+   ['DAMIANA','Turnera diffusa','Mexican Damiana',['Nguvu za Kiume','Hedhi','Msongo wa Mawazo','Unyogovu','Matatizo ya Ini','Kinga Dhaifu','Presha','Ubongo','Uchovu','Nguvu']],
+   ['BOSWELLIA','Boswellia sacra','Frankincense',['Arthritis Sugu','Maumivu ya Viungo','Kinga Dhaifu','Matatizo ya Ini','Saratani (Kinga)','Ngozi','Presha','Hedhi','Ubongo','Unyogovu']],
+   ['CALENDULA','Calendula officinalis','Pot Marigold',['Ngozi Yenye Matatizo','Majeraha ya Nje','Fangasi','UTI','PID','Hedhi','Maumivu','Matatizo ya Ini','Kinga Dhaifu','Figo']],
+   ['CHAMOMILE','Matricaria chamomilla','German Chamomile',['Usingizi Mbaya','Wasiwasi','Vidonda vya Tumbo','Gesi Tumboni','Maumivu ya Watoto','Ngozi','Maumivu ya Kichwa','Hedhi','Kinga Dhaifu','Presha']],
+   ['LEMON BALM','Melissa officinalis','Lemon Balm',['Wasiwasi','Usingizi Mbaya','Herpes','Msongo wa Mawazo','Thyroid','Usagaji Mbaya','Maumivu ya Kichwa','Kinga Dhaifu','Presha','Ubongo']],
+   ['HOLY BASIL','Ocimum tenuiflorum','Tulsi',['Msongo wa Mawazo','Kisukari','Presha','Kinga Dhaifu','Fangasi','UTI','Kikohozi','Matatizo ya Ini','Arthritis','Ngozi']],
+   ['GUGGUL','Commiphora wightii','Guggul',['Cholesterol Juu','Arthritis Sugu','Thyroid','Uzito Kupita Kiasi','Moyo','Presha','Matatizo ya Ini','Kisukari','Maumivu','Ngozi']],
+   ['SHILAJIT','Asphaltum punjabianum','Shilajit',['Nguvu za Kiume','Uchovu Sugu','Arthritis','Kinga Dhaifu','Akili','Kisukari','Presha','Maumivu','Moyo','Mifupa']],
+   ['BRAHMI','Bacopa monnieri','Brahmi',['Akili Dhaifu','Kumbukumbu Mbaya','Wasiwasi','Usingizi','Ubongo','Presha','Kinga Dhaifu','Kisukari','Matatizo ya Ini','Thyroid']],
+   ['SHATAVARI','Asparagus racemosus','Shatavari',['Uzazi','Hedhi','Maziwa ya Mama','Kinga Dhaifu','Matatizo ya Ini','Ngozi','Presha','Kisukari','PID','Menopause']],
+   ['GUDUCHI','Tinospora cordifolia','Guduchi',['Matatizo ya Ini','Kinga Dhaifu','Arthritis','Homa','Kisukari','UTI','Fangasi','Presha','Upunguvu wa Damu','Detox']],
+   ['NETTLE','Urtica dioica','Stinging Nettle',['Tezi Dume','Presha','Kisukari','Matatizo ya Ini','Figo','Arthritis','Hedhi','UTI','Fangasi','Kinga Dhaifu']],
+   ['FEVERFEW','Tanacetum parthenium','Feverfew',['Maumivu ya Kichwa','Migraine Sugu','Homa','Arthritis','PMS','Vertigo','Kinga Dhaifu','Presha','Maumivu','Wasiwasi']],
+   ['BITTER MELON','Momordica charantia','Bitter Gourd',['Kisukari Sugu','Matatizo ya Ini','Presha','Cholesterol','Figo Dhaifu','UTI','Kinga Dhaifu','Uzito','Arthritis','Detox']],
+   ['AMLA','Phyllanthus emblica','Indian Gooseberry',['Vitamin C Nyingi','Kinga Dhaifu','Nywele Kuanguka','Ngozi','Matatizo ya Ini','Presha','Kisukari','Moyo','Macho Dhaifu','Uchovu']],
+   ['PHYLLANTHUS','Phyllanthus niruri','Stonebreaker',['Matatizo ya Ini','Hepatitis B & C','Mawe ya Figo','Kisukari','Presha','UTI','Figo Dhaifu','Kinga Dhaifu','Matatizo ya Ini','Virusi']],
+   ['ANDROGRAPHIS','Andrographis paniculata','King of Bitters',['Homa ya Kawaida','Kinga Dhaifu','Matatizo ya Ini','Malaria','UTI','Kikohozi','Fangasi','Virusi','Kisukari','Arthritis']],
+   ['ARJUNA','Terminalia arjuna','Arjuna',['Moyo Dhaifu','Presha','Cholesterol','Matatizo ya Ini','Figo','Arthritis','Uchovu','Msongo','Kinga Dhaifu','Kisukari']],
+   ['CHLORELLA','Chlorella vulgaris','Green Algae',['Detox ya Mwili','Matatizo ya Ini','Upungufu wa Damu','Kinga Dhaifu','Kisukari','Cholesterol','Presha','Saratani (Kinga)','Uzito','Uchovu']],
+   ['BEET ROOT','Beta vulgaris','Beet Root',['Presha ya Damu','Moyo','Upungufu wa Damu','Matatizo ya Ini','Figo Dhaifu','Uchovu Sugu','Kisukari','Kinga Dhaifu','Arthritis','Cholesterol']],
+   ['EVENING PRIMROSE','Oenothera biennis','Evening Primrose',['Hedhi Yenye Maumivu','PMS','Menopause','Ngozi Kavu','Arthritis','Presha','Moyo','Cholesterol','Msongo','Uzati']],
+   ['ST JOHN\'S WORT','Hypericum perforatum','St. John\'s Wort',['Unyogovu Mdogo','Wasiwasi','Maumivu ya Neva','Usingizi','Menopause','Maumivu ya Misuli','Majeraha ya Nje','Presha','Matatizo ya Ini','Kinga']],
+   ['MUIRA PUAMA','Ptychopetalum olacoides','Potency Wood',['Nguvu za Kiume','Uchovu Sugu','Ubongo Dhaifu','Kumbukumbu','Msongo','Moyo','Homoni','Matatizo ya Ini','Arthritis','Nguvu']],
+   ['MACA PRO','Lepidium meyenii var.','Maca Extra',['Nguvu za Kiume','Hedhi','Menopause','Uchovu','Uzazi','Homoni','Kinga Dhaifu','Akili','Msongo','Osteoporosis']],
+   ['SUMA ROOT','Pfaffia paniculata','Brazilian Ginseng',['Uchovu Sugu','Nguvu za Kiume','Homoni','Kinga Dhaifu','Saratani (Kinga)','Kisukari','Presha','Matatizo ya Ini','Hedhi','Uzito']],
+   ['CATUABA','Erythroxylum catuaba','Catuaba',['Nguvu za Kiume','Uchovu Sugu','Ubongo Dhaifu','Virusi','Kinga Dhaifu','Msongo','Homoni','Matatizo ya Ini','Arthritis','Nguvu']],
+   ['HORNY GOAT WEED','Epimedium grandiflorum','Barrenwort',['Nguvu za Kiume','Arthritis','Mifupa Dhaifu','Moyo','Kinga Dhaifu','Homoni','Testosterone Chini','Matatizo ya Ini','Presha','Menopause']],
+   ['ELEUTHERO','Eleutherococcus senticosus','Siberian Ginseng',['Uchovu Sugu','Msongo wa Mawazo','Kinga Dhaifu','Moyo','Akili','Matatizo ya Ini','Presha','Kisukari','Arthritis','Nguvu za Kiume']],
+   ['JIAOGULAN','Gynostemma pentaphyllum','Five-leaf Ginseng',['Kinga Dhaifu','Matatizo ya Ini','Kisukari','Presha','Cholesterol','Moyo','Uchovu Sugu','Uzito','Akili','Mzee wa Mapema']],
+   ['LICORICE ROOT','Glycyrrhiza glabra','Licorice',['Vidonda vya Tumbo','Matatizo ya Ini','Kikohozi','Kinga Dhaifu','Adrenal','Hedhi','Presha','Maumivu','Fangasi','UTI']],
+   ['YELLOW DOCK','Rumex crispus','Curly Dock',['Matatizo ya Ini','Upungufu wa Damu','Upungufu wa Chuma','Ngozi','Figo','Arthritis','Cholesterol','UTI','Kinga Dhaifu','Fangasi']],
+   ['BURDOCK ROOT','Arctium lappa','Burdock',['Matatizo ya Ini','Ngozi Mbaya','Upungufu wa Damu','Kisukari','Presha','Arthritis','Figo Dhaifu','UTI','Kinga Dhaifu','Fangasi']],
+   ['SKULLCAP','Scutellaria lateriflora','Scullcap',['Wasiwasi','Usingizi Mbaya','Maumivu ya Neva','Epilepsy','Presha','Msongo wa Mawazo','Ubongo','Moyo','Matatizo ya Ini','Maumivu']],
+   ['HOPS','Humulus lupulus','Hops',['Usingizi Mbaya','Wasiwasi','Presha','Maumivu','Hedhi','Msongo wa Mawazo','Moyo','Matatizo ya Ini','Arthritis','Ubongo']],
+   ['YARROW','Achillea millefolium','Common Yarrow',['Majeraha ya Nje','Homa','Hedhi Nyingi','UTI','Presha','Moyo','Matatizo ya Ini','Kinga Dhaifu','Maumivu','Fangasi']],
+   ['MOTHERWORT','Leonurus cardiaca','Motherwort',['Moyo Dhaifu','Wasiwasi','Presha','Hedhi','Menopause','Thyroid','Matatizo ya Ini','Usingizi','Maumivu','Msongo']],
+   ['CHASTE TREE','Vitex agnus-castus','Vitex',['Hedhi Isiyo ya Kawaida','PID','Homoni Mbaya','Uzazi','Menopause','PMS Sugu','Maziwa ya Mama','Matatizo ya Ini','Presha','Msongo']],
+   ['LEMONGRASS','Cymbopogon citratus','Lemon Grass',['Homa ya Kawaida','Presha','Cholesterol','Kisukari','Fangasi','Maumivu','Kinga Dhaifu','Msongo','Matatizo ya Ini','Arthritis']],
+   ['MARSHMALLOW ROOT','Althaea officinalis','Marshmallow',['Vidonda vya Tumbo','UTI','Kikohozi Sugu','Matatizo ya Ini','Figo Dhaifu','Ngozi','Majeraha','Kinga Dhaifu','Presha','Bawasiri']],
+   ['SAGE','Salvia officinalis','Common Sage',['Menopause','Hedhi','Kumbukumbu Dhaifu','Fangasi wa Koo','Jasho Kupita Kiasi','Presha','Kisukari','Matatizo ya Ini','Kinga Dhaifu','Ngozi']],
+   ['OREGANO','Origanum vulgare','Oregano',['Fangasi wa Kina','Kinga Dhaifu','UTI','Kikohozi','Vidonda vya Tumbo','Maumivu','Ngozi','Matatizo ya Ini','Arthritis','PID']],
+   ['THYME','Thymus vulgaris','Garden Thyme',['Kikohozi','Pumu','Bronchitis','Fangasi','Maambukizi','Kinga Dhaifu','Maumivu','Matatizo ya Ini','UTI','Ngozi']],
+   ['BASIL (MRIHA)','Ocimum basilicum','Sweet Basil',['Msongo wa Mawazo','Fangasi','UTI','Kinga Dhaifu','Presha','Maumivu ya Kichwa','Usagaji Mbaya','Ngozi','Arthritis','Kikohozi']],
+   ['GOLDENROD','Solidago virgaurea','Goldenrod',['UTI ya Mara kwa Mara','Figo Dhaifu','Presha','Arthritis','Mawe ya Figo','Kinga Dhaifu','Matatizo ya Ini','Ngozi','Usagaji','Maumivu']],
+   ['COMFREY','Symphytum officinale','Comfrey',['Majeraha ya Nje','Mifupa Iliyovunjika','Arthritis','Ngozi','Maumivu ya Misuli','Bawasiri','Viungo','Maambukizi ya Nje','Matatizo ya Ini','Presha']],
+   ['PLANTAIN','Plantago major','Common Plantain',['Kikohozi','Majeraha ya Nje','Maumivu','Kinga Dhaifu','UTI','Fangasi','Ngozi','Usagaji Mbaya','Vidonda vya Tumbo','Presha']],
+   ['SELF-HEAL','Prunella vulgaris','All-Heal',['Majeraha ya Nje','Kinga Dhaifu','Virusi','Fangasi','Presha','Matatizo ya Ini','Koo','Mdomo','UTI','Ngozi']],
+   ['RED RASPBERRY','Rubus idaeus','Red Raspberry Leaf',['Hedhi','Uzazi na Mimba','Upungufu wa Damu','Moyo','Presha','Matatizo ya Ini','Kinga Dhaifu','UTI','PID','Maumivu']],
+   ['CHICORY ROOT','Cichorium intybus','Chicory',['Matatizo ya Ini','Figo Dhaifu','Kisukari','Presha','Cholesterol','UTI','Vidonda vya Tumbo','Arthritis','Kinga Dhaifu','Maumivu']],
+   ['WOOD BETONY','Stachys betonica','Wood Betony',['Maumivu ya Kichwa','Msongo wa Mawazo','Wasiwasi','Matatizo ya Ini','Usagaji Mbaya','Presha','Maumivu','Kikohozi','Kinga Dhaifu','Ubongo']],
+   ['CLEAVERS','Galium aparine','Cleavers',['Lymph Sugu','Matatizo ya Ini','Figo','UTI','Ngozi','Kinga Dhaifu','Tezi za Shingo','Presha','Arthritis','Detox']],
+   ['MEADOWSWEET','Filipendula ulmaria','Meadowsweet',['Maumivu ya Mwili','Vidonda vya Tumbo','Asidi ya Tumbo','Arthritis','Maumivu ya Kichwa','Presha','Homa','Kinga Dhaifu','Figo','UTI']],
+   ['AGRIMONY','Agrimonia eupatoria','Agrimony',['Matatizo ya Ini','UTI','Kuhara','Maumivu ya Koo','Vidonda vya Tumbo','Presha','Arthritis','Kinga Dhaifu','Ngozi','Figo']],
+   ['VERVAIN','Verbena officinalis','Vervain',['Msongo wa Mawazo','Unyogovu','Wasiwasi','Maumivu ya Kichwa','Matatizo ya Ini','Hedhi','Usingizi','Maumivu','Kinga Dhaifu','Presha']],
+   ['SUMMER SAVORY','Satureja hortensis','Savory',['UTI','Fangasi','Usagaji Mbaya','Kinga Dhaifu','Maumivu','Kikohozi','Ngozi','Matatizo ya Ini','Presha','Arthritis']],
+   ['MARJORAM','Origanum majorana','Marjoram',['Maumivu ya Mwili','Wasiwasi','Usingizi Mbaya','Hedhi','Presha','Usagaji Mbaya','Maumivu ya Kichwa','Kinga Dhaifu','Arthritis','Msongo']],
+   ['SARSAPARILLA','Smilax regelii','Sarsaparilla',['Upungufu wa Damu','Ngozi Mbaya','Arthritis','Maambukizi ya Zinaa','Psoriasis','Presha','Matatizo ya Ini','Figo','Kinga Dhaifu','Maumivu']],
+  ].map(([n,l,nat,d],i)=>({
+    id:i+11,
+    e:['🌿','🌺','🌸','🍃','🌱','🌳','🍀','🌾','🌵','🌼','🌻','🌹','🍁','🌲','🎋','🌴'][(i+11)%16],
+    n,l,nat,d,
+    p:['Chemsha g 3-5 ya mmea huu kwa lita 1 maji safi ya moto','Dakika 15-20 kwa moto wa wastani','Chuja vizuri na kitambaa laini, poza kabla ya kunywa','Ongeza asali kijiko 1 kwa ladha bora','Kunywa vikombe 2 kwa siku — asubuhi na jioni','Endelea kwa wiki 4-8 kwa magonjwa makubwa','Anza na dozi ndogo na ongeza polepole','Matokeo yanaanza kuonekana ndani ya SIKU 3 HADI 7 PEKEE!']
+  }))
+];
+const LS={
+  USER:'jos5_user',USERS:'jos5_users',
+  CODES:'jos5_codes',USED:'jos5_used',
+  MED_IMGS:'jos5_medimgs',TESTI:'jos5_testi',
+  MEDIA_V:'jos5_videos',MEDIA_P:'jos5_posters',
+  PROD_DATA:'jos5_proddata',
+  ACAD_EXPIRY:'jos5_expiry'
+};
+
+// ══ STATE ══
+let U={name:'',phone:''};
+let QS={cond:null,q:0,ans:[],dose:null};
+let AcadExpiry=0;
+let SelTier={tier:'',price:0,days:0};
+let SelPkg={days:30,price:5000};
+let CdSearch={q:'',filter:null};
+
+// ══ INIT ══
+window.onload=function(){
+  const saved=localStorage.getItem(LS.USER);
+  if(saved){
+    try{
+      U=JSON.parse(saved);
+      showChoice();
+    }catch(e){localStorage.removeItem(LS.USER);}
+  }
+  // Load acad expiry
+  const exp=localStorage.getItem(LS.ACAD_EXPIRY);
+  if(exp) AcadExpiry=parseInt(exp)||0;
+};
+
+// showPage, registerUser, goClinic, goAcademy => overridden below in v6 section
+
+function showChoice(){
+  showPage('pg-choice');
+  document.getElementById('ch-name').textContent=U.name||'Rafiki';
+}
+
+// ══ CLINIC INIT ══
+function initClinic(){
+  renderMediaGallery();
+  renderProducts();
+  renderConditions();
+}
+
+// ── MEDIA GALLERY ──
+function showMediaTab(type){
+  document.getElementById('media-videos').style.display=type==='videos'?'grid':'none';
+  document.getElementById('media-posters').style.display=type==='posters'?'grid':'none';
+  document.querySelectorAll('.mtab').forEach((t,i)=>t.classList.toggle('on',i===(type==='videos'?0:1)));
+}
+
+function renderMediaGallery(){
+  const videos=JSON.parse(localStorage.getItem(LS.MEDIA_V)||'[]');
+  const posters=JSON.parse(localStorage.getItem(LS.MEDIA_P)||'[]');
+  const vGrid=document.getElementById('media-videos');
+  const pGrid=document.getElementById('media-posters');
+  if(vGrid){
+    vGrid.innerHTML=videos.length
+      ?videos.map((v,i)=>`
+        <div class="media-item" onclick="openMediaFull('video','${i}')">
+          <video src="${v.src}" muted playsinline preload="metadata"></video>
+          <div class="media-play-overlay"><div class="play-ic">▶</div></div>
+        </div>`).join('')
+      :`<div class="media-empty">Bado hakuna videos. Admin anaweza kuongeza kutoka 📺 Media panel.</div>`;
+  }
+  if(pGrid){
+    pGrid.innerHTML=posters.length
+      ?posters.map((p,i)=>`
+        <div class="media-item" onclick="openMediaFull('poster','${i}')">
+          <img src="${p.src}" alt="Poster ${i+1}" loading="lazy">
+          <div class="media-play-overlay"><div class="play-ic">🔍</div></div>
+        </div>`).join('')
+      :`<div class="media-empty">Bado hakuna posters. Admin anaweza kuongeza kutoka 📺 Media panel.</div>`;
+  }
+  // Academy posters scroll
+  const acadScroll=document.getElementById('acad-posters-scroll');
+  if(acadScroll){
+    const all=[...videos,...posters];
+    if(all.length){
+      acadScroll.innerHTML=all.map((item,i)=>{
+        const isVid=i<videos.length;
+        return `<div class="poster-item" onclick="openMediaFull('${isVid?'video':'poster'}','${isVid?i:i-videos.length}')">
+          ${isVid?`<video src="${item.src}" muted playsinline preload="metadata"></video>`:`<img src="${item.src}" alt="Poster" loading="lazy">`}
+          <div class="poster-overlay"><div class="play-ic">${isVid?'▶':'🔍'}</div></div>
+        </div>`;
+      }).join('');
+    } else {
+      acadScroll.innerHTML='<div class="poster-empty">Picha na videos zinaongezwa na Dr. Revo kutoka Admin Panel.</div>';
+    }
+  }
+}
+
+function openMediaFull(type,idx){
+  const store=type==='video'?LS.MEDIA_V:LS.MEDIA_P;
+  const items=JSON.parse(localStorage.getItem(store)||'[]');
+  const item=items[parseInt(idx)];
+  if(!item) return;
+  const wrap=document.getElementById('media-fullscreen-content');
+  if(type==='video'){
+    wrap.innerHTML=`<video src="${item.src}" controls autoplay style="width:100%;border-radius:12px;max-height:70vh;"></video>`;
+  } else {
+    wrap.innerHTML=`<img src="${item.src}" style="width:100%;border-radius:12px;max-height:85vh;object-fit:contain;">`;
+  }
+  document.getElementById('modal-media').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+
+// ── PRODUCTS SHOWCASE ──
+function renderProducts(){
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  const prodData=JSON.parse(localStorage.getItem(LS.PROD_DATA)||'{}');
+  const grid=document.getElementById('products-grid');
+  if(!grid) return;
+  grid.innerHTML=CONDITIONS.map(c=>{
+    const img=imgs[c.id];
+    const pd=prodData[c.id]||{};
+    const halfF=c.half?`Tshs ${fmt(c.half.price)}/=`:'—';
+    const fullF=`Tshs ${fmt(c.full.price)}/=`;
+    const hasDisc=pd.discount;
+    const origFull=c.full.price;
+    const discFull=hasDisc?Math.round(origFull*(1-parseFloat(pd.discount)/100)):null;
+    return `<div class="prod-card" onclick="openProdModal('${c.id}')">
+      <div class="prod-img-wrap">
+        ${img?`<img src="${img}" alt="${c.dawa}">`:`<div class="prod-img-ph">${c.icon}</div>`}
+        ${hasDisc?`<div class="prod-badge">-${pd.discount}%</div>`:''}
+        ${pd.badge?`<div class="prod-badge green">${pd.badge}</div>`:''}
+      </div>
+      <div class="prod-body">
+        <div class="prod-name">${c.dawa}</div>
+        <div class="prod-desc">${pd.desc||c.desc}</div>
+        <div class="prod-price-wrap">
+          ${hasDisc?`<div class="prod-price-old">Tshs ${fmt(origFull)}/=</div>
+            <div class="prod-price">Tshs ${fmt(discFull)}/=</div>
+            <div class="prod-disc">-${pd.discount}%</div>`
+          :`<div class="prod-price">${fullF}</div>`}
+        </div>
+        <button class="prod-btn" onclick="event.stopPropagation();quickOrder('${c.id}')">
+          💬 Agiza — Tshs ${hasDisc?fmt(discFull):fmt(origFull)}/=
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openProdModal(condId){
+  const c=CONDITIONS.find(x=>x.id===condId);
+  if(!c) return;
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  const prodData=JSON.parse(localStorage.getItem(LS.PROD_DATA)||'{}');
+  const pd=prodData[condId]||{};
+  const img=imgs[condId];
+  document.getElementById('pd-name').textContent=c.name;
+  document.getElementById('pd-dawa').textContent='💊 '+c.dawa;
+  const iw=document.getElementById('pd-img-wrap');
+  iw.innerHTML=img?`<img class="prod-modal-img" src="${img}" alt="${c.dawa}">`:`<div class="prod-modal-ph">${c.icon}</div>`;
+  document.getElementById('pd-desc').textContent=pd.desc||c.desc;
+  const hasDisc=pd.discount;
+  const discFull=hasDisc?Math.round(c.full.price*(1-parseFloat(pd.discount)/100)):null;
+  document.getElementById('pd-half').textContent=c.half?`Tshs ${fmt(c.half.price)}/=`:'Dozi Kamili peke yake';
+  document.getElementById('pd-full').textContent=hasDisc
+    ?`Tshs ${fmt(discFull)}/= (was ${fmt(c.full.price)}/= — -${pd.discount}%)`
+    :`Tshs ${fmt(c.full.price)}/=`;
+  document.getElementById('pd-order-btn').onclick=()=>quickOrder(condId);
+  document.getElementById('modal-prod').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+
+function quickOrder(condId){
+  const c=CONDITIONS.find(x=>x.id===condId);
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  const prodData=JSON.parse(localStorage.getItem(LS.PROD_DATA)||'{}');
+  const pd=prodData[condId]||{};
+  const hasDisc=pd.discount;
+  const discFull=hasDisc?Math.round(c.full.price*(1-parseFloat(pd.discount)/100)):c.full.price;
+  const msg=`💊 *NINATAKA KUAGIZA — JOS NATURAL HERBS*\n\n👤 Naitwa: ${U.name||'Mteja'}\n📱 WhatsApp: ${U.phone||'—'}\n\n🌿 *Dawa:* ${c.dawa}\n💰 *Bei:* Tshs ${fmt(discFull)}/=\n\n⚡ Nataka dawa ya asili ya Dr. Revo!\n\n💳 Lipa Namba: 67363327 (JOS NATURAL HERBS)`;
+  window.open(`https://wa.me/255652421286?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// ── CONDITIONS ──
+function renderConditions(){
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  const grid=document.getElementById('cond-grid');
+  if(!grid) return;
+  grid.innerHTML=CONDITIONS.map(c=>{
+    const img=imgs[c.id];
+    return `<div class="ccard" id="cc-${c.id}" onclick="selectCond('${c.id}')">
+      ${img?`<img class="ccard-img" src="${img}" alt="${c.dawa}">`:`<span class="cciph">${c.icon}</span>`}
+      <div class="ccn">${c.name}</div>
+      <div class="ccd">💊 ${c.dawa}</div>
+    </div>`;
+  }).join('');
+}
+
+function selectCond(id){
+  document.querySelectorAll('.ccard').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('cc-'+id)?.classList.add('sel');
+  QS.cond=CONDITIONS.find(c=>c.id===id);
+  QS.q=0; QS.ans=[];
+  document.getElementById('rbox').classList.remove('on');
+  document.getElementById('fbox').classList.remove('on');
+  const qb=document.getElementById('qbox');
+  qb.classList.add('on');
+  document.getElementById('qtitle').textContent=`Upimaji — ${QS.cond.name}`;
+  showQ();
+  setTimeout(()=>qb.scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+
+function showQ(){
+  const q=QS.cond.questions[QS.q];
+  const tot=QS.cond.questions.length;
+  const pct=Math.round(((QS.q+1)/tot)*100);
+  document.getElementById('prog-lbl').textContent=`Swali ${QS.q+1} ya ${tot}`;
+  document.getElementById('prog-pct').textContent=pct+'%';
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('qnum').textContent=`SWALI ${QS.q+1} — ${QS.cond.name.toUpperCase()}`;
+  document.getElementById('qtxt').textContent=q.q;
+  document.getElementById('qhint').textContent='💡 '+q.hint;
+  const by=document.getElementById('btn-y'), bn=document.getElementById('btn-n');
+  by.classList.remove('picked'); bn.classList.remove('picked');
+  by.disabled=false; bn.disabled=false;
+}
+
+function answerQ(val){
+  QS.ans.push(val);
+  (val?document.getElementById('btn-y'):document.getElementById('btn-n')).classList.add('picked');
+  document.getElementById('btn-y').disabled=true;
+  document.getElementById('btn-n').disabled=true;
+  setTimeout(()=>{
+    QS.q++;
+    if(QS.q<QS.cond.questions.length) showQ();
+    else showResult();
+  },580);
+}
+
+function showResult(){
+  const score=QS.ans.filter(Boolean).length;
+  const isSev=score>=6;
+  const pct=Math.round((score/10)*100);
+  document.getElementById('rc-s').textContent=`Dr. Revo amebaini una changamoto ya ${QS.cond.name}. Dalili ${score}/10 zimepatikana — hali yako ni ${isSev?'ya kati hadi sugu':'ya awali'}. Dawa: ${QS.cond.dawa}.`;
+  const sf=document.getElementById('sevfill');
+  sf.style.width='0%';
+  sf.style.background=isSev?'linear-gradient(90deg,#f59e0b,#dc2626)':'linear-gradient(90deg,#10b981,#f59e0b)';
+  setTimeout(()=>sf.style.width=pct+'%',300);
+  document.getElementById('sevtxt').textContent=`Dalili ${score}/10 — ${isSev?'Hali Sugu: Dozi Kamili inapendekezwa':'Hali ya Awali: Nusu Dozi inatosha'}`;
+  renderTestimonials();
+  renderPricing(isSev);
+  document.getElementById('qbox').classList.remove('on');
+  const rb=document.getElementById('rbox');
+  rb.classList.add('on');
+  setTimeout(()=>rb.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  // Update user dawa
+  updateUserDawa(QS.cond.dawa);
+}
+
+function renderTestimonials(){
+  const extras=JSON.parse(localStorage.getItem(LS.TESTI)||'{}');
+  const condExtras=extras[QS.cond.id]||[];
+  const all=[...QS.cond.testimonials,...condExtras];
+  document.getElementById('tgrid').innerHTML=all.map(t=>`
+    <div class="tcard">
+      ${t.img?`<img class="tcard-img" src="${t.img}" alt="Ushahidi">`:''}
+      <div class="twa">${t.t}</div>
+      <div class="tmeta">
+        <div class="tav2">${t.e||'👤'}</div>
+        <div>
+          <div class="tname">${t.n}</div>
+          <div class="tloc">📍 ${t.l}</div>
+          <div class="tstars">★★★★★</div>
+        </div>
+      </div>
+      <span class="tpill">✓ ${t.r}</span>
+    </div>`).join('');
+}
+
+function fmt(n){return n.toLocaleString('sw-TZ');}
+
+function renderPricing(isSev){
+  const c=QS.cond;
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  const img=imgs[c.id];
+  document.getElementById('price-hl').textContent=`Kulingana na majibu yako (dalili ${QS.ans.filter(Boolean).length}/10), Dr. Revo anapendekeza: ${c.dawa}`;
+  const mw=document.getElementById('med-img-wrap');
+  mw.innerHTML=img?`<img class="med-img" src="${img}" alt="${c.dawa}">`:`<div class="med-ph">${c.icon}</div>`;
+  if(c.bawasiriOnly){
+    QS.dose='full';
+    document.getElementById('dose-wrap').innerHTML=`
+      <div class="dgrid single">
+        <div class="dcard sel">
+          <div class="rec-badge">⭐ Dozi Pekee — Matokeo Kamili</div>
+          <div class="dname">DOZI KAMILI — Balm + Blend</div>
+          <div class="dsev">Balm (Nje) + Blend (Ndani) — Inapiga Pande Zote Mbili</div>
+          <div class="dnew" style="margin-top:9px;">Tshs ${fmt(c.full.price)}/=</div>
+          <ul class="dfeats" style="margin-top:10px;">
+            <li>Hemorrhoid Balm — inatumika nje moja kwa moja</li>
+            <li>Hemorrhoid Blend — inapiga chanzo kutoka ndani</li>
+            <li>Matokeo yanaanza ndani ya SIKU 3–7 PEKEE</li>
+            <li>Lipa delivery kwanza — dawa lipa upokeapo</li>
+          </ul>
+        </div>
+      </div>`;
+  } else {
+    const halfP=c.half.price;
+    const fullFinal=Math.round(c.full.price*0.95);
+    const disc=c.full.price-fullFinal;
+    QS.dose=isSev?'full':'half';
+    document.getElementById('dose-wrap').innerHTML=`
+      <div class="dgrid">
+        <div class="dcard ${!isSev?'sel':''}" id="dc-half" onclick="pickDose('half')">
+          ${!isSev?'<div class="rec-badge">⭐ Inapendekezwa</div>':''}
+          <div class="dname">NUSU DOZI</div><div class="dsev">Tatizo la Awali</div>
+          <div class="dnew" style="margin-top:8px;">Tshs ${fmt(halfP)}/=</div>
+          <ul class="dfeats" style="margin-top:9px;">
+            <li>Matokeo ndani ya siku 7–14</li>
+            <li>Inafaa kwa tatizo la awali</li>
+            <li>Lipa delivery kwanza</li>
+          </ul>
+        </div>
+        <div class="dcard ${isSev?'sel':''}" id="dc-full" onclick="pickDose('full')">
+          ${isSev?'<div class="rec-badge">⭐ Inapendekezwa</div>':''}
+          <div class="dname">DOZI KAMILI</div><div class="dsev">Tatizo Sugu</div>
+          <div class="dold">Tshs ${fmt(c.full.price)}/=</div>
+          <div class="dnew">Tshs ${fmt(fullFinal)}/=</div>
+          <span class="ddisc">-5% — Akiba Tshs ${fmt(disc)}/=</span>
+          <ul class="dfeats" style="margin-top:9px;">
+            <li>Matokeo kamili ya kudumu</li>
+            <li>Inafaa kwa tatizo sugu</li>
+            <li>Akiba ya Tshs ${fmt(disc)}/=</li>
+          </ul>
+        </div>
+      </div>`;
+  }
+}
+
+function pickDose(d){
+  QS.dose=d;
+  document.getElementById('dc-half')?.classList.toggle('sel',d==='half');
+  document.getElementById('dc-full')?.classList.toggle('sel',d==='full');
+}
+
+function showFbox(){
+  const fb=document.getElementById('fbox');
+  fb.classList.add('on');
+  document.getElementById('o-name').value=U.name||'';
+  document.getElementById('o-phone').value=U.phone||'';
+  setTimeout(()=>fb.scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+
+function submitOrder(){
+  const name=document.getElementById('o-name').value.trim();
+  const phone=document.getElementById('o-phone').value.trim();
+  const region=document.getElementById('o-region').value.trim();
+  if(!name||!phone||!region){alert('Tafadhali jaza sehemu zote (*).');return;}
+  const c=QS.cond;
+  const isK=QS.dose==='full'||c.bawasiriOnly;
+  const baseP=isK?c.full.price:c.half?.price;
+  const finalP=isK&&!c.bawasiriOnly?Math.round(baseP*0.95):baseP;
+  let qa='';
+  c.questions.forEach((q,i)=>{if(QS.ans[i]!==undefined)qa+=`\n${i+1}. ${q.q.substring(0,46)}... → ${QS.ans[i]?'✅ NDIYO':'❌ HAPANA'}`;});
+  const msg=`🏥 *ODA MPYA — JOS DIGITAL CLINIC*\n\n👤 *Jina:* ${name}\n📱 *WhatsApp:* ${phone}\n🗺️ *Mkoa:* ${region}\n\n🩺 *TATIZO:* ${c.name}\n💊 *DAWA:* ${c.dawa}\n📦 *DOZI:* ${isK?'DOZI KAMILI':'NUSU DOZI'}\n💰 *BEI:* Tshs ${fmt(finalP)}/=${isK&&!c.bawasiriOnly?' (-5%)':''}\n📊 *DALILI:* ${QS.ans.filter(Boolean).length}/10\n\n📋 *MAJIBU YA MASWALI 10:*${qa}\n\n🚚 Delivery kwanza — Dawa lipa upokeapo\n💳 Lipa Namba: 67363327 (JOS NATURAL HERBS)\n\n⚡ Matokeo yanaanza ndani ya SIKU 3 HADI 7 PEKEE!`;
+  window.open(`https://wa.me/255652421286?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('ty-msg').textContent=`Asante ${name}! Oda yako imewasilishwa kwa Dr. Revo. Atawasiliana nawe WhatsApp ndani ya dakika 30.`;
+  document.getElementById('ty-ovl').classList.add('on');
+  updateUserDawa(c.dawa);
+}
+
+function closeTY(){document.getElementById('ty-ovl').classList.remove('on');}
+
+function updateUserDawa(dawa){
+  let users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  const idx=users.findIndex(u=>u.phone===U.phone);
+  if(idx>=0){users[idx].dawa=dawa;localStorage.setItem(LS.USERS,JSON.stringify(users));}
+}
+
+// ══ ACADEMY ══
+function initAcademy(){
+  renderChips();
+  renderPlants(PLANTS);
+  renderAcadMediaScroll();
+}
+
+function renderAcadMediaScroll(){
+  const videos=JSON.parse(localStorage.getItem(LS.MEDIA_V)||'[]');
+  const posters=JSON.parse(localStorage.getItem(LS.MEDIA_P)||'[]');
+  const all=[...videos,...posters];
+  const scroll=document.getElementById('acad-posters-scroll');
+  if(!scroll) return;
+  if(!all.length){
+    scroll.innerHTML='<div class="poster-empty">Dr. Revo bado hajaongeza picha au videos.</div>';
+    return;
+  }
+  scroll.innerHTML=all.map((item,i)=>{
+    const isV=i<videos.length;
+    const idx=isV?i:i-videos.length;
+    return `<div class="poster-item" onclick="openMediaFull('${isV?'video':'poster'}','${idx}')">
+      ${isV?`<video src="${item.src}" muted playsinline preload="metadata"></video>`:`<img src="${item.src}" loading="lazy">`}
+      <div class="poster-overlay"><div class="play-ic">${isV?'▶':'🔍'}</div></div>
+    </div>`;
+  }).join('');
+}
+
+// Timer
+function startTimer(){
+  const bar=document.getElementById('timer-bar');
+  const tb=document.getElementById('tb-timer');
+  const ds=document.getElementById('acad-days-stat');
+  const thdr=document.getElementById('timer-hdr');
+  bar.classList.add('on');
+  if(thdr) thdr.style.display='block';
+  function tick(){
+    const diff=Math.max(0,AcadExpiry-Date.now());
+    const days=Math.floor(diff/86400000);
+    const hrs=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    const mins=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    const secs=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    if(tb) tb.innerHTML=`${days}d ${hrs}:<span>${mins}</span>:${secs}`;
+    if(ds) ds.textContent=days;
+    if(diff===0){
+      bar.classList.remove('on');
+      document.getElementById('acad-lock').style.display='block';
+      document.getElementById('acad-content').style.display='none';
+    }
+  }
+  tick(); setInterval(tick,1000);
+}
+
+// Academy search & filter
+const ALL_DIS=[...new Set(PLANTS.flatMap(p=>p.d))].sort();
+
+function renderChips(){
+  const wrap=document.getElementById('chips-wrap');
+  if(!wrap) return;
+  const top=['Zote',...ALL_DIS.slice(0,22)];
+  wrap.innerHTML=top.map(d=>`<div class="chip${d==='Zote'?' on':''}" onclick="setFilter('${d}')">${d}</div>`).join('');
+}
+
+function setFilter(d){
+  CdSearch.filter=d==='Zote'?null:d;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.textContent===d));
+  applyFilters();
+}
+
+function searchHerbs(q){
+  CdSearch.q=q.toLowerCase().trim();
+  const prev=document.getElementById('vis-prev');
+  if(CdSearch.q.length>1){
+    const m=PLANTS.find(p=>p.n.toLowerCase().includes(CdSearch.q)||p.l.toLowerCase().includes(CdSearch.q)||p.d.some(d=>d.toLowerCase().includes(CdSearch.q)));
+    if(m){
+      prev.classList.add('on');
+      prev.innerHTML=`
+        <div class="vpimg">${m.e}</div>
+        <div class="vpinfo">
+          <h3>${m.n}</h3>
+          <p>${m.l} — ${m.nat}</p>
+          <div class="vptags">${m.d.slice(0,5).map(d=>`<span class="vptag">${d}</span>`).join('')}</div>
+          <button class="vpbtn" onclick="openPlant(${m.id})">📖 Maelezo Kamili</button>
+        </div>`;
+    } else {prev.classList.remove('on');}
+  } else {prev.classList.remove('on');}
+  applyFilters();
+}
+
+function applyFilters(){
+  let list=PLANTS;
+  if(CdSearch.q) list=list.filter(p=>p.n.toLowerCase().includes(CdSearch.q)||p.l.toLowerCase().includes(CdSearch.q)||p.d.some(d=>d.toLowerCase().includes(CdSearch.q)));
+  if(CdSearch.filter) list=list.filter(p=>p.d.includes(CdSearch.filter));
+  document.getElementById('res-cnt').textContent=`Mimea ${list.length} inapatikana`;
+  renderPlants(list);
+}
+
+function renderPlants(list){
+  const grid=document.getElementById('plant-grid');
+  if(!grid) return;
+  grid.innerHTML=list.map(p=>`
+    <div class="pcard" onclick="openPlant(${p.id})">
+      <div class="pcimg">${p.e}</div>
+      <div class="pcbody">
+        <span class="pcnum">${p.d.length} Magonjwa</span>
+        <div class="pcname">${p.n}</div>
+        <div class="pclatin">${p.l}</div>
+        <div class="pctags">
+          ${p.d.slice(0,3).map(d=>`<span class="pctag">${d}</span>`).join('')}
+          ${p.d.length>3?`<span class="pctag">+${p.d.length-3}</span>`:''}
+        </div>
+      </div>
+    </div>`).join('');
+  // Restart auto-scroll after content update
+}
+
+function openPlant(id){
+  const p=PLANTS.find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('m-e').textContent=p.e;
+  document.getElementById('m-t').textContent=`${p.n} — ${p.nat}`;
+  document.getElementById('m-l').textContent=p.l;
+  document.getElementById('m-dis').innerHTML=p.d.map(d=>`<div class="di">${d}</div>`).join('');
+  document.getElementById('m-prep').innerHTML=p.p.map((s,i)=>`<div class="ps"><div class="psn">${i+1}</div><div class="pst">${s}</div></div>`).join('');
+  openModal('modal-plant');
+}
+
+function orderFromModal(){
+  const msg=`🌿 Habari Dr. Revo! Nimetoka JOS Royal Herbal Academy. Nataka kujua zaidi kuhusu dawa za asili. Ninaomba msaada wa kibinafsi.`;
+  window.open(`https://wa.me/255652421286?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// ══ MODAL HELPERS ══
+function openModal(id){document.getElementById(id).classList.add('on');document.body.style.overflow='hidden';}
+function closeMod(id,e){
+  if(!e||e.target===document.getElementById(id)){
+    document.getElementById(id).classList.remove('on');
+    document.body.style.overflow='';
+    // Stop video if media modal
+    if(id==='modal-media'){const v=document.querySelector('#media-fullscreen-content video');if(v)v.pause();}
+  }
+}
+
+// ══ UPGRADE / PAYMENT ══
+function openUpgrade(){openModal('modal-upg');}
+function selTier(el,tier,price,days){
+  document.querySelectorAll('.pt').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+  SelTier={tier,price,days};
+}
+function payNow(){
+  const msg=`💳 Nataka kulipa Access ya JOS Royal Herbal Academy.\n\nJina: ${U.name||'Mgeni'}\nSimu: ${U.phone||'—'}\n${SelTier.days?`Kiwango: ${SelTier.tier} (Siku ${SelTier.days})\nBei: Tshs ${SelTier.price.toLocaleString()}/=`:''}\n\nLipa Namba: 67363327 (JOS NATURAL HERBS)`;
+  window.open(`https://wa.me/255652421286?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function sendProof(){
+  const msg=`💬 USHAHIDI WA MALIPO — JOS Royal Herbal Academy\n\nJina: ${U.name||'Mgeni'}\nSimu: ${U.phone||'—'}\n${SelTier.days?`Kiwango: ${SelTier.tier} (Siku ${SelTier.days})\nBei: Tshs ${SelTier.price.toLocaleString()}/=`:''}\n\nTuma screenshot ya malipo pamoja na ujumbe huu.`;
+  window.open(`https://wa.me/255652421286?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// ── CODE ACTIVATION — overridden below in v6 section with 90s OTP ──
+
+// ══════════════════════════════════════════════════════════
+// V6 NEW FEATURES — Logo, Broadcast, Share/Referral, OTP
+// ══════════════════════════════════════════════════════════
+
+// Override LS with v6 keys
+const LS2={
+  USER:'jos6_user',USERS:'jos6_users',
+  CODES:'jos6_codes',USED:'jos6_used',
+  MED_IMGS:'jos6_medimgs',TESTI:'jos6_testi',
+  MEDIA_V:'jos6_videos',MEDIA_P:'jos6_posters',
+  PROD_DATA:'jos6_proddata',
+  ACAD_EXPIRY:'jos6_expiry',
+  BROADCAST:'jos6_broadcast',
+  LOGO:'jos6_logo',
+  BRAND:'jos6_brand',
+  REFERRALS:'jos6_referrals'
+};
+// Redirect LS references to LS2
+Object.keys(LS2).forEach(k=>{ LS[k]=LS2[k]; });
+
+// OTP timers store (already declared above as let SelPkg)
+// Using window scope to avoid redeclaration
+if(typeof window.OtpTimers==='undefined') window.OtpTimers={};
+
+// ── LOGO ──
+function applyLogoEverywhere(){
+  const logo=localStorage.getItem(LS.LOGO);
+  if(!logo) return;
+  const elems={
+    'gate-logo-wrap':`<img src="${logo}" alt="Logo" style="width:100%;height:100%;object-fit:cover;">`,
+    'choice-logo':`<img src="${logo}" alt="Logo" style="width:100%;height:100%;object-fit:cover;">`,
+    'clinic-hdr-logo':`<img src="${logo}" alt="Logo" style="width:100%;height:100%;object-fit:cover;">`,
+    'acad-hdr-logo':`<img src="${logo}" alt="Logo" style="width:100%;height:100%;object-fit:cover;">`,
+    'admin-logo-preview':`<img src="${logo}" alt="Logo" style="width:100%;height:100%;object-fit:cover;">`
+  };
+  Object.entries(elems).forEach(([id,html])=>{const el=document.getElementById(id);if(el) el.innerHTML=html;});
+}
+
+function uploadLogo(input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size>3*1024*1024){alert('Picha ni kubwa sana (3MB max).');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    localStorage.setItem(LS.LOGO,e.target.result);
+    applyLogoEverywhere();
+    alert('✅ Logo imehifadhiwa na inaonekana kwenye app yote!');
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+// ── BRAND ──
+function applyBrandNameEverywhere(){
+  const brand=localStorage.getItem(LS.BRAND)||'JOS NATURAL HERBS';
+  const ids={'gate-brand-name':brand,'clinic-hdr-name':brand+' — CLINIC'};
+  Object.entries(ids).forEach(([id,txt])=>{const el=document.getElementById(id);if(el)el.textContent=txt;});
+  const cfb=document.getElementById('clinic-footer-brand');
+  if(cfb) cfb.textContent=`${brand} — DR. REVO © 2026`;
+  const afb=document.getElementById('acad-footer-brand');
+  if(afb) afb.textContent=`${brand} — DR. REVO © 2026`;
+}
+function saveBrandName(val){localStorage.setItem(LS.BRAND,val);}
+function applyBrandName(){
+  const val=(document.getElementById('app-brand-name')?.value||'JOS NATURAL HERBS').trim();
+  localStorage.setItem(LS.BRAND,val);
+  applyBrandNameEverywhere();
+  alert('✅ Jina la brand limehifadhiwa!');
+}
+
+// ── BROADCAST ──
+function checkBroadcast(){
+  const bc=localStorage.getItem(LS.BROADCAST);
+  if(!bc) return;
+  try{
+    const msg=JSON.parse(bc);
+    if(!msg||!msg.text) return;
+    ['bc-banner-clinic','bc-banner-acad'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.classList.add('on');
+    });
+    const cm=document.getElementById('bc-msg-clinic');
+    const am=document.getElementById('bc-msg-acad');
+    if(cm) cm.textContent=msg.text;
+    if(am) am.textContent=msg.text;
+  }catch(e){}
+}
+function closeBroadcast(){
+  ['bc-banner-clinic','bc-banner-acad'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.classList.remove('on');
+  });
+}
+function previewBroadcast(text){
+  const prev=document.getElementById('bc-preview');
+  const pt=document.getElementById('bc-preview-text');
+  const cnt=document.getElementById('bc-count');
+  if(prev) prev.classList.toggle('on',text.length>0);
+  if(pt) pt.textContent=text;
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  if(cnt) cnt.textContent=`Wateja: ${users.length} wataona ujumbe huu`;
+}
+function sendBroadcast(){
+  const text=(document.getElementById('bc-text')?.value||'').trim();
+  if(!text){alert('Andika ujumbe kwanza.');return;}
+  localStorage.setItem(LS.BROADCAST,JSON.stringify({text,time:new Date().toLocaleString('sw')}));
+  checkBroadcast();
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  alert(`✅ Ujumbe umetumwa!\nWateja ${users.length} wataona ujumbe huu wakifungua app.`);
+}
+function clearBroadcast(){
+  if(!confirm('Futa ujumbe wa matangazo?')) return;
+  localStorage.removeItem(LS.BROADCAST);
+  closeBroadcast();
+  const el=document.getElementById('bc-text');
+  if(el) el.value='';
+  const prev=document.getElementById('bc-preview');
+  if(prev) prev.classList.remove('on');
+  alert('✅ Ujumbe umefutwa.');
+}
+function openBulkWA(){
+  const text=(document.getElementById('wa-bulk-text')?.value||'').trim();
+  if(!text){alert('Andika ujumbe wa WhatsApp kwanza.');return;}
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  if(!users.length){alert('Hakuna wateja bado.');return;}
+  const numbers=users.map(u=>u.phone).filter(p=>p&&p.length>5).join('\n');
+  const fullText=`NAMBA ZA WATEJA (${users.length}):\n${numbers}\n\nUJUMBE:\n${text}`;
+  navigator.clipboard?.writeText(fullText).then(()=>{
+    window.open(`https://wa.me/255652421286?text=${encodeURIComponent(text)}`,'_blank');
+    alert(`✅ Namba ${users.length} zamenakiliwa kwenye clipboard!\nPakua WhatsApp yako na utume.`);
+  }).catch(()=>alert(`Namba za wateja:\n${numbers}\n\nUjumbe:\n${text}`));
+}
+
+// ── SHARE & REFERRAL ──
+function shareApp(){
+  let refs=JSON.parse(localStorage.getItem(LS.REFERRALS)||'{}');
+  let userRef=refs[U.phone];
+  if(!userRef){
+    const code='REF-'+Math.random().toString(36).substr(2,6).toUpperCase();
+    refs[U.phone]={code,name:U.name,joins:0};
+    localStorage.setItem(LS.REFERRALS,JSON.stringify(refs));
+    userRef=refs[U.phone];
+  }
+  const brand=localStorage.getItem(LS.BRAND)||'JOS Natural Herbs';
+  const appUrl=window.location.href.split('?')[0]+'?ref='+userRef.code;
+  const msg=`🌿 *${brand} — App ya Dawa za Asili!*\n\n✅ Upimaji wa AI wa matatizo ya kiafya\n✅ Maktaba ya Mimea 100 ya Dawa\n✅ Matokeo ndani ya SIKU 3–7 PEKEE!\n\n👨‍⚕️ DR. REVO | 📱 +255 652 421 286\n\n🔗 Fungua App Hii BURE:\n${appUrl}\n\n💊 Dawa za Asili 100% | Tanzania`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
+  updateChoiceReferral();
+}
+function trackRefJoin(refCode){
+  let refs=JSON.parse(localStorage.getItem(LS.REFERRALS)||'{}');
+  const ownerPhone=Object.keys(refs).find(k=>refs[k].code===refCode);
+  if(!ownerPhone) return;
+  refs[ownerPhone].joins=(refs[ownerPhone].joins||0)+1;
+  if(refs[ownerPhone].joins>=50&&!refs[ownerPhone].rewarded){
+    refs[ownerPhone].rewarded=true;
+  }
+  localStorage.setItem(LS.REFERRALS,JSON.stringify(refs));
+}
+function checkRefInURL(){
+  const params=new URLSearchParams(window.location.search);
+  const ref=params.get('ref');
+  if(ref){
+    const fi=document.getElementById('g-ref');
+    if(fi) fi.value=ref.toUpperCase();
+  }
+}
+function updateChoiceReferral(){
+  const refs=JSON.parse(localStorage.getItem(LS.REFERRALS)||'{}');
+  const ur=refs[U.phone];
+  const track=document.getElementById('ref-track-choice');
+  if(!ur||!track) return;
+  track.style.display='block';
+  const joins=ur.joins||0;
+  const pct=Math.min(100,Math.round((joins/50)*100));
+  const fill=document.getElementById('ref-fill-choice');
+  const count=document.getElementById('ref-count-choice');
+  if(fill) fill.style.width=pct+'%';
+  if(count) count.textContent=`${joins} / 50 watu wamefuata link yako${joins>=50?' — 🎉 Umepata Mwezi Bure!':''}`;
+  if(joins>=50&&ur.rewarded&&AcadExpiry<Date.now()){
+    AcadExpiry=Date.now()+(30*24*60*60*1000);
+    localStorage.setItem(LS.ACAD_EXPIRY,AcadExpiry.toString());
+    alert('🎉 Hongera! Umeshiriki kwa watu 50+. Umepata MWEZI 1 BURE wa Academy!');
+  }
+}
+
+// ── OTP 90-SECOND EXPIRY for codes ──
+function startOtpCountdown(ctx,code){
+  if(OtpTimers[ctx]) clearInterval(OtpTimers[ctx]);
+  const timerEl=document.getElementById(`${ctx}-otp-countdown`)||document.getElementById(`${ctx}-otp-timer`);
+  const secsEl=document.getElementById(`${ctx}-otp-secs`);
+  if(!timerEl||!secsEl) return;
+  timerEl.classList.add('on');
+  let secs=90;
+  secsEl.textContent=secs;
+  OtpTimers[ctx]=setInterval(()=>{
+    secs--;
+    secsEl.textContent=secs;
+    if(secs<=0){
+      clearInterval(OtpTimers[ctx]);
+      delete OtpTimers[ctx];
+      timerEl.classList.remove('on');
+      renderCodePanel();
+    }
+  },1000);
+}
+
+// ── OVERRIDE registerUser to handle referral & new LS keys ──
+function registerUser(){
+  const name=document.getElementById('g-name').value.trim();
+  const phone=document.getElementById('g-phone').value.trim();
+  if(!name||!phone){alert('Tafadhali jaza sehemu zote (Jina na WhatsApp).');return;}
+  const refCode=(document.getElementById('g-ref')?.value||'').trim().toUpperCase();
+  U={name,phone};
+  localStorage.setItem(LS.USER,JSON.stringify(U));
+  let users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  if(!users.find(u=>u.phone===phone)){
+    users.unshift({name,phone,time:new Date().toLocaleString('sw'),dawa:'',ref:refCode});
+    localStorage.setItem(LS.USERS,JSON.stringify(users));
+  }
+  if(refCode&&refCode.startsWith('REF-')) trackRefJoin(refCode);
+  const brand=localStorage.getItem(LS.BRAND)||'JOS Natural Herbs';
+  const msg=`Habari Dr. Revo, nimehifadhi namba yako, naomba kuingia ${brand} — Clinic na Academy. Naitwa ${name}.`;
+  window.open(`https://wa.me/255652421286?text=${encodeURIComponent(msg)}`,'_blank');
+  setTimeout(()=>{
+    showPage('pg-choice');
+    const cn=document.getElementById('ch-name');
+    if(cn) cn.textContent=name;
+    updateChoiceReferral();
+  },1200);
+}
+
+// ── OVERRIDE init to include v6 features ──
+const _origOnload=window.onload;
+window.onload=function(){
+  const savedUser=localStorage.getItem(LS.USER);
+  const savedExpiry=localStorage.getItem(LS.ACAD_EXPIRY);
+  if(savedExpiry) AcadExpiry=parseInt(savedExpiry)||0;
+  applyLogoEverywhere();
+  applyBrandNameEverywhere();
+  checkBroadcast();
+  checkRefInURL();
+  if(savedUser){
+    try{
+      U=JSON.parse(savedUser);
+      showPage('pg-choice');
+      const cn=document.getElementById('ch-name');
+      if(cn) cn.textContent=U.name||'Rafiki';
+      updateChoiceReferral();
+      return;
+    }catch(e){localStorage.removeItem(LS.USER);}
+  }
+};
+
+// ── OVERRIDE showPage to also apply logo ──
+function showPage(id){
+  ['pg-gate','pg-choice','pg-clinic','pg-academy'].forEach(p=>{
+    const el=document.getElementById(p);
+    if(el) el.classList.remove('on');
+  });
+  document.getElementById(id).classList.add('on');
+  window.scrollTo(0,0);
+  applyLogoEverywhere();
+}
+
+// ── OVERRIDE goClinic to include broadcast ──
+function goClinic(){
+  showPage('pg-clinic');
+  const cn=document.getElementById('clinic-name');
+  if(cn) cn.textContent=U.name||'Rafiki';
+  initClinic();
+  checkBroadcast();
+}
+
+// ── OVERRIDE goAcademy to include broadcast ──
+function goAcademy(){
+  const now=Date.now();
+  if(AcadExpiry===0){
+    AcadExpiry=now+(7*24*60*60*1000);
+    localStorage.setItem(LS.ACAD_EXPIRY,AcadExpiry.toString());
+  }
+  showPage('pg-academy');
+  checkBroadcast();
+  if(now>AcadExpiry){
+    document.getElementById('acad-lock').style.display='block';
+    document.getElementById('acad-content').style.display='none';
+  } else {
+    document.getElementById('acad-lock').style.display='none';
+    document.getElementById('acad-content').style.display='block';
+    initAcademy();
+    startTimer();
+  }
+}
+
+// ── OVERRIDE validateUserCode with 90s expiry ──
+function validateUserCode(code,ctx){
+  if(code==='REVO-KING-2026') return {ok:true,days:365};
+  const codes=JSON.parse(localStorage.getItem(LS.CODES)||'[]');
+  const co=codes.find(c=>c.code===code);
+  if(!co) return {ok:false,msg:'Code hii haipo. Wasiliana na Dr. Revo: +255 652 421 286'};
+  if(co.used) return {ok:false,msg:'Code hii imeshatumika. Wasiliana na Dr. Revo kupata code mpya.'};
+  const elapsed=co.generatedAt?(Date.now()-co.generatedAt)/1000:0;
+  if(co.generatedAt&&elapsed>90) return {ok:false,msg:`Code hii imeisha (ilikuwa valid sekunde 90 tu). Generate code mpya kutoka Admin Panel.`};
+  co.used=true; co.usedTime=new Date().toLocaleString('sw'); co.usedBy=U.phone;
+  localStorage.setItem(LS.CODES,JSON.stringify(codes));
+  return {ok:true,days:co.days||30};
+}
+
+// ── OVERRIDE activateCode to handle OTP timer display ──
+function activateCode(rawCode,ctx){
+  const code=(rawCode||'').trim().toUpperCase();
+  if(!code){alert('Weka code yako kwanza.');return;}
+  const result=validateUserCode(code,ctx);
+  if(result.ok){
+    const base=Math.max(AcadExpiry,Date.now());
+    AcadExpiry=base+(result.days*86400000);
+    localStorage.setItem(LS.ACAD_EXPIRY,AcadExpiry.toString());
+    if(OtpTimers[ctx]){clearInterval(OtpTimers[ctx]);delete OtpTimers[ctx];}
+    const timerEl=document.getElementById(`${ctx}-otp-timer`);
+    if(timerEl) timerEl.classList.remove('on');
+    closeMod('modal-upg');
+    alert(`✅ Code imekubaliwa! Umepata siku ${result.days} za ufikiaji zimeongezwa. Asante!`);
+    goAcademy();
+  } else {
+    alert('❌ '+result.msg);
+  }
+}
+
+// ── OVERRIDE submitLockCode / submitUpgCode ──
+function submitLockCode(){activateCode(document.getElementById('lock-code').value,'lock');}
+function submitUpgCode(){activateCode(document.getElementById('upg-code').value,'upg');}
+
+
+</script>
+</body>
+</html>
