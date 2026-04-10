@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOS ADMIN PANEL — Dr. Revo</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --e1:#011c10;--e2:#064e3b;--e3:#065f46;--e4:#047857;--e5:#10b981;--e6:#d1fae5;
+  --g1:#78350f;--g2:#b45309;--g3:#d4af37;--g4:#f5cc50;--g5:#fef9c3;
+  --red:#dc2626;--bg:#f0fdf6;--w:#fff;--tx:#0f1f14;--mu:#4b7a5e;
+  --rad:12px;--sh:0 4px 20px rgba(6,78,59,0.12);--font:'Nunito',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:#0a1a12;color:var(--tx);min-height:100vh;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes popIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.4);}50%{box-shadow:0 0 0 10px rgba(212,175,55,0);}}
+@keyframes countdown-pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* LOGIN */
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:linear-gradient(150deg,#010e08,#064e3b,#010e08);}
+.login-card{background:#fff;border-radius:20px;max-width:400px;width:100%;
+  overflow:hidden;border:2px solid var(--g3);box-shadow:0 28px 70px rgba(0,0,0,0.5);
+  animation:popIn .5s ease;}
+.lc-top{background:linear-gradient(135deg,#010e08,#064e3b);padding:28px 22px 22px;text-align:center;}
+.lc-logo{width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto 12px;
+  border:3px solid var(--g3);background:linear-gradient(135deg,var(--e3),var(--e4));
+  display:flex;align-items:center;justify-content:center;font-size:2.3rem;}
+.lc-logo img{width:100%;height:100%;object-fit:cover;}
+.lc-brand{color:var(--g4);font-size:1.1rem;font-weight:900;margin-bottom:3px;}
+.lc-sub{color:rgba(255,255,255,.5);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;}
+.lc-body{padding:24px 22px;}
+.lc-body h3{font-size:1rem;font-weight:900;color:var(--e2);margin-bottom:5px;text-align:center;}
+.lc-body p{font-size:.78rem;color:var(--mu);text-align:center;margin-bottom:18px;}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-weight:800;font-size:.77rem;color:#374151;margin-bottom:4px;}
+.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid #d1fae5;border-radius:9px;
+  padding:11px 13px;font-family:var(--font);font-size:.9rem;outline:none;
+  transition:border-color .2s;background:#f9fffe;color:var(--tx);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--e4);}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;
+  border:none;font-family:var(--font);font-weight:900;font-size:.97rem;
+  padding:13px;border-radius:50px;cursor:pointer;animation:pulse 2s infinite;
+  display:flex;align-items:center;justify-content:center;gap:8px;}
+.login-btn:active{transform:scale(0.98);}
+
+/* ADMIN APP */
+#admin-app{display:none;min-height:100vh;background:var(--bg);}
+#admin-app.on{display:block;}
+
+/* HEADER */
+.adm-hdr{background:linear-gradient(135deg,#010e08,var(--e2));padding:0 14px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:2px solid var(--g3);position:sticky;top:0;z-index:100;
+  box-shadow:0 3px 16px rgba(0,0,0,.4);}
+.adm-hdr-left{display:flex;align-items:center;gap:10px;}
+.adm-logo{width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid var(--g3);
+  background:linear-gradient(135deg,var(--e3),var(--e4));
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.adm-logo img{width:100%;height:100%;object-fit:cover;}
+.adm-hdr-name{color:var(--g4);font-size:.83rem;font-weight:900;}
+.adm-hdr-sub{color:rgba(255,255,255,.4);font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;}
+.adm-hdr-right{display:flex;align-items:center;gap:8px;}
+.logout-btn{background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);
+  color:#fca5a5;font-family:var(--font);font-weight:800;font-size:.68rem;
+  padding:6px 12px;border-radius:18px;cursor:pointer;}
+
+/* MAIN TABS */
+.main{max-width:1000px;margin:0 auto;padding:16px 13px 60px;}
+.tab-bar{display:flex;gap:0;margin-bottom:18px;border-radius:10px;overflow:hidden;
+  border:1.5px solid var(--e6);background:#fff;box-shadow:var(--sh);}
+.tab-btn{flex:1;padding:11px 6px;border:none;background:transparent;
+  font-family:var(--font);font-weight:800;font-size:.69rem;cursor:pointer;
+  color:var(--mu);transition:all .18s;display:flex;flex-direction:column;
+  align-items:center;gap:3px;border-right:1px solid var(--e6);}
+.tab-btn:last-child{border-right:none;}
+.tab-btn.on{background:linear-gradient(135deg,var(--e2),var(--e3));color:#fff;}
+.tab-btn .ti{font-size:1.2rem;}
+.tab-btn .tl{font-size:.58rem;}
+.tab-sec{display:none;animation:fadeUp .28s ease;}
+.tab-sec.on{display:block;}
+
+/* CARDS / SECTIONS */
+.sec-card{background:#fff;border-radius:var(--rad);padding:18px;margin-bottom:14px;
+  box-shadow:var(--sh);border:1px solid var(--e6);}
+.sec-title{font-weight:900;font-size:.9rem;color:var(--e2);margin-bottom:13px;
+  display:flex;align-items:center;gap:8px;}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--g3),transparent);}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:400px){.stats-grid{grid-template-columns:1fr;}}
+.stat{background:var(--bg);border-radius:9px;padding:13px;text-align:center;border:1px solid var(--e6);}
+.stat-v{font-size:1.8rem;font-weight:900;color:var(--e3);}
+.stat-l{font-size:.61rem;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border-radius:24px;
+  border:none;font-family:var(--font);font-weight:800;font-size:.76rem;cursor:pointer;
+  transition:all .15s;}
+.btn:hover{transform:translateY(-1px);}
+.btn:active{transform:scale(.97);}
+.btn.g{background:var(--e3);color:#fff;}
+.btn.gld{background:var(--g3);color:#111;}
+.btn.r{background:var(--red);color:#fff;}
+.btn.blue{background:#3b82f6;color:#fff;}
+.btn.wa{background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;}
+.btn-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+
+/* TABLE */
+.tbl{border-radius:9px;overflow:hidden;border:1px solid var(--e6);}
+.tbl-hdr{background:linear-gradient(135deg,var(--e2),var(--e3));display:grid;
+  grid-template-columns:2fr 1.5fr 1fr 1fr;gap:6px;
+  padding:9px 12px;font-size:.63rem;font-weight:900;color:var(--g4);
+  letter-spacing:.07em;text-transform:uppercase;}
+.tbl-row{display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr;gap:6px;
+  padding:9px 12px;border-bottom:1px solid var(--e6);font-size:.77rem;
+  align-items:center;transition:background .1s;}
+.tbl-row:hover{background:var(--bg);}
+.tbl-row:last-child{border-bottom:none;}
+.un{font-weight:900;color:var(--e2);}
+.uph{color:var(--mu);font-size:.69rem;}
+.udawa{font-size:.64rem;background:var(--e6);color:var(--e2);
+  padding:2px 7px;border-radius:8px;font-weight:700;}
+.utm{font-size:.67rem;color:var(--mu);}
+.empty-tbl{text-align:center;padding:28px;color:var(--mu);font-size:.8rem;}
+@media(max-width:500px){.tbl-hdr,.tbl-row{grid-template-columns:1fr 1fr!important;}}
+
+/* BROADCAST */
+.bc-preview{background:linear-gradient(135deg,var(--e1),var(--e2));border-radius:9px;
+  padding:13px 15px;margin:10px 0;color:#fff;font-size:.82rem;line-height:1.6;display:none;}
+.bc-preview.on{display:block;}
+.bc-count{font-size:.73rem;color:var(--mu);margin-bottom:9px;}
+
+/* LOGO UPLOAD */
+.logo-preview-wrap{text-align:center;margin-bottom:13px;}
+.logo-preview{width:90px;height:90px;border-radius:50%;overflow:hidden;margin:0 auto;
+  border:3px solid var(--g3);background:linear-gradient(135deg,var(--e3),var(--e4));
+  display:flex;align-items:center;justify-content:center;font-size:2.3rem;}
+.logo-preview img{width:100%;height:100%;object-fit:cover;}
+.upload-label{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;
+  border-radius:30px;padding:10px 18px;font-family:var(--font);font-weight:900;
+  font-size:.82rem;cursor:pointer;margin-top:10px;}
+.upload-label input{display:none;}
+
+/* SIZE GUIDE */
+.size-guide{background:linear-gradient(135deg,var(--g5),var(--e6));border-radius:9px;
+  padding:13px 15px;margin-top:13px;border:1px solid rgba(212,175,55,.3);}
+.size-guide h5{font-weight:900;font-size:.8rem;color:var(--e2);margin-bottom:8px;}
+.sg-row{display:flex;justify-content:space-between;font-size:.74rem;
+  padding:4px 0;border-bottom:1px solid rgba(6,78,59,.1);}
+.sg-row:last-child{border-bottom:none;}
+.sg-row span:first-child{color:var(--mu);}
+.sg-row span:last-child{font-weight:800;color:var(--e2);}
+
+/* MEDIA GRID */
+.media-upload-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:12px;}
+.mu-item{border-radius:9px;overflow:hidden;border:1.5px solid #d1fae5;
+  background:var(--bg);aspect-ratio:16/10;position:relative;}
+.mu-item img,.mu-item video{width:100%;height:100%;object-fit:cover;}
+.mu-del{position:absolute;top:5px;right:5px;background:var(--red);color:#fff;
+  border:none;border-radius:50%;width:22px;height:22px;font-size:.72rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;}
+.mu-empty{color:var(--mu);font-size:.79rem;text-align:center;padding:16px;
+  grid-column:1/-1;}
+/* Multi-upload label */
+.multi-upload-label{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:linear-gradient(135deg,var(--e3),var(--e4));color:#fff;
+  border-radius:24px;padding:9px 16px;font-family:var(--font);font-weight:900;
+  font-size:.78rem;margin-bottom:13px;}
+.multi-upload-label input{display:none;}
+.upload-hint{font-size:.72rem;color:var(--mu);margin-bottom:10px;line-height:1.6;}
+.upload-progress{background:var(--e6);border-radius:8px;padding:10px 13px;
+  margin-bottom:10px;display:none;font-size:.78rem;font-weight:700;color:var(--e2);}
+.upload-progress.on{display:block;}
+
+/* PRODUCTS ADMIN */
+.prod-adm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:11px;}
+.pad{background:var(--bg);border-radius:9px;border:1px solid var(--e6);overflow:hidden;}
+.pad-img{height:120px;background:linear-gradient(135deg,var(--e6),var(--g5));
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pad-img img{width:100%;height:100%;object-fit:cover;}
+.pad-img .ph{font-size:3rem;}
+.pad-del-img{position:absolute;top:5px;right:5px;background:var(--red);color:#fff;
+  border:none;border-radius:50%;width:22px;height:22px;font-size:.72rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;}
+.pad-body{padding:10px;}
+.pad-name{font-weight:900;font-size:.8rem;color:var(--e2);margin-bottom:6px;}
+.pad-field-label{font-size:.67rem;font-weight:800;color:#374151;display:block;margin-bottom:2px;}
+.pad-input{width:100%;border:1px solid #d1fae5;border-radius:6px;padding:6px 8px;
+  font-family:var(--font);font-size:.76rem;outline:none;margin-bottom:5px;background:#fff;}
+.pad-upload-label{display:flex;align-items:center;justify-content:center;gap:5px;
+  background:var(--e4);color:#fff;border-radius:7px;padding:7px;
+  font-size:.71rem;font-weight:800;cursor:pointer;margin-top:5px;}
+.pad-upload-label input{display:none;}
+
+/* SHUHUDA */
+.sh-cond-label{display:block;font-weight:800;font-size:.78rem;color:#374151;margin-bottom:5px;}
+.sh-list{display:grid;gap:9px;margin-bottom:11px;}
+.sh-item{background:#fff;border-radius:8px;border:1px solid var(--e6);padding:10px;}
+.sh-name{font-weight:900;font-size:.78rem;color:var(--e2);margin-bottom:4px;}
+.sh-img{width:100%;max-height:110px;object-fit:cover;border-radius:7px;margin-bottom:5px;border:1px solid #c6e9d8;}
+.sh-txt{font-size:.75rem;color:var(--mu);font-style:italic;margin-bottom:6px;}
+.sh-acts{display:flex;gap:5px;}
+.sh-act{flex:1;background:var(--e6);border:1px solid var(--e4);border-radius:6px;
+  font-family:var(--font);font-size:.69rem;font-weight:800;color:var(--e2);padding:5px;cursor:pointer;}
+.sh-act.del{background:#fee2e2;border-color:#fca5a5;color:var(--red);}
+.add-sh-btn{width:100%;background:var(--e6);border:1.5px dashed var(--e4);
+  border-radius:8px;padding:10px;font-family:var(--font);font-weight:800;
+  font-size:.79rem;color:var(--e2);cursor:pointer;}
+
+/* CODE PANEL */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:11px;}
+.pkg-opt{padding:10px 8px;border-radius:9px;border:1.5px solid #d1fae5;background:#fff;
+  text-align:center;cursor:pointer;transition:all .15s;}
+.pkg-opt:hover,.pkg-opt.sel{border-color:var(--g3);background:var(--g5);}
+.pkg-name{font-weight:900;font-size:.78rem;color:var(--e2);}
+.pkg-days{font-size:.67rem;color:var(--mu);}
+.pkg-price{font-weight:900;font-size:.86rem;color:var(--e3);margin-top:2px;}
+.code-disp{font-size:1.55rem;font-weight:900;color:var(--e1);background:#fff;
+  border:2px solid var(--g3);border-radius:9px;padding:12px;text-align:center;
+  letter-spacing:.2em;margin-bottom:9px;font-family:var(--font);}
+.otp-countdown{font-size:.76rem;color:var(--red);font-weight:800;text-align:center;
+  margin-bottom:8px;display:none;animation:countdown-pulse 1s infinite;}
+.otp-countdown.on{display:block;}
+.code-hint{font-size:.71rem;color:var(--mu);line-height:1.65;margin-top:7px;}
+.codes-list{max-height:220px;overflow-y:auto;display:grid;gap:6px;margin-top:11px;}
+.citem{background:#fff;border-radius:7px;border:1px solid var(--e6);
+  padding:9px 12px;display:flex;align-items:center;justify-content:space-between;font-size:.77rem;}
+.cval{font-weight:900;color:var(--e1);letter-spacing:.1em;font-family:var(--font);}
+.cdays{font-size:.68rem;color:var(--mu);}
+.cstatus{font-size:.63rem;font-weight:900;padding:2px 7px;border-radius:8px;}
+.cstatus.avail{background:var(--e6);color:var(--e2);}
+.cstatus.used{background:#fee2e2;color:var(--red);}
+.cstatus.expired{background:var(--g5);color:var(--g1);}
+
+/* REFERRAL STATS */
+.ref-grid{display:grid;gap:9px;}
+.ref-item{background:#fff;border-radius:9px;border:1px solid var(--e6);padding:12px;}
+.ref-name{font-weight:900;font-size:.82rem;color:var(--e2);margin-bottom:4px;}
+.ref-bar-wrap{height:8px;background:#c6f6d5;border-radius:4px;overflow:hidden;margin-bottom:5px;}
+.ref-bar{height:100%;background:linear-gradient(90deg,var(--e4),var(--g3));border-radius:4px;transition:width .5s;}
+.ref-meta{font-size:.72rem;color:var(--mu);}
+
+/* SETTINGS */
+.settings-card{background:#fff;border-radius:var(--rad);padding:16px;margin-bottom:13px;
+  border:1px solid var(--e6);box-shadow:var(--sh);}
+.settings-card h4{font-weight:900;font-size:.85rem;color:var(--e2);margin-bottom:11px;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
+  <div class="login-card">
+    <div class="lc-top">
+      <div class="lc-logo" id="login-logo">🌿</div>
+      <div class="lc-brand" id="login-brand">JOS NATURAL HERBS</div>
+      <div class="lc-sub">Admin Panel — Dr. Revo</div>
+    </div>
+    <div class="lc-body">
+      <h3>🔐 Ingia Admin Panel</h3>
+      <p>Panel hii ni kwa Dr. Revo peke yake</p>
+      <div class="fg">
+        <label>Neno la Siri</label>
+        <input type="password" id="pwd-input" placeholder="••••••••"
+          onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="login-btn" onclick="doLogin()">🌿 Ingia Admin Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="admin-app">
+  <header class="adm-hdr">
+    <div class="adm-hdr-left">
+      <div class="adm-logo" id="hdr-logo-wrap">🌿</div>
+      <div>
+        <div class="adm-hdr-name" id="hdr-brand-name">JOS NATURAL HERBS — ADMIN</div>
+        <div class="adm-hdr-sub">Dr. Revo | Panel ya Usimamizi</div>
+      </div>
+    </div>
+    <div class="adm-hdr-right">
+      <button class="logout-btn" onclick="doLogout()">🚪 Toka</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <!-- TAB BAR -->
+    <div class="tab-bar">
+      <button class="tab-btn on" onclick="showTab('wateja')"><span class="ti">👥</span><span class="tl">Wateja</span></button>
+      <button class="tab-btn" onclick="showTab('broadcast')"><span class="ti">📢</span><span class="tl">Ujumbe</span></button>
+      <button class="tab-btn" onclick="showTab('logo')"><span class="ti">🖼️</span><span class="tl">Mipangilio</span></button>
+      <button class="tab-btn" onclick="showTab('media')"><span class="ti">📺</span><span class="tl">Media</span></button>
+      <button class="tab-btn" onclick="showTab('bidhaa')"><span class="ti">💊</span><span class="tl">Bidhaa</span></button>
+      <button class="tab-btn" onclick="showTab('shuhuda')"><span class="ti">⭐</span><span class="tl">Shuhuda</span></button>
+      <button class="tab-btn" onclick="showTab('codes')"><span class="ti">🔑</span><span class="tl">Codes</span></button>
+      <button class="tab-btn" onclick="showTab('referral')"><span class="ti">📲</span><span class="tl">Referral</span></button>
+    </div>
+
+    <!-- ═══ WATEJA ═══ -->
+    <div class="tab-sec on" id="tab-wateja">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-v" id="stat-total">0</div><div class="stat-l">Wateja Wote</div></div>
+        <div class="stat"><div class="stat-v" id="stat-today">0</div><div class="stat-l">Leo</div></div>
+        <div class="stat"><div class="stat-v" id="stat-wa">0</div><div class="stat-l">WhatsApp</div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn gld" onclick="downloadCSV()">📥 Download CSV</button>
+        <button class="btn r" onclick="clearUsers()">🗑️ Futa Orodha</button>
+      </div>
+      <div class="tbl">
+        <div class="tbl-hdr"><div>Jina / Simu</div><div>Dawa</div><div>Tarehe</div><div>Hali</div></div>
+        <div id="users-list"></div>
+      </div>
+    </div>
+
+    <!-- ═══ BROADCAST ═══ -->
+    <div class="tab-sec" id="tab-broadcast">
+      <div class="sec-card">
+        <div class="sec-title">📢 Tuma Ujumbe kwa Wateja Wote</div>
+        <p style="font-size:.79rem;color:var(--mu);margin-bottom:12px;line-height:1.6;">
+          Ujumbe huu utaonekana kwa kila mtu akifungua app — Clinic na Academy zote.
+          Tumia kwa matangazo, ofa za kipekee, au habari muhimu.
+        </p>
+        <div class="fg">
+          <label>📝 Andika Ujumbe Wako</label>
+          <textarea id="bc-text" rows="4"
+            placeholder="Mfano: 🔥 OFA MAALUM! Wikendi hii pata -20% kwenye Kidume Plus..."
+            oninput="previewBC(this.value)"></textarea>
+        </div>
+        <div class="bc-preview" id="bc-preview">
+          <strong style="color:var(--g4);">📢 Dr. Revo anasema:</strong><br>
+          <span id="bc-prev-text"></span>
+        </div>
+        <div class="bc-count" id="bc-count">Wateja 0 wataona ujumbe huu</div>
+        <div class="btn-row">
+          <button class="btn g" onclick="sendBroadcast()">📢 Tuma kwa Wateja Wote</button>
+          <button class="btn r" onclick="clearBroadcast()">🗑️ Futa Ujumbe</button>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-title">💬 Tuma WhatsApp kwa Watu Wote</div>
+        <p style="font-size:.79rem;color:var(--mu);margin-bottom:11px;line-height:1.6;">
+          Andika ujumbe hapa chini. Bonyeza kitufe — namba zote za wateja zitanakiliwa
+          pamoja na ujumbe. Namba ya kutumia: <strong>+255 652 421 286</strong>
+        </p>
+        <div class="fg">
+          <label>📝 Ujumbe wa WhatsApp</label>
+          <textarea id="wa-bulk-text" rows="3"
+            placeholder="Mfano: Habari! 🔥 JOS Natural Herbs ina ofa ya kipekee wiki hii..."></textarea>
+        </div>
+        <button class="btn wa" style="width:100%;justify-content:center;padding:11px;"
+          onclick="openBulkWA()">💬 Fungua WhatsApp + Namba Zote</button>
+      </div>
+    </div>
+
+    <!-- ═══ MIPANGILIO (LOGO + BRAND) ═══ -->
+    <div class="tab-sec" id="tab-logo">
+      <div class="sec-card">
+        <div class="sec-title">🖼️ Logo ya JOS Natural Herbs</div>
+        <div class="logo-preview-wrap">
+          <div class="logo-preview" id="logo-preview-admin">🌿</div>
+        </div>
+        <p style="font-size:.77rem;color:var(--mu);text-align:center;margin-bottom:12px;line-height:1.6;">
+          Logo itaonekana kwenye App yote — Gate, Header, Choice Screen.
+        </p>
+        <label class="upload-label">
+          📷 Pakia Logo (PNG/JPG/WEBP — Max 3MB)
+          <input type="file" accept="image/*" onchange="uploadLogo(this)">
+        </label>
+        <button class="btn r" style="margin-top:8px;width:100%;justify-content:center;"
+          onclick="deleteLogo()">🗑️ Futa Logo</button>
+        <div class="size-guide">
+          <h5>📐 Ukubwa Unaofaa wa Picha na Videos</h5>
+          <div class="sg-row"><span>🖼️ Logo</span><span>400×400px (Mviringo)</span></div>
+          <div class="sg-row"><span>💊 Picha za Dawa</span><span>800×800px (Mraba)</span></div>
+          <div class="sg-row"><span>📢 Posters/Matangazo</span><span>1200×675px (16:9)</span></div>
+          <div class="sg-row"><span>🎬 Videos</span><span>1280×720px HD (MP4)</span></div>
+          <div class="sg-row"><span>⭐ Picha za Shuhuda</span><span>600×400px / Screenshot</span></div>
+          <div class="sg-row"><span>📏 Max Picha</span><span>3MB</span></div>
+          <div class="sg-row"><span>📏 Max Video</span><span>5MB</span></div>
+        </div>
+      </div>
+      <div class="settings-card">
+        <h4>⚙️ Jina la Brand / App</h4>
+        <div class="fg"><label>Jina la App</label>
+          <input type="text" id="brand-input" placeholder="JOS NATURAL HERBS"
+            onchange="saveBrand(this.value)">
+        </div>
+        <button class="btn g" onclick="applyBrand()">✅ Hifadhi Mipangilio</button>
+      </div>
+    </div>
+
+    <!-- ═══ MEDIA ═══ -->
+    <div class="tab-sec" id="tab-media">
+      <div class="sec-card">
+        <div class="sec-title">🎬 Videos</div>
+        <p class="upload-hint">
+          Pakia video moja au zaidi kwa wakati mmoja (Max 5MB kila moja, MP4 tu).
+          Zinaonekana kwenye Clinic Gallery na Academy Posters Scroll.
+        </p>
+        <div class="upload-progress" id="vid-progress">⏳ Inapakia...</div>
+        <label class="multi-upload-label">
+          ➕ Pakia Videos (Nyingi kwa wakati mmoja)
+          <input type="file" accept="video/*" multiple onchange="uploadMedia('video',this)">
+        </label>
+        <div id="adm-videos-grid" class="media-upload-grid"></div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-title">🖼️ Posters / Matangazo</div>
+        <p class="upload-hint">
+          Pakia posters au picha za matangazo — hadi 10 kwa wakati mmoja (Max 3MB kila moja).
+          Zinaonekana kwenye Clinic Gallery na Academy juu ya mimea.
+        </p>
+        <div class="upload-progress" id="poster-progress">⏳ Inapakia...</div>
+        <label class="multi-upload-label">
+          ➕ Pakia Posters (Hadi 10 kwa wakati mmoja)
+          <input type="file" accept="image/*" multiple onchange="uploadMedia('poster',this)">
+        </label>
+        <div id="adm-posters-grid" class="media-upload-grid"></div>
+      </div>
+    </div>
+
+    <!-- ═══ BIDHAA ═══ -->
+    <div class="tab-sec" id="tab-bidhaa">
+      <div class="sec-card">
+        <div class="sec-title">💊 Simamia Bidhaa na Dawa</div>
+        <p style="font-size:.79rem;color:var(--mu);margin-bottom:13px;line-height:1.6;">
+          Ongeza/badilisha picha, maelezo, discount na badge kwa kila dawa.
+          Mabadiliko yanaonekana mara moja kwenye App ya wateja.
+        </p>
+        <div class="prod-adm-grid" id="prod-adm-grid"></div>
+      </div>
+    </div>
+
+    <!-- ═══ SHUHUDA ═══ -->
+    <div class="tab-sec" id="tab-shuhuda">
+      <div class="sec-card">
+        <div class="sec-title">⭐ Simamia Shuhuda za Wateja</div>
+        <p style="font-size:.79rem;color:var(--mu);margin-bottom:12px;line-height:1.6;">
+          Ongeza shuhuda mpya na picha za screenshot za WhatsApp kwa kila tatizo.
+          Zinaonekana chini ya matokeo ya AI Quiz.
+        </p>
+        <div class="fg">
+          <label class="sh-cond-label">Chagua Tatizo</label>
+          <select id="sh-cond-sel" onchange="renderShAdmin()">
+            <option value="">-- Chagua Tatizo --</option>
+          </select>
+        </div>
+        <div id="sh-list-adm"></div>
+        <button class="add-sh-btn" id="sh-add-btn" style="display:none;"
+          onclick="addShuhuda()">+ Ongeza Shuhuda Mpya</button>
+      </div>
+    </div>
+
+    <!-- ═══ CODES ═══ -->
+    <div class="tab-sec" id="tab-codes">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-v" id="c-tot">0</div><div class="stat-l">Codes Zote</div></div>
+        <div class="stat"><div class="stat-v" id="c-avail">0</div><div class="stat-l">Zinapatikana</div></div>
+        <div class="stat"><div class="stat-v" id="c-used">0</div><div class="stat-l">Zilizotumika</div></div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-title">⚡ Tengeneza Code Mpya</div>
+        <p style="font-size:.78rem;color:var(--mu);margin-bottom:11px;line-height:1.6;">
+          Chagua package kisha generate. Kila code inafanya kazi
+          <strong>mara moja tu</strong> na inaisha baada ya <strong>sekunde 90</strong>!
+        </p>
+        <div class="pkg-grid">
+          <div class="pkg-opt sel" data-days="30" data-price="5000" onclick="selPkg(this)">
+            <div class="pkg-name">Mwezi 1</div>
+            <div class="pkg-days">Siku 30</div>
+            <div class="pkg-price">5,000/=</div>
+          </div>
+          <div class="pkg-opt" data-days="180" data-price="25000" onclick="selPkg(this)">
+            <div class="pkg-name">Miezi 6</div>
+            <div class="pkg-days">Siku 180</div>
+            <div class="pkg-price">25,000/=</div>
+          </div>
+          <div class="pkg-opt" data-days="365" data-price="50000" onclick="selPkg(this)">
+            <div class="pkg-name">Mwaka 1</div>
+            <div class="pkg-days">Siku 365</div>
+            <div class="pkg-price">50,000/=</div>
+          </div>
+        </div>
+        <div class="code-disp" id="gen-code">——————</div>
+        <div class="otp-countdown" id="gen-otp">⏱️ Code inaisha kwa sekunde: <span id="gen-otp-secs">90</span></div>
+        <div class="btn-row">
+          <button class="btn g" onclick="genCode()">⚡ Generate 1</button>
+          <button class="btn g" onclick="genMultiple(5)">×5 Codes</button>
+          <button class="btn g" onclick="genMultiple(10)">×10 Codes</button>
+          <button class="btn gld" onclick="copyCode()">📋 Copy</button>
+          <button class="btn gld" onclick="downloadCodeCSV()">📥 CSV</button>
+          <button class="btn r" onclick="clearUsedCodes()">🗑️ Futa Zilizotumika</button>
+        </div>
+        <div class="code-hint">
+          🔒 Kila code inafanya kazi <strong>mara moja tu</strong> na inaisha
+          baada ya sekunde <strong>90</strong> tangu izalishwapo.<br>
+          ⚡ <strong>Master Key (daima inafanya kazi):</strong> REVO-KING-2026
+        </div>
+        <div class="codes-list" id="codes-list"></div>
+      </div>
+    </div>
+
+    <!-- ═══ REFERRAL ═══ -->
+    <div class="tab-sec" id="tab-referral">
+      <div class="sec-card">
+        <div class="sec-title">📲 Maendeleo ya Kushiriki App</div>
+        <p style="font-size:.79rem;color:var(--mu);margin-bottom:13px;line-height:1.6;">
+          Kila mtumiaji ana link yake ya REF. Akishiriki kwa watu 50 anapata
+          Mwezi 1 bure wa Academy. Hapa unaona maendeleo ya kila mtu.
+        </p>
+        <div class="btn-row">
+          <button class="btn gld" onclick="downloadRefCSV()">📥 Download Referral CSV</button>
+          <button class="btn r" onclick="clearReferrals()">🗑️ Futa Referrals Zote</button>
+        </div>
+        <div id="ref-grid" class="ref-grid"></div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /admin-app -->
+
+<script>
+// ═══════════════════════════════════════════
+// SHARED LOCALSTORAGE KEYS (same as app)
+// ═══════════════════════════════════════════
+const LS={
+  USER:'jos6_user',USERS:'jos6_users',
+  CODES:'jos6_codes',
+  MED_IMGS:'jos6_medimgs',TESTI:'jos6_testi',
+  MEDIA_V:'jos6_videos',MEDIA_P:'jos6_posters',
+  PROD_DATA:'jos6_proddata',
+  ACAD_EXPIRY:'jos6_expiry',
+  BROADCAST:'jos6_broadcast',
+  LOGO:'jos6_logo',
+  BRAND:'jos6_brand',
+  REFERRALS:'jos6_referrals'
+};
+
+// CONDITIONS (needed for Bidhaa + Shuhuda tabs)
+const CONDITIONS=[
+  {id:'nguvu',icon:'💪',name:'NGUVU & NGIRI',dawa:'Kidume Plus',desc:'Nguvu za kiume, stamina, premature ejaculation',half:{price:65000},full:{price:130000}},
+  {id:'maumbile',icon:'⚡',name:'MAUMBILE — Kujitegemea',dawa:'Mjulus Pro',desc:'Ukubwa, nguvu, kujiamini, na ustawi wa kiume',half:{price:60000},full:{price:120000}},
+  {id:'tezi',icon:'🔴',name:'TEZIDUME & MKOJO',dawa:'Dume Master',desc:'Prostate, mkojo mzito, kukojoa mara kwa mara',half:{price:75000},full:{price:150000}},
+  {id:'bawasiri',icon:'🩸',name:'BAWASIRI — Nje & Ndani',dawa:'Hemorrhoid Balm & Blend',desc:'Bawasiri ya nje, ndani, maumivu, kutoka damu',full:{price:100000}},
+  {id:'mama',icon:'🌸',name:'UZAZI & MIMBA',dawa:'Mama Fertilizer',desc:'Uzazi wa mama, PID, mimba, hormoni, hedhi',half:{price:80000},full:{price:160000}},
+  {id:'pid',icon:'🛡️',name:'PID & UTI SUGU',dawa:'Herbal Combo (PID & UTI)',desc:'Maambukizi ya njia ya mkojo na uzazi yanayorudiwa',half:{price:50000},full:{price:100000}},
+  {id:'tumbo',icon:'🌿',name:'VIDONDA VYA TUMBO',dawa:'Tumbo Relief',desc:'Ulcers, asidi, maumivu ya tumbo, GERD, gastritis',half:{price:45000},full:{price:90000}}
+];
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let SelPkg={days:30,price:5000};
+let OtpTimer=null;
+let isLoggedIn=false;
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+window.onload=function(){
+  applyLogo();
+  applyBrandDisplay();
+};
+
+// ═══ LOGIN ═══
+function doLogin(){
+  const pwd=document.getElementById('pwd-input').value;
+  if(pwd==='Revo2026'){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('admin-app').classList.add('on');
+    isLoggedIn=true;
+    showTab('wateja');
+    applyLogo();
+    applyBrandDisplay();
+    // Set brand input value
+    const bi=document.getElementById('brand-input');
+    if(bi) bi.value=localStorage.getItem(LS.BRAND)||'JOS NATURAL HERBS';
+    // Populate shuhuda condition select
+    const sel=document.getElementById('sh-cond-sel');
+    if(sel&&sel.options.length<=1){
+      CONDITIONS.forEach(c=>{
+        const o=document.createElement('option');
+        o.value=c.id; o.textContent=c.name;
+        sel.appendChild(o);
+      });
+    }
+  } else {
+    alert('❌ Neno la siri si sahihi. Jaribu tena.');
+    document.getElementById('pwd-input').value='';
+    document.getElementById('pwd-input').focus();
+  }
+}
+
+function doLogout(){
+  if(!confirm('Toka Admin Panel?')) return;
+  document.getElementById('admin-app').classList.remove('on');
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('pwd-input').value='';
+  isLoggedIn=false;
+}
+
+// ═══ TABS ═══
+function showTab(id){
+  document.querySelectorAll('.tab-sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+id)?.classList.add('on');
+  const tabs=['wateja','broadcast','logo','media','bidhaa','shuhuda','codes','referral'];
+  const idx=tabs.indexOf(id);
+  document.querySelectorAll('.tab-btn')[idx]?.classList.add('on');
+  // Load data for tab
+  if(id==='wateja') renderWateja();
+  else if(id==='media') renderMedia();
+  else if(id==='bidhaa') renderBidhaa();
+  else if(id==='codes') renderCodePanel();
+  else if(id==='referral') renderReferral();
+  else if(id==='broadcast') previewBC(document.getElementById('bc-text')?.value||'');
+  else if(id==='logo'){applyLogo();const bi=document.getElementById('brand-input');if(bi)bi.value=localStorage.getItem(LS.BRAND)||'JOS NATURAL HERBS';}
+}
+
+// ═══ LOGO ═══
+function applyLogo(){
+  const logo=localStorage.getItem(LS.LOGO);
+  ['login-logo','hdr-logo-wrap','logo-preview-admin'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.innerHTML=logo
+      ?`<img src="${logo}" alt="Logo" style="width:100%;height:100%;object-fit:cover;">`
+      :'🌿';
+  });
+}
+
+function uploadLogo(input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size>3*1024*1024){alert('Picha ni kubwa sana (Max 3MB). Punguza kwanza.');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    localStorage.setItem(LS.LOGO,e.target.result);
+    applyLogo();
+    alert('✅ Logo imehifadhiwa! Itaonekana kwenye App mara moja.');
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+function deleteLogo(){
+  if(!confirm('Futa logo?')) return;
+  localStorage.removeItem(LS.LOGO);
+  applyLogo();
+  alert('✅ Logo imefutwa.');
+}
+
+// ═══ BRAND ═══
+function applyBrandDisplay(){
+  const brand=localStorage.getItem(LS.BRAND)||'JOS NATURAL HERBS';
+  const hbn=document.getElementById('hdr-brand-name');
+  if(hbn) hbn.textContent=brand+' — ADMIN';
+  const lb=document.getElementById('login-brand');
+  if(lb) lb.textContent=brand;
+}
+
+function saveBrand(val){localStorage.setItem(LS.BRAND,val);}
+function applyBrand(){
+  const val=(document.getElementById('brand-input')?.value||'JOS NATURAL HERBS').trim();
+  localStorage.setItem(LS.BRAND,val);
+  applyBrandDisplay();
+  alert('✅ Jina la brand limehifadhiwa!');
+}
+
+// ═══ WATEJA ═══
+function renderWateja(){
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  const today=new Date().toLocaleDateString();
+  document.getElementById('stat-total').textContent=users.length;
+  document.getElementById('stat-today').textContent=users.filter(u=>u.time&&u.time.includes(today)).length;
+  document.getElementById('stat-wa').textContent=users.filter(u=>u.phone&&u.phone.length>5).length;
+  const list=document.getElementById('users-list');
+  if(!users.length){list.innerHTML='<div class="empty-tbl">Hakuna wateja bado.</div>';return;}
+  list.innerHTML=users.map(u=>`
+    <div class="tbl-row">
+      <div><div class="un">${u.name||'—'}</div><div class="uph">${u.phone||'—'}</div></div>
+      <div><span class="udawa">${u.dawa||'—'}</span></div>
+      <div class="utm">${(u.time||'—').substring(0,10)}</div>
+      <div><span style="font-size:.63rem;background:var(--e6);color:var(--e2);padding:2px 7px;border-radius:7px;font-weight:700;">Aktifu</span></div>
+    </div>`).join('');
+}
+
+function downloadCSV(){
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  if(!users.length){alert('Hakuna wateja bado.');return;}
+  const csv=['Jina,Namba ya WhatsApp,Dawa/Tatizo,Tarehe na Wakati,Ref Code',
+    ...users.map(u=>`"${u.name||''}","${u.phone||''}","${u.dawa||''}","${u.time||''}","${u.ref||''}"`)].join('\n');
+  dlFile('\ufeff'+csv,'JOS_Wateja_'+Date.now()+'.csv','text/csv;charset=utf-8;');
+}
+
+function clearUsers(){
+  if(!confirm('Futa orodha yote ya wateja? Haiwezi kurudishwa.')) return;
+  localStorage.removeItem(LS.USERS);
+  renderWateja();
+  alert('✅ Orodha imefutwa.');
+}
+
+// ═══ BROADCAST ═══
+function previewBC(text){
+  const prev=document.getElementById('bc-preview');
+  const pt=document.getElementById('bc-prev-text');
+  const cnt=document.getElementById('bc-count');
+  if(prev) prev.classList.toggle('on',text.length>0);
+  if(pt) pt.textContent=text;
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  if(cnt) cnt.textContent=`Wateja ${users.length} wataona ujumbe huu`;
+}
+
+function sendBroadcast(){
+  const text=(document.getElementById('bc-text')?.value||'').trim();
+  if(!text){alert('Andika ujumbe kwanza.');return;}
+  localStorage.setItem(LS.BROADCAST,JSON.stringify({text,time:new Date().toLocaleString('sw')}));
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  alert(`✅ Ujumbe umetumwa!\nWateja ${users.length} wataona ujumbe huu wakifungua App.`);
+}
+
+function clearBroadcast(){
+  if(!confirm('Futa ujumbe wa matangazo?')) return;
+  localStorage.removeItem(LS.BROADCAST);
+  const el=document.getElementById('bc-text');
+  if(el) el.value='';
+  document.getElementById('bc-preview')?.classList.remove('on');
+  alert('✅ Ujumbe umefutwa.');
+}
+
+function openBulkWA(){
+  const text=(document.getElementById('wa-bulk-text')?.value||'').trim();
+  if(!text){alert('Andika ujumbe wa WhatsApp kwanza.');return;}
+  const users=JSON.parse(localStorage.getItem(LS.USERS)||'[]');
+  if(!users.length){alert('Hakuna wateja bado.');return;}
+  const numbers=users.map(u=>u.phone).filter(p=>p&&p.length>5).join('\n');
+  const full=`NAMBA ZA WATEJA (${users.length}):\n${numbers}\n\nUJUMBE:\n${text}`;
+  navigator.clipboard?.writeText(full).then(()=>{
+    window.open(`https://wa.me/255652421286?text=${encodeURIComponent(text)}`,'_blank');
+    alert(`✅ Namba ${users.length} zamenakiliwa! Tuma kutoka WhatsApp yako.`);
+  }).catch(()=>alert(`Namba:\n${numbers}\n\nUjumbe:\n${text}`));
+}
+
+// ═══ MEDIA — Multi-upload ═══
+function uploadMedia(type,input){
+  const files=Array.from(input.files);
+  if(!files.length) return;
+  const key=type==='video'?LS.MEDIA_V:LS.MEDIA_P;
+  const maxSize=type==='video'?5:3;
+  const progId=type==='video'?'vid-progress':'poster-progress';
+  const prog=document.getElementById(progId);
+  if(prog){prog.classList.add('on');prog.textContent=`⏳ Inapakia faili ${files.length}...`;}
+  const items=JSON.parse(localStorage.getItem(key)||'[]');
+  let done=0,skipped=0;
+  files.forEach(file=>{
+    if(file.size>maxSize*1024*1024){
+      alert(`"${file.name}" ni kubwa sana (Max ${maxSize}MB). Ruka.`);
+      skipped++; done++;
+      if(done===files.length) finishUpload(type,items,key,files.length,skipped,prog);
+      return;
+    }
+    const reader=new FileReader();
+    reader.onload=e=>{
+      items.push({src:e.target.result,name:file.name,time:new Date().toLocaleString('sw')});
+      done++;
+      if(prog) prog.textContent=`⏳ Imepakia ${done}/${files.length}...`;
+      if(done===files.length) finishUpload(type,items,key,files.length,skipped,prog);
+    };
+    reader.onerror=()=>{skipped++;done++;if(done===files.length)finishUpload(type,items,key,files.length,skipped,prog);};
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+
+function finishUpload(type,items,key,total,skipped,prog){
+  localStorage.setItem(key,JSON.stringify(items));
+  renderMedia();
+  setTimeout(()=>{if(prog){prog.classList.remove('on');}},2000);
+  const ok=total-skipped;
+  alert(`✅ Faili ${ok} zimehifadhiwa${skipped>0?` (${skipped} zilirukwa kwa sababu ya ukubwa)`:''}!`);
+}
+
+function renderMedia(){
+  const videos=JSON.parse(localStorage.getItem(LS.MEDIA_V)||'[]');
+  const posters=JSON.parse(localStorage.getItem(LS.MEDIA_P)||'[]');
+  const vg=document.getElementById('adm-videos-grid');
+  const pg=document.getElementById('adm-posters-grid');
+  if(vg) vg.innerHTML=videos.length
+    ?videos.map((v,i)=>`<div class="mu-item">
+        <video src="${v.src}" muted preload="metadata"></video>
+        <button class="mu-del" onclick="delMedia('video',${i})">✕</button>
+      </div>`).join('')
+    :'<div class="mu-empty">Hakuna videos bado. Pakia hapo juu.</div>';
+  if(pg) pg.innerHTML=posters.length
+    ?posters.map((p,i)=>`<div class="mu-item">
+        <img src="${p.src}" alt="Poster ${i+1}">
+        <button class="mu-del" onclick="delMedia('poster',${i})">✕</button>
+      </div>`).join('')
+    :'<div class="mu-empty">Hakuna posters bado. Pakia hapo juu.</div>';
+}
+
+function delMedia(type,idx){
+  if(!confirm('Futa faili hii?')) return;
+  const key=type==='video'?LS.MEDIA_V:LS.MEDIA_P;
+  const items=JSON.parse(localStorage.getItem(key)||'[]');
+  items.splice(idx,1);
+  localStorage.setItem(key,JSON.stringify(items));
+  renderMedia();
+}
+
+// ═══ BIDHAA ═══
+function renderBidhaa(){
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  const pd=JSON.parse(localStorage.getItem(LS.PROD_DATA)||'{}');
+  const grid=document.getElementById('prod-adm-grid');
+  if(!grid) return;
+  grid.innerHTML=CONDITIONS.map(c=>{
+    const img=imgs[c.id];
+    const d=pd[c.id]||{};
+    return `<div class="pad">
+      <div class="pad-img">
+        ${img?`<img src="${img}" alt="${c.dawa}">`:`<div class="ph">${c.icon}</div>`}
+        ${img?`<button class="pad-del-img" onclick="delMedImg('${c.id}')">✕</button>`:''}
+      </div>
+      <div class="pad-body">
+        <div class="pad-name">${c.dawa}</div>
+        <span class="pad-field-label">📝 Maelezo</span>
+        <textarea class="pad-input" rows="2" placeholder="Maelezo ya dawa..."
+          id="pd-desc-${c.id}" onchange="saveProdData('${c.id}')">${d.desc||''}</textarea>
+        <span class="pad-field-label">% Discount (0 = hakuna)</span>
+        <input class="pad-input" type="number" min="0" max="90" placeholder="0"
+          id="pd-disc-${c.id}" value="${d.discount||''}" onchange="saveProdData('${c.id}')">
+        <span class="pad-field-label">🏷️ Badge (MPYA / HOT / SALE)</span>
+        <input class="pad-input" type="text" placeholder="mfano: HOT"
+          id="pd-badge-${c.id}" value="${d.badge||''}" onchange="saveProdData('${c.id}')">
+        <label class="pad-upload-label">
+          📷 ${img?'Badilisha':'Ongeza'} Picha
+          <input type="file" accept="image/*" onchange="uploadMedImg('${c.id}',this)">
+        </label>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function saveProdData(condId){
+  const pd=JSON.parse(localStorage.getItem(LS.PROD_DATA)||'{}');
+  pd[condId]={
+    desc:(document.getElementById(`pd-desc-${condId}`)?.value||'').trim(),
+    discount:(document.getElementById(`pd-disc-${condId}`)?.value||'').trim(),
+    badge:(document.getElementById(`pd-badge-${condId}`)?.value||'').trim()
+  };
+  localStorage.setItem(LS.PROD_DATA,JSON.stringify(pd));
+}
+
+function uploadMedImg(condId,input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size>3*1024*1024){alert('Picha ni kubwa sana (Max 3MB).');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+    imgs[condId]=e.target.result;
+    localStorage.setItem(LS.MED_IMGS,JSON.stringify(imgs));
+    renderBidhaa();
+    alert('✅ Picha ya dawa imehifadhiwa!');
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+function delMedImg(condId){
+  if(!confirm('Futa picha ya dawa hii?')) return;
+  const imgs=JSON.parse(localStorage.getItem(LS.MED_IMGS)||'{}');
+  delete imgs[condId];
+  localStorage.setItem(LS.MED_IMGS,JSON.stringify(imgs));
+  renderBidhaa();
+}
+
+// ═══ SHUHUDA ═══
+function renderShAdmin(){
+  const condId=document.getElementById('sh-cond-sel').value;
+  const listDiv=document.getElementById('sh-list-adm');
+  const addBtn=document.getElementById('sh-add-btn');
+  if(!condId){
+    listDiv.innerHTML='<p style="font-size:.79rem;color:var(--mu);">Chagua tatizo kwanza.</p>';
+    addBtn.style.display='none'; return;
+  }
+  addBtn.style.display='block';
+  const extras=JSON.parse(localStorage.getItem(LS.TESTI)||'{}');
+  const list=extras[condId]||[];
+  if(!list.length){
+    listDiv.innerHTML='<p style="font-size:.77rem;color:var(--mu);padding:6px 0;">Hakuna shuhuda za ziada bado. Bonyeza + hapa chini.</p>';
+    return;
+  }
+  listDiv.innerHTML=list.map((t,i)=>`
+    <div class="sh-item">
+      <div class="sh-name">${t.n} — 📍 ${t.l}</div>
+      ${t.img?`<img class="sh-img" src="${t.img}" alt="${t.n}">`:''}
+      <div class="sh-txt">"${t.t}"</div>
+      <div class="sh-acts">
+        <label class="sh-act" style="cursor:pointer;">
+          📷 ${t.img?'Badilisha':'Ongeza'} Picha
+          <input type="file" accept="image/*" style="display:none;" onchange="uploadShImg('${condId}',${i},this)">
+        </label>
+        <button class="sh-act del" onclick="delShuhuda('${condId}',${i})">🗑️ Futa</button>
+      </div>
+    </div>`).join('');
+}
+
+function addShuhuda(){
+  const condId=document.getElementById('sh-cond-sel').value;
+  if(!condId){alert('Chagua tatizo kwanza.');return;}
+  const name=prompt('Jina la Mteja:'); if(!name) return;
+  const loc=prompt('Mkoa:')||'Tanzania';
+  const text=prompt('Maandishi ya Shuhuda:'); if(!text) return;
+  const result=prompt('Matokeo (mfano: Amepona — Wiki 2):')||'Amepona';
+  const extras=JSON.parse(localStorage.getItem(LS.TESTI)||'{}');
+  if(!extras[condId]) extras[condId]=[];
+  extras[condId].push({n:name,l:loc,t:text,r:result,e:'👤',img:null});
+  localStorage.setItem(LS.TESTI,JSON.stringify(extras));
+  renderShAdmin();
+  alert('✅ Shuhuda imeongezwa!');
+}
+
+function uploadShImg(condId,idx,input){
+  const file=input.files[0]; if(!file) return;
+  if(file.size>3*1024*1024){alert('Picha ni kubwa sana (Max 3MB).');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const extras=JSON.parse(localStorage.getItem(LS.TESTI)||'{}');
+    if(extras[condId]&&extras[condId][idx]) extras[condId][idx].img=e.target.result;
+    localStorage.setItem(LS.TESTI,JSON.stringify(extras));
+    renderShAdmin();
+    alert('✅ Picha ya shuhuda imehifadhiwa!');
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+function delShuhuda(condId,idx){
+  if(!confirm('Futa shuhuda hii?')) return;
+  const extras=JSON.parse(localStorage.getItem(LS.TESTI)||'{}');
+  if(extras[condId]) extras[condId].splice(idx,1);
+  localStorage.setItem(LS.TESTI,JSON.stringify(extras));
+  renderShAdmin();
+}
+
+// ═══ CODES ═══
+function selPkg(el){
+  document.querySelectorAll('.pkg-opt').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+  SelPkg={days:parseInt(el.dataset.days),price:parseInt(el.dataset.price)};
+}
+
+function genCode(){
+  const code=makeCode();
+  const now=Date.now();
+  const codes=JSON.parse(localStorage.getItem(LS.CODES)||'[]');
+  codes.push({code,used:false,days:SelPkg.days,price:SelPkg.price,
+    created:new Date().toLocaleString('sw'),generatedAt:now});
+  localStorage.setItem(LS.CODES,JSON.stringify(codes));
+  document.getElementById('gen-code').textContent=code;
+  startOtp();
+  renderCodePanel();
+}
+
+function genMultiple(n){
+  const codes=JSON.parse(localStorage.getItem(LS.CODES)||'[]');
+  const now=Date.now();
+  const newCodes=[];
+  for(let i=0;i<n;i++){
+    const code=makeCode();
+    newCodes.push(code);
+    codes.push({code,used:false,days:SelPkg.days,price:SelPkg.price,
+      created:new Date().toLocaleString('sw'),generatedAt:now});
+  }
+  localStorage.setItem(LS.CODES,JSON.stringify(codes));
+  document.getElementById('gen-code').textContent=newCodes.join(' | ');
+  startOtp();
+  renderCodePanel();
+  alert(`✅ Codes ${n} zimezalishwa (${SelPkg.days} siku kila moja)!\n\n⚠️ Zina sekunde 90 tu — Tuma haraka!`);
+}
+
+function makeCode(){
+  const ch='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let c='JOS-';
+  for(let i=0;i<6;i++) c+=ch[Math.floor(Math.random()*ch.length)];
+  return c;
+}
+
+function startOtp(){
+  if(OtpTimer) clearInterval(OtpTimer);
+  const el=document.getElementById('gen-otp');
+  const se=document.getElementById('gen-otp-secs');
+  if(!el||!se) return;
+  el.classList.add('on');
+  let secs=90;
+  se.textContent=secs;
+  OtpTimer=setInterval(()=>{
+    secs--;
+    se.textContent=secs;
+    if(secs<=0){
+      clearInterval(OtpTimer); OtpTimer=null;
+      el.classList.remove('on');
+      renderCodePanel();
+    }
+  },1000);
+}
+
+function renderCodePanel(){
+  const codes=JSON.parse(localStorage.getItem(LS.CODES)||'[]');
+  const now=Date.now();
+  const isExp=c=>!c.used&&c.generatedAt&&(now-c.generatedAt)/1000>90;
+  const avail=codes.filter(c=>!c.used&&!isExp(c)).length;
+  const used=codes.filter(c=>c.used).length;
+  document.getElementById('c-tot').textContent=codes.length;
+  document.getElementById('c-avail').textContent=avail;
+  document.getElementById('c-used').textContent=used;
+  const listEl=document.getElementById('codes-list');
+  if(!codes.length){
+    listEl.innerHTML='<div style="text-align:center;padding:14px;color:var(--mu);font-size:.78rem;">Hakuna codes bado. Generate kwanza.</div>';
+    return;
+  }
+  listEl.innerHTML=codes.slice().reverse().slice(0,50).map(c=>{
+    const exp=isExp(c);
+    const secsLeft=c.generatedAt&&!c.used&&!exp?Math.max(0,90-Math.floor((now-c.generatedAt)/1000)):0;
+    const st=c.used?'used':exp?'expired':'avail';
+    const lb=c.used?'Imetumika':exp?'Imeisha':'Inapatikana';
+    return `<div class="citem">
+      <div class="cval">${c.code}</div>
+      <div class="cdays">${c.days}siku${secsLeft>0?` ⏱️${secsLeft}s`:''}</div>
+      <span class="cstatus ${st}">${lb}</span>
+    </div>`;
+  }).join('');
+}
+
+function copyCode(){
+  const code=document.getElementById('gen-code').textContent;
+  if(code==='——————'){alert('Generate code kwanza!');return;}
+  navigator.clipboard?.writeText(code)
+    .then(()=>alert(`✅ Code imenakiliwa:\n${code}\n\n⚠️ Tuma HARAKA — inaisha sekunde 90!`))
+    .catch(()=>alert(`Code: ${code}\n\n⚠️ Tuma HARAKA!`));
+}
+
+function downloadCodeCSV(){
+  const codes=JSON.parse(localStorage.getItem(LS.CODES)||'[]');
+  if(!codes.length){alert('Hakuna codes bado.');return;}
+  const now=Date.now();
+  const isExp=c=>!c.used&&c.generatedAt&&(now-c.generatedAt)/1000>90;
+  const csv=['Code,Siku,Bei,Hali,Tarehe',
+    ...codes.map(c=>`"${c.code}","${c.days}","Tshs ${c.price||'—'}/=","${c.used?'Imetumika':isExp(c)?'Imeisha':'Inapatikana'}","${c.created||''}"`)
+  ].join('\n');
+  dlFile('\ufeff'+csv,'JOS_Codes_'+Date.now()+'.csv','text/csv;charset=utf-8;');
+}
+
+function clearUsedCodes(){
+  if(!confirm('Futa codes zilizotumika NA zilizokwisha (90s)?')) return;
+  const codes=JSON.parse(localStorage.getItem(LS.CODES)||'[]');
+  const now=Date.now();
+  const rem=codes.filter(c=>!c.used&&!(c.generatedAt&&(now-c.generatedAt)/1000>90));
+  localStorage.setItem(LS.CODES,JSON.stringify(rem));
+  renderCodePanel();
+  alert(`✅ Codes ${codes.length-rem.length} zimefutwa. Zimebaki ${rem.length}.`);
+}
+
+// ═══ REFERRAL ═══
+function renderReferral(){
+  const refs=JSON.parse(localStorage.getItem(LS.REFERRALS)||'{}');
+  const grid=document.getElementById('ref-grid');
+  if(!grid) return;
+  const entries=Object.values(refs);
+  if(!entries.length){
+    grid.innerHTML='<div class="empty-tbl">Hakuna referrals bado. Watu wataanza kushiriki app.</div>';
+    return;
+  }
+  grid.innerHTML=entries.sort((a,b)=>(b.joins||0)-(a.joins||0)).map(r=>{
+    const joins=r.joins||0;
+    const pct=Math.min(100,Math.round((joins/50)*100));
+    return `<div class="ref-item">
+      <div class="ref-name">${r.name||'—'} <span style="font-size:.67rem;color:var(--mu);font-weight:700;">${r.code}</span>
+        ${r.rewarded?'<span style="background:var(--g3);color:#111;font-size:.6rem;font-weight:900;padding:2px 7px;border-radius:9px;margin-left:5px;">✅ Alipewa Mwezi</span>':''}
+      </div>
+      <div class="ref-bar-wrap"><div class="ref-bar" style="width:${pct}%"></div></div>
+      <div class="ref-meta">${joins} / 50 watu wamefuata link yake${joins>=50?' — 🎉 Anastahili Mwezi Bure!':''}</div>
+    </div>`;
+  }).join('');
+}
+
+function downloadRefCSV(){
+  const refs=JSON.parse(localStorage.getItem(LS.REFERRALS)||'{}');
+  const entries=Object.entries(refs);
+  if(!entries.length){alert('Hakuna referrals bado.');return;}
+  const csv=['Jina,Code,Watu Walioshiriki,Amepata Tuzo?',
+    ...entries.map(([k,r])=>`"${r.name||''}","${r.code||''}","${r.joins||0}","${r.rewarded?'Ndiyo':'Bado'}"`)
+  ].join('\n');
+  dlFile('\ufeff'+csv,'JOS_Referrals_'+Date.now()+'.csv','text/csv;charset=utf-8;');
+}
+
+function clearReferrals(){
+  if(!confirm('Futa data yote ya referrals?')) return;
+  localStorage.removeItem(LS.REFERRALS);
+  renderReferral();
+  alert('✅ Referrals zimefutwa.');
+}
+
+// ═══ HELPER ═══
+function dlFile(content,filename,type){
+  const blob=new Blob([content],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=filename; a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
